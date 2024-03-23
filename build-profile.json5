@@ -1,0 +1,41 @@
+{
+  "app": {
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_MyApplication_com.example.myapplication_890086000102043708.cer",
+          "storePassword": "0000001BB1487B3F767467177EBF65F83606D40AB19F2460AEC4EF503851004BBB972F46AA60488306A3D1",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BE4ECF1D21E9B065608AB14B9B6A12D28E9CA5D81FE4AE04A29A13CCE2E9093E000166940BF946E",
+          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_MyApplication_com.example.myapplication_890086000102043708.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_MyApplication_com.example.myapplication_890086000102043708.p12"
+        }
+      }
+    ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
+    "products": [
+      {
+        "name": "default",
+        "signingConfig": "default",
+      }
+    ]
+  },
+  "modules": [
+    {
+      "name": "entry",
+      "srcPath": "./entry",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
+}
