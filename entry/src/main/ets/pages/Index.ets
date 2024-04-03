@@ -122,7 +122,7 @@ struct Index {
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
-
+  //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Row() {
       Column() {
@@ -132,9 +132,14 @@ struct Index {
       }
 
       Button('click2').onClick(this.myClickHandler.bind(this))
+      Text('hello')//设置字符串
+      Text($r('app.string.app_name'))
     }
     .height('100%').backgroundColor(Color.Red)
   }
+
+  //对象类型
+  //JS中的对象是由属性和方法否成的
 }
 
 interface PaintOptions {
