@@ -7,6 +7,11 @@ struct Index {
   @State showImmersiveStatusBar: boolean = false;
   @State titleBarPadding: number = 0;
 
+  @State message: string = 'Hello World'
+  myClickHandler(): void {
+    console.log('HarmonyOS Hello!')
+  }
+  //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Column() {
       CommonHeader({titleBarPadding:this.titleBarPadding})
