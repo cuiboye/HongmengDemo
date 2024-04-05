@@ -1,5 +1,8 @@
 
 import { StatusBarManager } from './StatusBarManager';
+/**
+ * 自定义header
+ */
 @Component
 export struct CommonHeader{
   @State showImmersiveStatusBar: boolean = false;
@@ -23,6 +26,7 @@ export struct CommonHeader{
     // .height('100%')
   }
 
+  ///自定义组件这个方法没有执行
   // onPageShow(){
   //   console.log('onPageShow')
   //   this.open()
