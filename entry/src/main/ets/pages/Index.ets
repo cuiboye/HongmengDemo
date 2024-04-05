@@ -23,8 +23,8 @@ struct Index {
     if (windowStage) {
       StatusBarManager.get().setImmersiveStatusBar(windowStage)
         .then(() => {
-          console.log(`titleBarPadding ${this.titleBarPadding}`)
           this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
+          console.log(`titleBarPadding ${this.titleBarPadding}`)
         });
     }
   }
