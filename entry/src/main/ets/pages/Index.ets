@@ -37,6 +37,7 @@ struct Index {
   private close() {
     let windowStage = StatusBarManager.get().getWindowStage();
     if (windowStage) {
+
       StatusBarManager.get().hideImmersiveStatusBar(windowStage).then(() => {
         this.titleBarPadding = 0;
       })
