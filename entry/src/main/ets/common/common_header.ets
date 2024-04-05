@@ -1,29 +1,38 @@
-import { CommonHeader } from '../common/common_header';
-import { StatusBarManager } from '../common/StatusBarManager';
 
-@Entry
+import { StatusBarManager } from './StatusBarManager';
 @Component
-struct Index {
+export struct CommonHeader{
   @State showImmersiveStatusBar: boolean = false;
-  @State titleBarPadding: number = 0;
-
+  @Prop titleBarPadding: number;//注意:prop修饰
   build() {
     Column() {
-      CommonHeader({titleBarPadding:this.titleBarPadding})
+      Column() {
+        Column() {
+          Text('这是标题')
+            .fontSize(20)
+            .fontColor(Color.White)
+        }
+        .height(50)
+        .justifyContent(FlexAlign.Center)
+      }
+      .padding({ top: `${this.titleBarPadding}px` })
+      .width('100%')
+      // .backgroundColor('#ff007dfe')
+      .backgroundColor(Color.Red)
     }
+    // .height('100%')
   }
 
-  onPageShow(){
-    this.open()
-    console.log('onPageShow')
-  }
+  // onPageShow(){
+  //   console.log('onPageShow')
+  //   this.open()
+  // }
 
   private open() {
     let windowStage = StatusBarManager.get().getWindowStage();
     if (windowStage) {
       StatusBarManager.get().setImmersiveStatusBar(windowStage)
         .then(() => {
-          console.log(`titleBarPadding ${this.titleBarPadding}`)
           this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
         });
     }

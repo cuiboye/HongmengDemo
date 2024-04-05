@@ -1,6 +1,7 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import { StatusBarManager } from '../common/StatusBarManager';
 
 export default class EntryAbility extends UIAbility {
   onCreate(want, launchParam) {
@@ -22,6 +23,9 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
+    StatusBarManager.get().storeWindowStage(windowStage);
+
+    // StatusBarManager.get().setImmersiveStatusBar(windowStage);
   }
 
   onWindowStageDestroy() {
