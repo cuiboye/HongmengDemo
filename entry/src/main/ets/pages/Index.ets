@@ -1,22 +1,111 @@
 import { CommonHeader } from '../common/common_header';
 import { StatusBarManager } from '../common/StatusBarManager';
+import { ComponentWidget } from '../widget/component_widget';
+
+
+/**
+ * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
+ */
+// @Builder function ListViewItem(item:string){
+//   Row() {
+//     Text(`元素为 ${item}`).fontSize(16)
+//   }.backgroundColor(Color.Red).height(30).width(100)
+// }
+
+/**
+ * 全局的自定义样式
+ * 全局的自定义样式的属性只能设置所有组件都有的属性才可以，如果是某个组件特有的属性则不支持，比如
+ * Text的fontSize则不支持。
+ * 如果想在全局的自定义样式中设置某个组件特有的属性，可以使用Extend
+ */
+@Styles function fillScreen(){
+  .backgroundColor(Color.Red)
+  .height(30)
+  .width(100)
+}
+
+/**
+ * 使用Extend设置某个组件特有的属性
+ * 注意：@Extend只能写在全局中，不能写在局部中
+ */
+@Extend(Text) function priceText(){
+  .fontSize(16)
+  .fontColor(Color.Blue)
+}
 
 @Entry
 @Component
 struct Index {
   @State showImmersiveStatusBar: boolean = false;
   @State titleBarPadding: number = 0;
-
+   array:Array<String> = ['a','b','c'];
   @State message: string = 'Hello World'
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
+
+  /**
+   * 局部的构建函数
+   */
+  @Builder ListViewItem(item:string){
+    Row() {
+      Text(`元素为 ${item}`).priceText()//priceText为全局的自定义属性
+    }.fillScreen()//fillScreen 自定义样式
+  }
+
+  /**
+   * 局部的自定义样式
+   */
+  @Styles fillScreen(){
+  .backgroundColor(Color.Red)
+  .height(30)
+  .width(100)
+}
+
   //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Column() {
       CommonHeader({titleBarPadding:this.titleBarPadding})
+
+      // .backgroundColor('#F08080')
+      // Tabs({barPosition:BarPosition.End}) {
+      //   TabContent() {
+      //     Column() {
+      //       //自定义组件
+      //       ComponentWidget({title:'自定义组件'})
+      //       Text('Top Row').fontSize(40).textAlign(TextAlign.Center).width('100%')
+      //     }
+      //   }
+      //   .tabBar('首页')
+      //   TabContent() {
+      //     Text('推荐的内容').fontSize(30)
+      //   }
+      //   .tabBar('推荐')
+      //
+      //   TabContent() {
+      //     Text('发现的内容').fontSize(30)
+      //   }
+      //   .tabBar('发现')
+      //   TabContent() {
+      //     Text('我的内容').fontSize(30)
+      //   }
+      //   .tabBar("我的")
+      // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
+
+      List() {
+        ForEach(
+          this.array, (item: string) => {
+          ListItem() {
+            // ListViewItem(item)//全局的构建函数
+            this.ListViewItem(item)//局部的构建函数
+          }
+        })
+      }
     }
+//    1）自定义组件使用@Component来修饰组件，然后使用export导出该组件
+//    2）自定义构建函数
   }
+
 
   onPageShow(){
     this.open()

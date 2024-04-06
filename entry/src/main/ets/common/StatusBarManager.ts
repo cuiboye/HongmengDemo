@@ -135,6 +135,7 @@ export class StatusBarManager {
       const avoidArea = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM);
       // 保存高度信息
       this.mConfig.set(this.CONFIG_SYSTEM_BAR_HEIGHT, avoidArea.topRect.height);
+      this.mConfig.set(this.CONFIG_SYSTEM_BAR_HEIGHT, avoidArea.topRect.height);
       // Log.info(this.TAG, 'Succeeded in obtaining the area. Data:' + JSON.stringify(avoidArea));
 
     } catch (err) {
