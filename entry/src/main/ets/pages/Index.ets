@@ -1,63 +1,135 @@
-import ArrayList from '@ohos.util.ArrayList'
-import router from '@ohos.router'
-import data from '@ohos.telephony.data'
+import { CommonHeader } from '../common/common_header';
+import { StatusBarManager } from '../common/StatusBarManager';
+import { ComponentWidget } from '../widget/component_widget';
 
-//枚举
-enum SexValue {
-  MAIL = '男',
-  FEMAIL = '女'
+
+/**
+ * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
+ */
+// @Builder function ListViewItem(item:string){
+//   Row() {
+//     Text(`元素为 ${item}`).fontSize(16)
+//   }.backgroundColor(Color.Red).height(30).width(100)
+// }
+
+/**
+ * 全局的自定义样式
+ * 全局的自定义样式的属性只能设置所有组件都有的属性才可以，如果是某个组件特有的属性则不支持，比如
+ * Text的fontSize则不支持。
+ * 如果想在全局的自定义样式中设置某个组件特有的属性，可以使用Extend
+ */
+@Styles function fillScreen(){
+  .backgroundColor(Color.Red)
+  .height(30)
+  .width(100)
 }
 
-//3）使用别名来明明函数类型
-//语法 (a: string) => void 的意思是“一个带有一个参数、名为 a、类型为 string、没有返回值的
-//函数”。就像函数声明一样，如果未指定参数类型，则隐式为 any。
-type Success = (str: string) => void //如果你需要接受任意函数但不打算调用它，则类型 () => void 通常更安全。
-
-type Success2 = (str: string) => number
-//请注意，参数名称是必需的。函数类型 (string) => void 的意思是“一个带有名为 string、类
-//型为 any 的参数的函数”！
-
+/**
+ * 使用Extend设置某个组件特有的属性
+ * 注意：@Extend只能写在全局中，不能写在局部中
+ */
+@Extend(Text) function priceText(){
+  .fontSize(16)
+  .fontColor(Color.Blue)
+}
 
 @Entry
 @Component
 struct Index {
+  @State showImmersiveStatusBar: boolean = false;
+  @State titleBarPadding: number = 0;
+   array:Array<String> = ['a','b','c'];
   @State message: string = 'Hello World'
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
+
+  /**
+   * 局部的构建函数
+   */
+  @Builder ListViewItem(item:string){
+    Row() {
+      Text(`元素为 ${item}`).priceText()//priceText为全局的自定义属性
+    }.fillScreen()//fillScreen 自定义样式
+  }
+
+  /**
+   * 局部的自定义样式
+   */
+  @Styles fillScreen(){
+  .backgroundColor(Color.Red)
+  .height(30)
+  .width(100)
+}
+
   //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Column() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
+      CommonHeader({titleBarPadding:this.titleBarPadding})
 
-      Button('click2').onClick(this.myClickHandler.bind(this))
-      Text('hello')//设置字符串
-      Text($r('app.string.app_name'))
-      Button('跳转第二个页面').onClick(()=>{
-        router.pushUrl(
-          {
-            url:'pages/secondpage',
-            params:{name:'张三'}//传递的参数
-          },
-          router.RouterMode.Standard,//跳转模式 Single/Stantard
-          err=>{
-            if(err){
-              console.log('路由失败')
-              console.log(err.code+'')
-              console.log(err.message)
-              console.log(err.name)
-            }
-          },
-        )
-      })
+      // .backgroundColor('#F08080')
+      // Tabs({barPosition:BarPosition.End}) {
+      //   TabContent() {
+      //     Column() {
+      //       //自定义组件
+      //       ComponentWidget({title:'自定义组件'})
+      //       Text('Top Row').fontSize(40).textAlign(TextAlign.Center).width('100%')
+      //     }
+      //   }
+      //   .tabBar('首页')
+      //   TabContent() {
+      //     Text('推荐的内容').fontSize(30)
+      //   }
+      //   .tabBar('推荐')
+      //
+      //   TabContent() {
+      //     Text('发现的内容').fontSize(30)
+      //   }
+      //   .tabBar('发现')
+      //   TabContent() {
+      //     Text('我的内容').fontSize(30)
+      //   }
+      //   .tabBar("我的")
+      // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
+
+      List() {
+        ForEach(
+          this.array, (item: string) => {
+          ListItem() {
+            // ListViewItem(item)//全局的构建函数
+            this.ListViewItem(item)//局部的构建函数
+          }
+        })
+      }
     }
-    .height('100%').backgroundColor(Color.Red)
+//    1）自定义组件使用@Component来修饰组件，然后使用export导出该组件
+//    2）自定义构建函数
   }
 
-  //对象类型
-  //JS中的对象是由属性和方法否成的
+
+  onPageShow(){
+    this.open()
+    console.log('onPageShow')
+  }
+
+  private open() {
+    let windowStage = StatusBarManager.get().getWindowStage();
+    if (windowStage) {
+      StatusBarManager.get().setImmersiveStatusBar(windowStage)
+        .then(() => {
+          this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
+          console.log(`titleBarPadding ${this.titleBarPadding}`)
+        });
+    }
+  }
+
+  private close() {
+    let windowStage = StatusBarManager.get().getWindowStage();
+    if (windowStage) {
+
+      StatusBarManager.get().hideImmersiveStatusBar(windowStage).then(() => {
+        this.titleBarPadding = 0;
+      })
+    }
+  }
 }
