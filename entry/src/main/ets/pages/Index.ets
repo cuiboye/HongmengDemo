@@ -1,6 +1,7 @@
 import { CommonHeader } from '../common/common_header';
 import { StatusBarManager } from '../common/StatusBarManager';
 import { ComponentWidget } from '../widget/component_widget';
+import { PropPage } from './prop_page';
 
 
 /**
@@ -40,6 +41,9 @@ struct Index {
   @State titleBarPadding: number = 0;
    array:Array<String> = ['a','b','c'];
   @State message: string = 'Hello World'
+
+  @State totalNumber:number = 0
+
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
@@ -66,7 +70,15 @@ struct Index {
   build() {
     Column() {
       CommonHeader({titleBarPadding:this.titleBarPadding})
-
+      // PropPage({totalNumber:this.totalNumber})
+      //@Link 传递的变量的引用必须使用 $
+      PropPage({totalNumber:$totalNumber})
+      Row(){
+        Text(`${this.totalNumber}`)
+        Button('测试@Prop状态管理').onClick(()=>{
+          this.totalNumber++
+        })
+      }
       // .backgroundColor('#F08080')
       // Tabs({barPosition:BarPosition.End}) {
       //   TabContent() {

@@ -1,8 +1,7 @@
 
 /**
- * 状态管理
+ * 状态管理 @State
  */
-
 class Person{
   name:string
   age:number
@@ -40,7 +39,6 @@ struct StatePage {
      }
     }
     .height('100%')
-
     //@State也不能触发数组中对象属性的修改，只能触发数组的更新
   }
 }
