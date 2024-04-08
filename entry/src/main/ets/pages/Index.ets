@@ -1,7 +1,10 @@
 import { CommonHeader } from '../common/common_header';
 import { StatusBarManager } from '../common/StatusBarManager';
 import { ComponentWidget } from '../widget/component_widget';
+import { ProgressTask } from './prop_link_demo';
 import { PropPage } from './prop_page';
+import { FirstWidget } from './provider_page';
+import { StatePage } from './state_page';
 
 
 /**
@@ -44,6 +47,10 @@ struct Index {
 
   @State totalNumber:number = 0
 
+  // @Provide providerTotalNumber:number = 0;
+  @Provide('providerTotalNumber') aaa:number = 0;
+  @Provide('providerTotalNumber2') aaa2:number = 0;
+
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
@@ -71,6 +78,10 @@ struct Index {
     Column() {
       CommonHeader({titleBarPadding:this.titleBarPadding})
       // PropPage({totalNumber:this.totalNumber})
+
+      //@State的操作
+      StatePage()
+
       //@Link 传递的变量的引用必须使用 $
       PropPage({totalNumber:$totalNumber})
       Row(){
@@ -79,6 +90,21 @@ struct Index {
           this.totalNumber++
         })
       }
+
+      //Provider和Consume
+      Column(){
+        Row(){
+          Text(`${this.aaa}`)
+          Button('测试Provider和Consume').onClick(()=>{
+            this.aaa++
+          })
+        }
+        FirstWidget()
+      }
+
+      //@State @Prop @Link的Demo
+      ProgressTask()
+
       // .backgroundColor('#F08080')
       // Tabs({barPosition:BarPosition.End}) {
       //   TabContent() {
