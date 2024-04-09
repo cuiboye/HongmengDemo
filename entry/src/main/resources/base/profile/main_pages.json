@@ -1,6 +1,11 @@
 {
   "src": [
     "pages/Index",
-    "pages/secondpage"
+    "pages/secondpage",
+    "pages/boseved_page",
+    "pages/prop_link_demo",
+    "pages/layout_demo",
+    "pages/list_page",
+    "pages/scroll_page"
   ]
 }

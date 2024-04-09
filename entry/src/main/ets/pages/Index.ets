@@ -1,3 +1,4 @@
+import router from '@ohos.router';
 import { CommonHeader } from '../common/common_header';
 import { StatusBarManager } from '../common/StatusBarManager';
 import { ComponentWidget } from '../widget/component_widget';
@@ -102,8 +103,67 @@ struct Index {
         FirstWidget()
       }
 
-      //@State @Prop @Link的Demo
-      ProgressTask()
+      Button('@State @Prop @Link的Demo').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/prop_link_demo',
+          },
+          router.RouterMode.Standard, //跳转模式 Single/Stantard
+        )
+      })
+
+      Button('@Observed和@ObjectLink的Demo').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/boseved_page',
+          },
+          router.RouterMode.Standard, //跳转模式 Single/Stantard
+          err => {
+            if (err) {
+              console.log('路由失败')
+              console.log(err.code + '')
+              console.log(err.message)
+              console.log(err.name)
+            }
+          },
+        )
+      })
+
+      Button('布局学习').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/layout_demo',
+          },
+          router.RouterMode.Standard, //跳转模式 Single/Stantard
+          err => {
+            if (err) {
+              console.log('路由失败')
+              console.log(err.code + '')
+              console.log(err.message)
+              console.log(err.name)
+            }
+          },
+        )
+      })
+
+      //List
+      Button('List列表').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/list_page',
+          },
+          router.RouterMode.Standard,
+        )
+      })
+      //滚动列表
+      Button('滚动列表').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/scroll_page',
+          },
+          router.RouterMode.Standard,
+        )
+      })
 
       // .backgroundColor('#F08080')
       // Tabs({barPosition:BarPosition.End}) {
@@ -129,19 +189,7 @@ struct Index {
       //   }
       //   .tabBar("我的")
       // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
-
-      List() {
-        ForEach(
-          this.array, (item: string) => {
-          ListItem() {
-            // ListViewItem(item)//全局的构建函数
-            this.ListViewItem(item)//局部的构建函数
-          }
-        })
-      }
     }
-//    1）自定义组件使用@Component来修饰组件，然后使用export导出该组件
-//    2）自定义构建函数
   }
 
 
