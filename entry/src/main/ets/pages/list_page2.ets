@@ -1,7 +1,6 @@
 /**
  * List的分组列表
  */
-import contact from '@ohos.contact'
 class Contact{
   name:string
 
@@ -52,6 +51,7 @@ struct ListPage2 {
     Column() {
       List() {
         ForEach(this.contactsGroups, item => {
+          //ListItemGroup:分组title，头部部件
           ListItemGroup({ header: this.itemHeader(item.title) }) {
             ForEach(item.contacts, (contact: Contact) => {
               ListItem() {
@@ -63,6 +63,8 @@ struct ListPage2 {
           }
         })
       }
+      //List组件的sticky属性配合ListItemGroup组件使用，用于设置ListItemGroup中的头部组件是否呈现吸顶效果或者尾部组件是否呈现吸底效果。
+      .sticky(StickyStyle.Header)
     }
   }
 
