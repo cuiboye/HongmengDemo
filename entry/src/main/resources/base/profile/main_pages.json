@@ -6,6 +6,7 @@
     "pages/prop_link_demo",
     "pages/layout_demo",
     "pages/list_page",
+    "pages/list_page2",
     "pages/scroll_page"
   ]
 }

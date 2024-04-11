@@ -115,6 +115,8 @@ struct TaskListWidget {
     Column() {
       List({ space: 10 }) {
         ForEach(this.tasks, (task: Task, index) => {
+          ListItemGroup()
+
           ListItem() {
             //注意：方法传递时，这里需要使用 bind(this)，否则方法中的this使用的是子类的this，会导致找不到对应的属性
             TaskListItemWidget({ task: task, handleTaskNumber: this.handleTaskNumber.bind(this) })

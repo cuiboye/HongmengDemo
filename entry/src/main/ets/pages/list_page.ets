@@ -1,3 +1,7 @@
+
+/**
+ * List的简单使用
+ */
 @Entry
 @Component
 struct ListPage {
@@ -23,8 +27,8 @@ struct ListPage {
           ListItem(){
             Column(){
               Text(item.toString())
-                .width('90%')
-                .height(150)
+                // .width('90%')
+                // .height(150)
                 .backgroundColor(Color.Gray)
                 .borderRadius(15)
                 .fontSize(16)
@@ -35,6 +39,8 @@ struct ListPage {
           }.swipeAction({ end: this.deleteTask() }) //swipeAction:ListView的侧滑效果
         }, item => item)
       }
+      .lanes(2)//设置List为两列
+      .alignListItem(ListItemAlign.Center)//设置List在交叉轴上的对齐方式
       .divider({strokeWidth:1,color:Color.Blue,startMargin:20,endMargin:20})
       .onScrollIndex((start: number, end: number) => {
         console.log(`Scroll start index is${start},end index is${end},`)

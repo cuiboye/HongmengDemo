@@ -155,6 +155,17 @@ struct Index {
           router.RouterMode.Standard,
         )
       })
+
+      //List的分组列表
+      Button('List的分组列表').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/list_page2',
+          },
+          router.RouterMode.Standard,
+        )
+      })
+
       //滚动列表
       Button('滚动列表').onClick(()=>{
         router.pushUrl(
