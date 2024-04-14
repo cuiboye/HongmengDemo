@@ -176,6 +176,16 @@ struct Index {
         )
       })
 
+      //Swiper轮播图
+      Button('Swiper轮播图').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/swiper_demo_page',
+          },
+          router.RouterMode.Standard,
+        )
+      })
+
       // .backgroundColor('#F08080')
       // Tabs({barPosition:BarPosition.End}) {
       //   TabContent() {

@@ -8,6 +8,10 @@
     "pages/list_page",
     "pages/list_page2",
     "pages/scroll_page",
+<<<<<<< HEAD
     "pages/temp"
+=======
+    "pages/swiper_demo_page"
+>>>>>>> c6458a15b9a98921c8016ba8d4416bf814d94c03
   ]
 }
