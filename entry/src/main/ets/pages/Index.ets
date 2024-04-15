@@ -186,6 +186,34 @@ struct Index {
         )
       })
 
+      //各种组件
+      Button('各种组件').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/widget_page',
+          },
+          router.RouterMode.Standard,
+        )
+      })
+
+      //各种组件
+      Button('挖酒项目').onClick(()=>{
+        router.pushUrl(
+          {
+            url: 'pages/wajiu/wajiu_main_page',
+          },
+          router.RouterMode.Standard,
+          err => {
+            if (err) {
+              console.log('路由失败')
+              console.log(err.code + '')
+              console.log(err.message)
+              console.log(err.name)
+            }
+          },
+        )
+      })
+
       // .backgroundColor('#F08080')
       // Tabs({barPosition:BarPosition.End}) {
       //   TabContent() {
@@ -227,16 +255,6 @@ struct Index {
           this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
           console.log(`titleBarPadding ${this.titleBarPadding}`)
         });
-    }
-  }
-
-  private close() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-
-      StatusBarManager.get().hideImmersiveStatusBar(windowStage).then(() => {
-        this.titleBarPadding = 0;
-      })
     }
   }
 }

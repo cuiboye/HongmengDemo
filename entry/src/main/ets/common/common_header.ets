@@ -25,29 +25,4 @@ export struct CommonHeader{
     }
     // .height('100%')
   }
-
-  ///自定义组件这个方法没有执行
-  // onPageShow(){
-  //   console.log('onPageShow')
-  //   this.open()
-  // }
-
-  private open() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-      StatusBarManager.get().setImmersiveStatusBar(windowStage)
-        .then(() => {
-          this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
-        });
-    }
-  }
-
-  private close() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-      StatusBarManager.get().hideImmersiveStatusBar(windowStage).then(() => {
-        this.titleBarPadding = 0;
-      })
-    }
-  }
 }
