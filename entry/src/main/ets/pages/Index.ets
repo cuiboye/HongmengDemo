@@ -23,7 +23,7 @@ import { StatePage } from './state_page';
  * Text的fontSize则不支持。
  * 如果想在全局的自定义样式中设置某个组件特有的属性，可以使用Extend
  */
-@Styles function fillScreen(){
+@Styles function fillScreen() {
   .backgroundColor(Color.Red)
   .height(30)
   .width(100)
@@ -33,7 +33,7 @@ import { StatePage } from './state_page';
  * 使用Extend设置某个组件特有的属性
  * 注意：@Extend只能写在全局中，不能写在局部中
  */
-@Extend(Text) function priceText(){
+@Extend(Text) function priceText() {
   .fontSize(16)
   .fontColor(Color.Blue)
 }
@@ -43,14 +43,13 @@ import { StatePage } from './state_page';
 struct Index {
   @State showImmersiveStatusBar: boolean = false;
   @State titleBarPadding: number = 0;
-   array:Array<String> = ['a','b','c'];
+  array: Array<String> = ['a', 'b', 'c'];
   @State message: string = 'Hello World'
-
-  @State totalNumber:number = 0
+  @State totalNumber: number = 0
 
   // @Provide providerTotalNumber:number = 0;
-  @Provide('providerTotalNumber') aaa:number = 0;
-  @Provide('providerTotalNumber2') aaa2:number = 0;
+  @Provide('providerTotalNumber') aaa: number = 0;
+  @Provide('providerTotalNumber2') aaa2: number = 0;
 
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
@@ -59,51 +58,52 @@ struct Index {
   /**
    * 局部的构建函数
    */
-  @Builder ListViewItem(item:string){
+  @Builder ListViewItem(item: string) {
     Row() {
-      Text(`元素为 ${item}`).priceText()//priceText为全局的自定义属性
-    }.fillScreen()//fillScreen 自定义样式
+      Text(`元素为 ${item}`).priceText() //priceText为全局的自定义属性
+    }.fillScreen() //fillScreen 自定义样式
   }
 
   /**
    * 局部的自定义样式
    */
   @Styles fillScreen(){
-  .backgroundColor(Color.Red)
-  .height(30)
-  .width(100)
-}
+    .backgroundColor(Color.Red)
+    .height(30)
+    .width(100)
+  }
 
   //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Column() {
-      CommonHeader({titleBarPadding:this.titleBarPadding})
+      CommonHeader({ titleBarPadding: this.titleBarPadding })
       // PropPage({totalNumber:this.totalNumber})
 
       //@State的操作
       StatePage()
 
       //@Link 传递的变量的引用必须使用 $
-      PropPage({totalNumber:$totalNumber})
-      Row(){
+      PropPage({ totalNumber: $totalNumber })
+      Row() {
         Text(`${this.totalNumber}`)
-        Button('测试@Prop状态管理').onClick(()=>{
+        Button('测试@Prop状态管理').onClick(() => {
           this.totalNumber++
         })
       }
 
       //Provider和Consume
-      Column(){
-        Row(){
+      Column() {
+        Row() {
           Text(`${this.aaa}`)
-          Button('测试Provider和Consume').onClick(()=>{
+          Button('测试Provider和Consume').onClick(() => {
             this.aaa++
           })
         }
+
         FirstWidget()
       }
 
-      Button('@State @Prop @Link的Demo').onClick(()=>{
+      Button('@State @Prop @Link的Demo').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/prop_link_demo',
@@ -112,7 +112,7 @@ struct Index {
         )
       })
 
-      Button('@Observed和@ObjectLink的Demo').onClick(()=>{
+      Button('@Observed和@ObjectLink的Demo').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/boseved_page',
@@ -129,7 +129,7 @@ struct Index {
         )
       })
 
-      Button('布局学习').onClick(()=>{
+      Button('布局学习').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/layout_demo',
@@ -147,7 +147,7 @@ struct Index {
       })
 
       //List
-      Button('List列表').onClick(()=>{
+      Button('List列表').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/list_page',
@@ -157,7 +157,7 @@ struct Index {
       })
 
       //List的分组列表
-      Button('List的分组列表').onClick(()=>{
+      Button('List的分组列表').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/list_page2',
@@ -167,7 +167,7 @@ struct Index {
       })
 
       //滚动列表
-      Button('滚动列表').onClick(()=>{
+      Button('滚动列表').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/scroll_page',
@@ -177,7 +177,7 @@ struct Index {
       })
 
       //Swiper轮播图
-      Button('Swiper轮播图').onClick(()=>{
+      Button('Swiper轮播图').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/swiper_demo_page',
@@ -187,7 +187,7 @@ struct Index {
       })
 
       //各种组件
-      Button('各种组件').onClick(()=>{
+      Button('各种组件').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/widget_page',
@@ -197,7 +197,7 @@ struct Index {
       })
 
       //各种组件
-      Button('挖酒项目').onClick(()=>{
+      Button('挖酒项目').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/wajiu/wajiu_main_page',
@@ -241,8 +241,7 @@ struct Index {
     }
   }
 
-
-  onPageShow(){
+  onPageShow() {
     this.open()
     console.log('onPageShow')
   }
