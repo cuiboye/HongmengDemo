@@ -200,7 +200,7 @@ struct Index {
       Button('挖酒项目').onClick(() => {
         router.pushUrl(
           {
-            url: 'pages/wajiu/wajiu_main_page',
+            url: 'pages/wajiu/page/wajiu_main_page',
           },
           router.RouterMode.Standard,
           err => {
