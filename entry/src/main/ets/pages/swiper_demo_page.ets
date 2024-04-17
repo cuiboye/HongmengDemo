@@ -7,6 +7,7 @@ struct SwiperDeemoPage {
   //indicatorStyle:设置指示器的样式
   //SwiperController：通过控制器来切换页面
   //indicator:指示器单个的样式，SDK10版本才支持
+  //vertical：滚动方向，默认为水平滚动，true表示垂直滚动
   private swiperController: SwiperController = new SwiperController()
 
   build() {
