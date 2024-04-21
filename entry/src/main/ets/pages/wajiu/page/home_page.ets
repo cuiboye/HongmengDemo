@@ -62,7 +62,7 @@ export struct HomePage {
   // }
 
   build() {
-    Scroll(){
+    Scroll() {
       Column() {
         // Button('请求接口数据').onClick(() => {
         //   this.getShopListByAxiosAsync()
@@ -145,17 +145,18 @@ export struct HomePage {
             Text('订单查询')
               .fontSize(16)
               .fontColor($r('app.color.343434'))
-              .margin({left:8})
+              .margin({ left: 8 })
           }
           .layoutWeight(1)
           .justifyContent(FlexAlign.Center)
+
           Divider().strokeWidth(1).color($r('app.color.dfdfdf')).vertical(true)
           Row() {
             Image($r('app.media.app_index_chongzhi_new')).width(20)
             Text('充值')
               .fontSize(16)
               .fontColor($r('app.color.343434'))
-              .margin({left:8})
+              .margin({ left: 8 })
           }
           .layoutWeight(1)
           .justifyContent(FlexAlign.Center)
@@ -166,28 +167,28 @@ export struct HomePage {
         .height(43)
         .justifyContent(FlexAlign.SpaceBetween)
 
-        Row(){
+        Row() {
           Image($r('app.media.app_home_xiaowakuaibao'))
-            .margin({left:18})
+            .margin({ left: 18 })
             .height(15)
             .backgroundColor(Color.White)
           Divider()
-            .margin({left:10,right:7})
+            .margin({ left: 10, right: 7 })
             .vertical(true)
             .color($r('app.color.dfdfdf'))
             .strokeWidth(1)
             .height(12)
 
-          Swiper(){
+          Swiper() {
             Text('跑马灯效果')
               .fontSize(13)
               .fontColor($r('app.color.343434'))
-              .margin({right:10})
+              .margin({ right: 10 })
               .layoutWeight(1)
             Text('跑马灯效果2')
               .fontSize(13)
               .fontColor($r('app.color.343434'))
-              .margin({right:10})
+              .margin({ right: 10 })
               .layoutWeight(1)
           }
           .autoPlay(true)
@@ -196,59 +197,98 @@ export struct HomePage {
           .interval(4000)
           .height(25)
         }
-        .margin({top:8,left:13,right:13})
+        .margin({ top: 8, left: 13, right: 13 })
         .height(43)
         .borderRadius(8)
         .backgroundColor(Color.White)
 
-        Row(){
+        Row() {
           Image('https://image.59cdn.com/app/release/index/HotNewProduct/TopSellerList.png')
             .layoutWeight(1)
-          Column(){
+          Column() {
             Image('https://image.59cdn.com/static/upload/image/app/20230313/o_1678679039491.png')
               .objectFit(ImageFit.Auto)
             Image('https://image.59cdn.com/app/release/index/HotNewProduct/HotNewProduct.png')
-              .margin({top:8})
+              .margin({ top: 8 })
               .objectFit(ImageFit.Fill)
           }
           .justifyContent(FlexAlign.SpaceEvenly)
-          .margin({left:8})
+          .margin({ left: 8 })
           .layoutWeight(1)
         }
-        .margin({left:13,right:13,top:8})
-        Row(){}.height(40)
-        Column(){
-          // Stack(){
-          //   Row(){}
-          //   .width('calc(100%-30vp').height(10).margin({left:13,right:13}).backgroundColor(Color.Blue)
-          //   Image($r('app.media.app_home_guojiaguan_title_background')).height(25)
-          // }
-          RelativeContainer() {
-            Row(){
-              Text('sdfdsf')
-            }
-              // Image($r('app.media.app_home_guojiaguan_title_background')).height(25)
-              //   .backgroundColor(Color.Red)
-              .id('row')
-              .alignRules({
-                left: { anchor: '__container__', align: HorizontalAlign.Start },
-                right: { anchor: '__container__', align: HorizontalAlign.End },
-              })
-              .margin({ left: 13, right: 13 }).backgroundColor(Color.Red)
-          }.width('100%').backgroundColor(Color.Black)
+        .margin({ left: 13, right: 13, top: 8 })
 
-          Image('https://image.59cdn.com/app/release/index/HotNewProduct/TopSellerList.png')
-            .width(50)
-            .height(50)
-            .borderRadius(1000)
 
+        Column() {
+          Stack() {
+            Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
+            Text('- 国家馆 -')
+              .fontColor('#ffffff')
+                // .fontStyle(FontStyle.Italic)//设置字体为斜体
+              .fontWeight('bold')
+          }
+          // .margin({ left: 13, right: 13 })
+          // .layoutWeight(1)
+          .width('100%')
+          //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
+          .borderRadius({topLeft:8,topRight:8})
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+
+          List({space:15}){//设置List的item之间的间隔
+            ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
+              ListItem(){
+                Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673514078492.png').height(60)
+              }
+            })
+          }
+          .padding({top:15,left:13,right:13,bottom:15})
+          .width('100%')
+          .backgroundColor(Color.White)
+          .borderRadius({bottomLeft:8,bottomRight:8})
+          .listDirection(Axis.Horizontal)
         }
+        .margin({top:8})
+        .width('100%')
+        .padding({left:13,right:13})//设置外层的宽度为屏幕的宽度
+        //设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+
+        Column() {
+          Row({space:10}){
+            Image($r('app.media.app_home_guojiaguan_title_background')).width(90).height(90)
+            Column(){
+              Text('dsfd').fontSize('14').width('100%')
+              Blank()
+              Row(){
+                Text('我是按钮前文')
+                Blank()
+                Button('立即查看',{type:ButtonType.Capsule}).width(80).height(35).onClick(()=>{
+                  // Logger.debug('当前索引值：'+ index.toString() + '，当前item：' + title)
+                })
+              }
+              .width('100%')
+              .backgroundColor(Color.Orange)
+            }
+            .layoutWeight(1) // 占满主轴方向剩余空间
+            .height(80)
+            .justifyContent(FlexAlign.SpaceBetween)
+            .backgroundColor(Color.Pink)
+          }
+          .width('100%')
+          .padding(10)
+          Divider().color('#F2F2F2').strokeWidth(1).margin({left:10,right:10})
+        }.width('100%')
+
+
       }
       .backgroundColor($r('app.color.eeeeee'))
 
     }
-    .scrollBar(BarState.Off)//隐藏滚动条
-    .edgeEffect(EdgeEffect.Spring)//滚动到边缘回弹
+    .scrollBar(BarState.Off) //隐藏滚动条
+    .edgeEffect(EdgeEffect.Spring) //滚动到边缘回弹
     .height('100%')
   }
 }
