@@ -82,7 +82,6 @@ export struct HomePage {
             .height(30)
             .backgroundColor('#bdffffff')
             .layoutWeight(1)
-
             Image($r('app.media.home_customer_service')).width(20).margin({ left: 10 })
             Image($r('app.media.app_index_message_new')).width(20).margin({ left: 10 })
           }
@@ -106,13 +105,21 @@ export struct HomePage {
           // direction: GradientDirection.Top, // 渐变方向
           colors: [[0xef7134, 0], [0xf4f4f4, 1]] //0和1可能代表的是顺序
         })
-        //棋盘格
+        // 棋盘格
 
         Swiper() {
           Grid() {
             ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
               GridItem() {
-                Text(`${item}`)
+                Column(){
+                  Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
+                    .width(53)
+                    .height(53)
+                  Text('新品')
+                    .fontColor('#989898')
+                    .fontSize(14)
+                    .margin({top:8})
+                }
               }
             })
           }
@@ -121,15 +128,23 @@ export struct HomePage {
           .height(200)
 
           Grid() {
-            ForEach([11, 13, 12, 14, 15, 16, 17, 18], (item: number) => {
+            ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
               GridItem() {
-                Text(`${item}`)
+                Column(){
+                  Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
+                    .width(53)
+                    .height(53)
+                  Text('新品')
+                    .fontColor('#989898')
+                    .fontSize(14)
+                    .margin({top:8})
+                }
               }
             })
           }
           .rowsTemplate('1fr 1fr') //设置Grid为2行
           .columnsTemplate('1fr 1fr 1fr 1fr') //设置Grid为4列
-          .height(200)
+          .height(180)
         }
         //隐藏指示器，Indicator这个api在4.0才能使用
         // .indicator(Indicator.dot()
@@ -254,7 +269,41 @@ export struct HomePage {
         .margin({top:8})
         .width('100%')
         .padding({left:13,right:13})//设置外层的宽度为屏幕的宽度
-        //设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+        // 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+
+        Column() {
+          Stack() {
+            Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
+            Text('- 品牌馆 -')
+              .fontColor('#ffffff')
+              .fontWeight('bold')
+          }
+          .width('100%')
+          //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
+          .borderRadius({topLeft:8,topRight:8})
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+
+          List({space:15}){//设置List的item之间的间隔
+            ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
+              ListItem(){
+                Image('http://image.59cdn.com/static/upload/image/claim/20181214/o_1544752276246.jpg').height(60)
+                  .border({color:'#eeeeee',width:1}).borderRadius(1000).padding(2)
+              }
+            })
+          }
+          .padding({top:15,left:13,right:13,bottom:15})
+          .width('100%')
+          .backgroundColor(Color.White)
+          .borderRadius({bottomLeft:8,bottomRight:8})
+          .listDirection(Axis.Horizontal)
+        }
+        .margin({top:8})
+        .width('100%')
+        .padding({left:13,right:13})
 
         Column() {
           Row({space:10}){
@@ -282,7 +331,50 @@ export struct HomePage {
           Divider().color('#F2F2F2').strokeWidth(1).margin({left:10,right:10})
         }.width('100%')
 
+        Column(){
+          Row(){
+            Text('名庄优品')
+              .layoutWeight(1)
+            .fontColor('#e8eb1100')
+            .fontWeight(FontWeight.Bold)//设置字体为粗体
+            .fontStyle(FontStyle.Italic)//设置字体为斜体
+            .fontSize(17)
+            .margin({left:17})
+            Row(){
+              Text('更多')
+                .fontColor('#7b7b7b')
+                .fontSize(14)
+             Image($r('app.media.home_main_right_arrow'))
+               .height(12)
+               .margin({left:7})
+            }
+            .margin({right:17})
+          }
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+          .borderRadius({
+            topLeft:8,
+            topRight:8
+          })
+          .padding({top:20})
 
+          //Grid
+          Grid(){
+            ForEach([1,2,3,4],(item:number)=>{
+             GridItem(){
+               Text('dsfd')
+             }
+            })
+          }
+          .height(300)
+          .backgroundColor(Color.Gray)
+          .rowsTemplate('1fr 1fr')
+          .columnsTemplate('1fr 1fr')
+        }
+        .margin({left:13,right:13})
       }
       .backgroundColor($r('app.color.eeeeee'))
 
