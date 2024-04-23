@@ -107,12 +107,12 @@ struct LayoutDemo {
             .width(100)
             .height(100)
             .backgroundColor(Color.Red)
-            .id('Row1')
+            .id('Row')
           Row()
             .alignRules({
               //top:以Row1为参照物，顶部挨着Row1的底部
               //middle：以父布局为参照物，水平居中
-              top: { anchor: 'Row1', align: VerticalAlign.Bottom },
+              top: { anchor: 'Row', align: VerticalAlign.Bottom },
               middle: { anchor: '__container__', align: HorizontalAlign.Center }
             })
             .width(100)
@@ -121,7 +121,7 @@ struct LayoutDemo {
             .id('CenterRow')
           Row()
             .alignRules({
-              top: { anchor: 'Row1', align: VerticalAlign.Bottom },
+              top: { anchor: 'Row', align: VerticalAlign.Bottom },
               right: { anchor: 'CenterRow', align: HorizontalAlign.Start }
             })
             .width(100)
@@ -130,7 +130,7 @@ struct LayoutDemo {
             .id('LeftCenterRow')
           Row()
             .alignRules({
-              top: { anchor: 'Row1', align: VerticalAlign.Bottom },
+              top: { anchor: 'Row', align: VerticalAlign.Bottom },
               right: { anchor: '__container__', align: HorizontalAlign.End }
             })
             .width(100)

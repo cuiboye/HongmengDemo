@@ -25,7 +25,7 @@ import ShopInfo from '../../../common/TaskEntity';
 // 确保你正在使用的鸿蒙系统版本和开发工具是最新的。有时，这类问题可能是由系统或工具的bug引起的，而这些bug可能在新版本中已经得到修复。
 
 @Component
-@Entry
+// @Entry
 export struct HomePage {
   private bannerList = [
     'https://image.59cdn.com/static/upload/image/app/20240401/o_1711938042571.jpg',
@@ -486,6 +486,9 @@ export struct HomePage {
     .edgeEffect(EdgeEffect.Spring) //滚动到边缘回弹
     .height('100%')
   }
+
+  //使用hdc命令的时候需要使用下面目录中的hdc，否则执行hdc命令会有问题
+  //C:\Users\cuiboye\AppData\Local\Huawei\Sdk\hmscore\3.1.0\toolchains
 
   @Builder tabItem(item:string,index:number){
     Text(item)
