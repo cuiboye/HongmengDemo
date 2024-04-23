@@ -25,7 +25,7 @@ import ShopInfo from '../../../common/TaskEntity';
 // 确保你正在使用的鸿蒙系统版本和开发工具是最新的。有时，这类问题可能是由系统或工具的bug引起的，而这些bug可能在新版本中已经得到修复。
 
 @Component
-// @Entry
+@Entry
 export struct HomePage {
   private bannerList = [
     'https://image.59cdn.com/static/upload/image/app/20240401/o_1711938042571.jpg',
@@ -36,7 +36,7 @@ export struct HomePage {
   private swiperController: SwiperController = new SwiperController()
   private listController:Scroller = new Scroller()
 
-  @State selectedTabIndex:number = 0;
+  @State selectedTabIndex:number = 0
 
   // aboutToAppear() {
   //   this.getShopListByAxiosAsync().then(shops => {
@@ -73,319 +73,319 @@ export struct HomePage {
         //   this.getShopListByAxiosAsync()
         // }).margin({ top: 90 })
         //
-        // Column() {
-        //   Row() {
-        //     Row() {
-        //       Image($r('app.media.app_home_tabbar_seach'))
-        //         .width('15')
-        //         .margin({ left: 10 })
-        //       Text('掌阅珍藏干红——2018')
-        //         .fontColor('#a3a2a2')
-        //         .fontSize(15)
-        //         .margin({ left: 10 })
-        //     }
-        //     .borderRadius(8)
-        //     .height(30)
-        //     .backgroundColor('#bdffffff')
-        //     .layoutWeight(1)
-        //     Image($r('app.media.home_customer_service')).width(20).margin({ left: 10 })
-        //     Image($r('app.media.app_index_message_new')).width(20).margin({ left: 10 })
-        //   }
-        //   .padding({ left: 18, right: 18 })
-        //   .width('100%')
-        //   //轮播图
-        //   Swiper() {
-        //     ForEach(this.bannerList, (bannerItem: string, index?: number) => {
-        //       Image(bannerItem).width('100%') //给图片设置一个宽度，高度会自适应
-        //     })
-        //   }
-        //   .autoPlay(true
-        //   )
-        //   .margin({ top: 15, left: 13, right: 13 })
-        //   // .padding({left:15,right:15})//设置宽度为100%后，左右的margin不生效了，只能设置padding
-        //   // .width('100%') //不要设置Swiper的宽度为100%，否则左右的margin没有用
-        //   .borderRadius(8) //设置Swiper的圆角
-        //
-        // }.linearGradient({
-        //   repeating: true, // 渐变颜色是否重复
-        //   // direction: GradientDirection.Top, // 渐变方向
-        //   colors: [[0xef7134, 0], [0xf4f4f4, 1]] //0和1可能代表的是顺序
-        // })
-        // // 棋盘格
-        //
-        // Swiper() {
-        //   Grid() {
-        //     ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
-        //       GridItem() {
-        //         Column(){
-        //           Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
-        //             .width(53)
-        //             .height(53)
-        //           Text('新品')
-        //             .fontColor('#989898')
-        //             .fontSize(14)
-        //             .margin({top:8})
-        //         }
-        //       }
-        //     })
-        //   }
-        //   .rowsTemplate('1fr 1fr') //设置Grid为2行
-        //   .columnsTemplate('1fr 1fr 1fr 1fr') //设置Grid为4列
-        //   .height(200)
-        //
-        //   Grid() {
-        //     ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
-        //       GridItem() {
-        //         Column(){
-        //           Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
-        //             .width(53)
-        //             .height(53)
-        //           Text('新品')
-        //             .fontColor('#989898')
-        //             .fontSize(14)
-        //             .margin({top:8})
-        //         }
-        //       }
-        //     })
-        //   }
-        //   .rowsTemplate('1fr 1fr') //设置Grid为2行
-        //   .columnsTemplate('1fr 1fr 1fr 1fr') //设置Grid为4列
-        //   .height(180)
-        // }
-        // //隐藏指示器，Indicator这个api在4.0才能使用
-        // // .indicator(Indicator.dot()
-        // //   .itemWidth(15)
-        // //   .itemHeight(15)
-        // //   .selectedItemWidth(15)
-        // //   .selectedItemHeight(15)
-        // //   .color('#00000000')
-        // //   .selectedColor('#00000000'))
-        // Row() {
-        //   Row() {
-        //     Image($r('app.media.app_home_dingdan_blue')).width(20)
-        //     Text('订单查询')
-        //       .fontSize(16)
-        //       .fontColor($r('app.color.343434'))
-        //       .margin({ left: 8 })
-        //   }
-        //   .layoutWeight(1)
-        //   .justifyContent(FlexAlign.Center)
-        //
-        //   Divider().strokeWidth(1).color($r('app.color.dfdfdf')).vertical(true)
-        //   Row() {
-        //     Image($r('app.media.app_index_chongzhi_new')).width(20)
-        //     Text('充值')
-        //       .fontSize(16)
-        //       .fontColor($r('app.color.343434'))
-        //       .margin({ left: 8 })
-        //   }
-        //   .layoutWeight(1)
-        //   .justifyContent(FlexAlign.Center)
-        // }
-        // .margin({ left: 13, right: 13 })
-        // .backgroundColor(Color.White)
-        // .borderRadius(8)
-        // .height(43)
-        // .justifyContent(FlexAlign.SpaceBetween)
-        //
-        // Row() {
-        //   Image($r('app.media.app_home_xiaowakuaibao'))
-        //     .margin({ left: 18 })
-        //     .height(15)
-        //     .backgroundColor(Color.White)
-        //   Divider()
-        //     .margin({ left: 10, right: 7 })
-        //     .vertical(true)
-        //     .color($r('app.color.dfdfdf'))
-        //     .strokeWidth(1)
-        //     .height(12)
-        //
-        //   Swiper() {
-        //     Text('跑马灯效果')
-        //       .fontSize(13)
-        //       .fontColor($r('app.color.343434'))
-        //       .margin({ right: 10 })
-        //       .layoutWeight(1)
-        //     Text('跑马灯效果2')
-        //       .fontSize(13)
-        //       .fontColor($r('app.color.343434'))
-        //       .margin({ right: 10 })
-        //       .layoutWeight(1)
-        //   }
-        //   .autoPlay(true)
-        //   .layoutWeight(1)
-        //   .vertical(true)
-        //   .interval(4000)
-        //   .height(25)
-        // }
-        // .margin({ top: 8, left: 13, right: 13 })
-        // .height(43)
-        // .borderRadius(8)
-        // .backgroundColor(Color.White)
-        //
-        // Row() {
-        //   Image('https://image.59cdn.com/app/release/index/HotNewProduct/TopSellerList.png')
-        //     .layoutWeight(1)
-        //   Column() {
-        //     Image('https://image.59cdn.com/static/upload/image/app/20230313/o_1678679039491.png')
-        //       .objectFit(ImageFit.Auto)
-        //     Image('https://image.59cdn.com/app/release/index/HotNewProduct/HotNewProduct.png')
-        //       .margin({ top: 8 })
-        //       .objectFit(ImageFit.Fill)
-        //   }
-        //   .justifyContent(FlexAlign.SpaceEvenly)
-        //   .margin({ left: 8 })
-        //   .layoutWeight(1)
-        // }
-        // .margin({ left: 13, right: 13, top: 8 })
-        //
-        //
-        // Column() {
-        //   Stack() {
-        //     Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
-        //     Text('- 国家馆 -')
-        //       .fontColor('#ffffff')
-        //       .fontWeight('bold')
-        //   }
-        //   .width('100%')
-        //   //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
-        //   .borderRadius({topLeft:8,topRight:8})
-        //   .linearGradient({
-        //     repeating: true,
-        //     direction: GradientDirection.Bottom,
-        //     colors: [[0xffe4d2, 0], [0xffffff, 1]]
-        //   })
-        //
-        //   List({space:15}){//设置List的item之间的间隔
-        //     ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
-        //       ListItem(){
-        //         Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673514078492.png')
-        //           .height(60)
-        //           .backgroundColor(Color.Blue)
-        //           .objectFit(ImageFit.Fill)
-        //           .clip(new Circle({ width: 60, height: 60 }))//设置图片为圆角
-        //       }
-        //     })
-        //   }
-        //   .padding({top:15,left:13,right:13,bottom:15})
-        //   .width('100%')
-        //   .backgroundColor(Color.White)
-        //   .borderRadius({bottomLeft:8,bottomRight:8})
-        //   .listDirection(Axis.Horizontal)
-        // }
-        // .margin({top:8})
-        // .width('100%')
-        // .padding({left:13,right:13})//设置外层的宽度为屏幕的宽度
-        // // 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
-        //
-        // Column() {
-        //   Stack() {
-        //     Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
-        //     Text('- 品牌馆 -')
-        //       .fontColor('#ffffff')
-        //       .fontWeight('bold')
-        //   }
-        //   .width('100%')
-        //   //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
-        //   .borderRadius({topLeft:8,topRight:8})
-        //   .linearGradient({
-        //     repeating: true,
-        //     direction: GradientDirection.Bottom,
-        //     colors: [[0xffe4d2, 0], [0xffffff, 1]]
-        //   })
-        //
-        //   List({space:15}){//设置List的item之间的间隔
-        //     ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
-        //       ListItem(){
-        //         Image('http://image.59cdn.com/static/upload/image/claim/20181214/o_1544752276246.jpg')
-        //           .height(60)
-        //           .border({color:'#eeeeee',width:1}).borderRadius(1000)
-        //           .clip(new Circle({ width: 60, height: 60 }))//设置图片为圆角
-        //       }
-        //     })
-        //   }
-        //   .padding({top:15,left:13,right:13,bottom:15})
-        //   .width('100%')
-        //   .backgroundColor(Color.White)
-        //   .borderRadius({bottomLeft:8,bottomRight:8})
-        //   .listDirection(Axis.Horizontal)
-        // }
-        // .margin({top:8})
-        // .width('100%')
-        // .padding({left:13,right:13})
-        //
-        // Column() {
-        //   Row({space:10}){
-        //     Image($r('app.media.app_home_guojiaguan_title_background')).width(90).height(90)
-        //     Column(){
-        //       Text('dsfd').fontSize('14').width('100%')
-        //       Blank()
-        //       Row(){
-        //         Text('我是按钮前文')
-        //         Blank()
-        //         Button('立即查看',{type:ButtonType.Capsule}).width(80).height(35).onClick(()=>{
-        //           // Logger.debug('当前索引值：'+ index.toString() + '，当前item：' + title)
-        //         })
-        //       }
-        //       .width('100%')
-        //       .backgroundColor(Color.Orange)
-        //     }
-        //     .layoutWeight(1) // 占满主轴方向剩余空间
-        //     .height(80)
-        //     .justifyContent(FlexAlign.SpaceBetween)
-        //     .backgroundColor(Color.Pink)
-        //   }
-        //   .width('100%')
-        //   .padding(10)
-        //   Divider().color('#F2F2F2').strokeWidth(1).margin({left:10,right:10})
-        // }.width('100%')
-        //
-        // Column(){
-        //   Row(){
-        //     Text('名庄优品')
-        //       .layoutWeight(1)
-        //     .fontColor('#e8eb1100')
-        //     .fontWeight(FontWeight.Bold)//设置字体为粗体
-        //     .fontStyle(FontStyle.Italic)//设置字体为斜体
-        //     .fontSize(17)
-        //     .margin({left:17})
-        //     Row(){
-        //       Text('更多')
-        //         .fontColor('#7b7b7b')
-        //         .fontSize(14)
-        //      Image($r('app.media.home_main_right_arrow'))
-        //        .height(12)
-        //        .margin({left:7})
-        //     }
-        //     .margin({right:17})
-        //   }
-        //   .linearGradient({
-        //     repeating: true,
-        //     direction: GradientDirection.Bottom,
-        //     colors: [[0xffe4d2, 0], [0xffffff, 1]]
-        //   })
-        //   .borderRadius({
-        //     topLeft:8,
-        //     topRight:8
-        //   })
-        //   .padding({top:20})
-        //
-        //   //Grid
-        //   Grid(){
-        //     ForEach([1,2,3,4],(item:number)=>{
-        //      GridItem(){
-        //        Column(){
-        //          Text('dsfd')
-        //        }.backgroundColor(Color.White)
-        //      }
-        //     })
-        //   }
-        //   .height(300)
-        //   .backgroundColor(Color.Gray)
-        //   .rowsTemplate('1fr 1fr')
-        //   .columnsTemplate('1fr 1fr')
-        // }
-        // .margin({left:13,right:13})
+        Column() {
+          Row() {
+            Row() {
+              Image($r('app.media.app_home_tabbar_seach'))
+                .width('15')
+                .margin({ left: 10 })
+              Text('掌阅珍藏干红——2018')
+                .fontColor('#a3a2a2')
+                .fontSize(15)
+                .margin({ left: 10 })
+            }
+            .borderRadius(8)
+            .height(30)
+            .backgroundColor('#bdffffff')
+            .layoutWeight(1)
+            Image($r('app.media.home_customer_service')).width(20).margin({ left: 10 })
+            Image($r('app.media.app_index_message_new')).width(20).margin({ left: 10 })
+          }
+          .padding({ left: 18, right: 18 })
+          .width('100%')
+          //轮播图
+          Swiper() {
+            ForEach(this.bannerList, (bannerItem: string, index?: number) => {
+              Image(bannerItem).width('100%') //给图片设置一个宽度，高度会自适应
+            })
+          }
+          .autoPlay(true
+          )
+          .margin({ top: 15, left: 13, right: 13 })
+          // .padding({left:15,right:15})//设置宽度为100%后，左右的margin不生效了，只能设置padding
+          // .width('100%') //不要设置Swiper的宽度为100%，否则左右的margin没有用
+          .borderRadius(8) //设置Swiper的圆角
+
+        }.linearGradient({
+          repeating: true, // 渐变颜色是否重复
+          // direction: GradientDirection.Top, // 渐变方向
+          colors: [[0xef7134, 0], [0xf4f4f4, 1]] //0和1可能代表的是顺序
+        })
+        // 棋盘格
+
+        Swiper() {
+          Grid() {
+            ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
+              GridItem() {
+                Column(){
+                  Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
+                    .width(53)
+                    .height(53)
+                  Text('新品')
+                    .fontColor('#989898')
+                    .fontSize(14)
+                    .margin({top:8})
+                }
+              }
+            })
+          }
+          .rowsTemplate('1fr 1fr') //设置Grid为2行
+          .columnsTemplate('1fr 1fr 1fr 1fr') //设置Grid为4列
+          .height(200)
+
+          Grid() {
+            ForEach([1, 2, 3, 4, 5, 6, 7, 8], (item: number) => {
+              GridItem() {
+                Column(){
+                  Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673513238733.png')
+                    .width(53)
+                    .height(53)
+                  Text('新品')
+                    .fontColor('#989898')
+                    .fontSize(14)
+                    .margin({top:8})
+                }
+              }
+            })
+          }
+          .rowsTemplate('1fr 1fr') //设置Grid为2行
+          .columnsTemplate('1fr 1fr 1fr 1fr') //设置Grid为4列
+          .height(180)
+        }
+        //隐藏指示器，Indicator这个api在4.0才能使用
+        // .indicator(Indicator.dot()
+        //   .itemWidth(15)
+        //   .itemHeight(15)
+        //   .selectedItemWidth(15)
+        //   .selectedItemHeight(15)
+        //   .color('#00000000')
+        //   .selectedColor('#00000000'))
+        Row() {
+          Row() {
+            Image($r('app.media.app_home_dingdan_blue')).width(20)
+            Text('订单查询')
+              .fontSize(16)
+              .fontColor($r('app.color.343434'))
+              .margin({ left: 8 })
+          }
+          .layoutWeight(1)
+          .justifyContent(FlexAlign.Center)
+
+          Divider().strokeWidth(1).color($r('app.color.dfdfdf')).vertical(true)
+          Row() {
+            Image($r('app.media.app_index_chongzhi_new')).width(20)
+            Text('充值')
+              .fontSize(16)
+              .fontColor($r('app.color.343434'))
+              .margin({ left: 8 })
+          }
+          .layoutWeight(1)
+          .justifyContent(FlexAlign.Center)
+        }
+        .margin({ left: 13, right: 13 })
+        .backgroundColor(Color.White)
+        .borderRadius(8)
+        .height(43)
+        .justifyContent(FlexAlign.SpaceBetween)
+
+        Row() {
+          Image($r('app.media.app_home_xiaowakuaibao'))
+            .margin({ left: 18 })
+            .height(15)
+            .backgroundColor(Color.White)
+          Divider()
+            .margin({ left: 10, right: 7 })
+            .vertical(true)
+            .color($r('app.color.dfdfdf'))
+            .strokeWidth(1)
+            .height(12)
+
+          Swiper() {
+            Text('跑马灯效果')
+              .fontSize(13)
+              .fontColor($r('app.color.343434'))
+              .margin({ right: 10 })
+              .layoutWeight(1)
+            Text('跑马灯效果2')
+              .fontSize(13)
+              .fontColor($r('app.color.343434'))
+              .margin({ right: 10 })
+              .layoutWeight(1)
+          }
+          .autoPlay(true)
+          .layoutWeight(1)
+          .vertical(true)
+          .interval(4000)
+          .height(25)
+        }
+        .margin({ top: 8, left: 13, right: 13 })
+        .height(43)
+        .borderRadius(8)
+        .backgroundColor(Color.White)
+
+        Row() {
+          Image('https://image.59cdn.com/app/release/index/HotNewProduct/TopSellerList.png')
+            .layoutWeight(1)
+          Column() {
+            Image('https://image.59cdn.com/static/upload/image/app/20230313/o_1678679039491.png')
+              .objectFit(ImageFit.Auto)
+            Image('https://image.59cdn.com/app/release/index/HotNewProduct/HotNewProduct.png')
+              .margin({ top: 8 })
+              .objectFit(ImageFit.Fill)
+          }
+          .justifyContent(FlexAlign.SpaceEvenly)
+          .margin({ left: 8 })
+          .layoutWeight(1)
+        }
+        .margin({ left: 13, right: 13, top: 8 })
+
+
+        Column() {
+          Stack() {
+            Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
+            Text('- 国家馆 -')
+              .fontColor('#ffffff')
+              .fontWeight('bold')
+          }
+          .width('100%')
+          //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
+          .borderRadius({topLeft:8,topRight:8})
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+
+          List({space:15}){//设置List的item之间的间隔
+            ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
+              ListItem(){
+                Image('https://image.59cdn.com/static/upload/image/app/20230112/o_1673514078492.png')
+                  .height(60)
+                  .backgroundColor(Color.Blue)
+                  .objectFit(ImageFit.Fill)
+                  .clip(new Circle({ width: 60, height: 60 }))//设置图片为圆角
+              }
+            })
+          }
+          .padding({top:15,left:13,right:13,bottom:15})
+          .width('100%')
+          .backgroundColor(Color.White)
+          .borderRadius({bottomLeft:8,bottomRight:8})
+          .listDirection(Axis.Horizontal)
+        }
+        .margin({top:8})
+        .width('100%')
+        .padding({left:13,right:13})//设置外层的宽度为屏幕的宽度
+        // 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+
+        Column() {
+          Stack() {
+            Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
+            Text('- 品牌馆 -')
+              .fontColor('#ffffff')
+              .fontWeight('bold')
+          }
+          .width('100%')
+          //不要在外层设置borderRadius，因为外层的宽度是100%，没有背景色，是看不出来的
+          .borderRadius({topLeft:8,topRight:8})
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+
+          List({space:15}){//设置List的item之间的间隔
+            ForEach([1,2,3,4,5,6,7,8,9,10],(item:number)=>{
+              ListItem(){
+                Image('http://image.59cdn.com/static/upload/image/claim/20181214/o_1544752276246.jpg')
+                  .height(60)
+                  .border({color:'#eeeeee',width:1}).borderRadius(1000)
+                  .clip(new Circle({ width: 60, height: 60 }))//设置图片为圆角
+              }
+            })
+          }
+          .padding({top:15,left:13,right:13,bottom:15})
+          .width('100%')
+          .backgroundColor(Color.White)
+          .borderRadius({bottomLeft:8,bottomRight:8})
+          .listDirection(Axis.Horizontal)
+        }
+        .margin({top:8})
+        .width('100%')
+        .padding({left:13,right:13})
+
+        Column() {
+          Row({space:10}){
+            Image($r('app.media.app_home_guojiaguan_title_background')).width(90).height(90)
+            Column(){
+              Text('dsfd').fontSize('14').width('100%')
+              Blank()
+              Row(){
+                Text('我是按钮前文')
+                Blank()
+                Button('立即查看',{type:ButtonType.Capsule}).width(80).height(35).onClick(()=>{
+                  // Logger.debug('当前索引值：'+ index.toString() + '，当前item：' + title)
+                })
+              }
+              .width('100%')
+              .backgroundColor(Color.Orange)
+            }
+            .layoutWeight(1) // 占满主轴方向剩余空间
+            .height(80)
+            .justifyContent(FlexAlign.SpaceBetween)
+            .backgroundColor(Color.Pink)
+          }
+          .width('100%')
+          .padding(10)
+          Divider().color('#F2F2F2').strokeWidth(1).margin({left:10,right:10})
+        }.width('100%')
+
+        Column(){
+          Row(){
+            Text('名庄优品')
+              .layoutWeight(1)
+            .fontColor('#e8eb1100')
+            .fontWeight(FontWeight.Bold)//设置字体为粗体
+            .fontStyle(FontStyle.Italic)//设置字体为斜体
+            .fontSize(17)
+            .margin({left:17})
+            Row(){
+              Text('更多')
+                .fontColor('#7b7b7b')
+                .fontSize(14)
+             Image($r('app.media.home_main_right_arrow'))
+               .height(12)
+               .margin({left:7})
+            }
+            .margin({right:17})
+          }
+          .linearGradient({
+            repeating: true,
+            direction: GradientDirection.Bottom,
+            colors: [[0xffe4d2, 0], [0xffffff, 1]]
+          })
+          .borderRadius({
+            topLeft:8,
+            topRight:8
+          })
+          .padding({top:20})
+
+          //Grid
+          Grid(){
+            ForEach([1,2,3,4],(item:number)=>{
+             GridItem(){
+               Column(){
+                 Text('dsfd')
+               }.backgroundColor(Color.White)
+             }
+            })
+          }
+          .height(300)
+          .backgroundColor(Color.Gray)
+          .rowsTemplate('1fr 1fr')
+          .columnsTemplate('1fr 1fr')
+        }
+        .margin({left:13,right:13})
 
         Tabs(){
           TabContent(){
@@ -401,13 +401,7 @@ export struct HomePage {
           List({scroller:this.listController}){
             ForEach(['起泡甜白','流行通货','缤纷起泡','新颖小瓶','精装佳酿'],(item:string,index:number)=>{
               ListItem(){
-                Text(item)
-                  .fontColor((this.selectedTabIndex = index)?'#e8eb1100':'#333333')//未选中是474747这个颜色
-                  .margin({right:13})
-                  .onClick(()=>{
-                    this.selectedTabIndex = index;
-                    // this.swiperController.
-                  })
+                this.tabItem(item,index)
               }
             })
           }
@@ -432,8 +426,8 @@ export struct HomePage {
             Text('流行通货')
           }
           .onChange( (index: number) => {
-            // this.selectedTabIndex = index;
-            // this.listController.scrollToIndex(index)
+            this.selectedTabIndex = index;
+            this.listController.scrollToIndex(index)
             console.log(`onChange ${index}`)
           })
           .index(this.selectedTabIndex)
@@ -460,22 +454,49 @@ export struct HomePage {
           })
         }
         .width('100%')
+        .margin({top:8})
         .padding({left:13,right:13})
 
-        List(){
-          ForEach([1,2,3,4],(item:number)=>{
-            ListItem(){
-              Text('aaa')
-            }
-          })
-        }
-        .lanes(2)
+        //瀑布流
+        //瀑布流可以使用WaterFlow
+        // WaterFlow({ scroller: this.scroller }) {
+        //   LazyForEach(dataSource, item => {
+        //     FlowItem() {
+        //       Column({ space: 10 }) {
+        //         Image(item.coverUrl).objectFit(ImageFit.Cover)
+        //           .width('100%')
+        //           .height(this.imageHeight)
+        //         Text(item.title)
+        //           .fontSize(px2fp(50))
+        //           .fontColor(Color.Black)
+        //           .width('100%')
+        //       }.onClick(() => {
+        //         router.pushUrl({ url: 'custompages/waterflow/Detail', params: item })
+        //       })
+        //     }
+        //   }, item => item)
+        // }
+        // .columnsTemplate(this.columnsTemplate)
+        // .columnsGap(5)
+        // .rowsGap(5)
       }
       .backgroundColor($r('app.color.eeeeee'))
     }
     .scrollBar(BarState.Off) //隐藏滚动条
     .edgeEffect(EdgeEffect.Spring) //滚动到边缘回弹
     .height('100%')
+  }
+
+  @Builder tabItem(item:string,index:number){
+    Text(item)
+      .fontSize(this.selectedTabIndex == index?20:12)
+      .fontColor(this.selectedTabIndex == index? $r('app.color.f56e1d') : $r('app.color.999999'))//未选中是474747这个颜色
+      .margin({right:13})
+      .onClick(()=>{
+        this.selectedTabIndex = index;
+        console.log(`selectedTabIndex ${index}`)
+        // this.swiperController.
+      })
   }
 
   //5个tab的页面item
