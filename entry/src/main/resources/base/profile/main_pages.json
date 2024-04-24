@@ -11,6 +11,7 @@
     "pages/swiper_demo_page",
     "pages/widget_page",
     "pages/wajiu/page/wajiu_main_page",
-    "pages/swiper_demo_page"
+    "pages/swiper_demo_page",
+    "pages/wajiu/waterfall_flow_page"
   ]
 }

@@ -1,6 +1,7 @@
 import axios from '@ohos/axios'
 import { MatchPattern } from '@ohos.UiTest';
 import ShopInfo from '../../../common/TaskEntity';
+import { WaterfallFlowPage } from '../waterfall_flow_page';
 
 /**
  * 挖酒首页
@@ -25,7 +26,7 @@ import ShopInfo from '../../../common/TaskEntity';
 // 确保你正在使用的鸿蒙系统版本和开发工具是最新的。有时，这类问题可能是由系统或工具的bug引起的，而这些bug可能在新版本中已经得到修复。
 
 @Component
-// @Entry
+@Entry
 export struct HomePage {
   private bannerList = [
     'https://image.59cdn.com/static/upload/image/app/20240401/o_1711938042571.jpg',
@@ -276,8 +277,8 @@ export struct HomePage {
         .margin({top:8})
         .width('100%')
         .padding({left:13,right:13})//设置外层的宽度为屏幕的宽度
-        // 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
-
+      //   // 设置组件自身的宽度，缺省时使用元素自身内容需要的宽度。若子组件的宽大于父组件的宽，则会画出父组件的范围。
+      //
         Column() {
           Stack() {
             Image($r('app.media.app_home_guojiaguan_title_background')).height(30)
@@ -458,27 +459,9 @@ export struct HomePage {
         .padding({left:13,right:13})
 
         //瀑布流
-        //瀑布流可以使用WaterFlow
-        // WaterFlow({ scroller: this.scroller }) {
-        //   LazyForEach(dataSource, item => {
-        //     FlowItem() {
-        //       Column({ space: 10 }) {
-        //         Image(item.coverUrl).objectFit(ImageFit.Cover)
-        //           .width('100%')
-        //           .height(this.imageHeight)
-        //         Text(item.title)
-        //           .fontSize(px2fp(50))
-        //           .fontColor(Color.Black)
-        //           .width('100%')
-        //       }.onClick(() => {
-        //         router.pushUrl({ url: 'custompages/waterflow/Detail', params: item })
-        //       })
-        //     }
-        //   }, item => item)
-        // }
-        // .columnsTemplate(this.columnsTemplate)
-        // .columnsGap(5)
-        // .rowsGap(5)
+        //注意：Scroll嵌套WaterFlow滚动时无法联动，api10已经解决
+        //参考链接：https://developer.huawei.com/consumer/cn/forum/topic/0204137264128132694
+        WaterfallFlowPage()
       }
       .backgroundColor($r('app.color.eeeeee'))
     }
