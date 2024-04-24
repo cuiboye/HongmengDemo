@@ -1,24 +1,57 @@
 export default class ShopInfo {
-  // id: number
-  // name: string
-  // images: string[]
-  // area: string
-  // address: string
-  // avgPrice: number
-  // comments: number
-  // score: number
-  // openHours: string
-
-  code:number
+  states:number
   msg:string
-  data:Data
+  result:Data
 }
 
-class Data{
-  dataBoardTabs:DataBoardTabs[]
+export class Data{
+  indexList:IndexListEntity
+  banner_international:BannerInternationalEntity[]
+  brandHall:BrandHallEntity[]
+  famousProducts:FamousProductsEntity
 }
 
-class DataBoardTabs{
+export class DataBoardTabs{
   "code": string
   "name": string
+}
+
+export class IndexListEntity{
+  focus_picture:FocusPictureEntity
+  home_button:HomeButtonEntity
+}
+
+export class FocusPictureEntity{
+  appNewIndexCategories:AppNewIndexCategoriesEntity[]
+}
+
+export class AppNewIndexCategoriesEntity{
+  picture:string
+}
+
+
+export class HomeButtonEntity{
+  appNewIndexCategories:HomeButtonAppNewIndexCategoriesEntity[]
+}
+
+export class HomeButtonAppNewIndexCategoriesEntity{
+  indexName:string
+  picture:string
+}
+
+export class BannerInternationalEntity{
+  picture:string
+}
+
+export class BrandHallEntity{
+  appPictrueAddress:string
+}
+
+export class FamousProductsEntity{
+  famousProductList:FamousProductListEntity[]
+}
+
+export class FamousProductListEntity{
+  cname:string
+  picture:string
 }
