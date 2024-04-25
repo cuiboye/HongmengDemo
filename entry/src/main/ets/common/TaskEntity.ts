@@ -9,6 +9,7 @@ export class Data{
   banner_international:BannerInternationalEntity[]
   brandHall:BrandHallEntity[]
   famousProducts:FamousProductsEntity
+  kindSet:KindSetEntity[]
 }
 
 export class DataBoardTabs{
@@ -19,6 +20,7 @@ export class DataBoardTabs{
 export class IndexListEntity{
   focus_picture:FocusPictureEntity
   home_button:HomeButtonEntity
+  announcement:AnnouncementEntity
 }
 
 export class FocusPictureEntity{
@@ -55,3 +57,25 @@ export class FamousProductListEntity{
   cname:string
   picture:string
 }
+
+export class AnnouncementEntity{
+  appNewIndexCategories:AnnouncementAppNewIndexCategoriesEntity[]
+}
+
+export class AnnouncementAppNewIndexCategoriesEntity{
+  indexName:string
+}
+
+export class KindSetEntity{
+  kindName:string
+  productInfoList:ProductInfoListEntity[]
+}
+
+export class ProductInfoListEntity{
+  cname:string
+  picture:string
+}
+
+
+
+
