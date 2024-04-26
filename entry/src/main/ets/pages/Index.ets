@@ -1,12 +1,13 @@
 import router from '@ohos.router';
 import { CommonHeader } from '../common/common_header';
+import { APP_EXIT_INTERVAL, TIME } from '../common/constants/Constants';
 import { StatusBarManager } from '../common/StatusBarManager';
 import { ComponentWidget } from '../widget/component_widget';
 import { ProgressTask } from './prop_link_demo';
 import { PropPage } from './prop_page';
 import { FirstWidget } from './provider_page';
 import { StatePage } from './state_page';
-
+import prompt from '@ohos.promptAction';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -51,6 +52,10 @@ struct Index {
   @Provide('providerTotalNumber') aaa: number = 0;
   @Provide('providerTotalNumber2') aaa2: number = 0;
 
+  private clickBackTimeRecord: number = 0;
+
+  searchArr:Array<String> = ['dskf','1dskf','2dskf','3dskf','4dskf','5dskf','6dskf','7dskf']
+
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
@@ -73,6 +78,25 @@ struct Index {
     .width(100)
   }
 
+  /**
+   * onBackPress:物理返回键监听
+   */
+  onBackPress(){
+    if (this.isShowToast()) {
+      prompt.showToast({
+        message: '再按一次退出程序',
+        duration: TIME
+      });
+      this.clickBackTimeRecord = new Date().getTime();
+      return true;
+    }
+    return false;
+  }
+
+  isShowToast(): boolean {
+    return new Date().getTime() - this.clickBackTimeRecord > APP_EXIT_INTERVAL;
+  }
+
   //在TypeScript中，空字符串，0，nul,undefined
   build() {
     Column() {
@@ -81,6 +105,38 @@ struct Index {
 
       //@State的操作
       StatePage()
+
+      //Flex 流式布局
+      Flex({ justifyContent: FlexAlign.Start, wrap: FlexWrap.Wrap }) {
+        if (this.searchArr.length > 0) {
+          ForEach(this.searchArr, (item: string) => {
+            Text(`${item}`)
+              .fontSize($r("app.float.flex_font_size"))
+              .borderStyle(BorderStyle.Solid)
+              .borderWidth($r('app.float.border_width'))
+              .borderColor('#00a0e9')
+              .borderRadius($r('app.float.border_radius'))
+              .backgroundColor(Color.Red)
+              .padding({
+                top: 3,
+                bottom: 3,
+                left: 5,
+                right: 5
+              })
+              .margin({
+                top: $r("app.float.flex_layout_margin"),
+                right: $r("app.float.flex_layout_margin")
+              })
+              .textOverflow({ overflow: TextOverflow.Ellipsis })
+              .maxLines(5)
+          }, (item: string) => JSON.stringify(item))
+        }
+      }
+      .margin({
+        left: $r('app.float.margin_left'),
+        right: $r('app.float.margin_left')
+      })
+      .padding({ bottom: $r('app.float.margin_left') })
 
       //@Link 传递的变量的引用必须使用 $
       PropPage({ totalNumber: $totalNumber })
@@ -156,6 +212,15 @@ struct Index {
         )
       })
 
+      //Grid
+      Button('Grid列表').onClick(() => {
+        router.pushUrl(
+          {
+            url:'pages/grid_demo'
+          },
+        )
+      })
+
       //List的分组列表
       Button('List的分组列表').onClick(() => {
         router.pushUrl(
@@ -196,20 +261,28 @@ struct Index {
         )
       })
 
-      //各种组件
+      //路由操作
+      Button('路由操作').onClick(() => {
+        router.pushUrl(
+          {
+            url: 'pages/routerdemo/first_router',
+          },
+        )
+      })
+
+      //持久化数据
+      Button('持久化数据').onClick(() => {
+        router.pushUrl(
+          {
+            url: 'pages/savedata/save_data_demo',
+          },
+        )
+      })
+
       Button('挖酒项目').onClick(() => {
         router.pushUrl(
           {
             url: 'pages/wajiu/page/wajiu_main_page',
-          },
-          router.RouterMode.Standard,
-          err => {
-            if (err) {
-              console.log('路由失败')
-              console.log(err.code + '')
-              console.log(err.message)
-              console.log(err.name)
-            }
           },
         )
       })
@@ -246,6 +319,7 @@ struct Index {
     console.log('onPageShow')
   }
 
+  //sdk10的时候就不用这种沉浸式屏幕设置了，可以使用Widget的expandSafeArea属性
   private open() {
     let windowStage = StatusBarManager.get().getWindowStage();
     if (windowStage) {

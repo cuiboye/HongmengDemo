@@ -6,9 +6,9 @@
         "type": "HarmonyOS",
         "material": {
           "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001B19FB484596CDEE197738BB88590C145E760079279B35EBCD7344E1CB7B066347A8D953162E9295",
+          "storePassword": "0000001B199E5311EF40B52535AA22F06CFE91B1FE5DA29CA4AC9191619718F44B3498CD9C1418BF01AB6E",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001B6B8AB804B6981033B2727230B4B7732F4B7E3CFC7BF811EC572781CDD2A36570855B68F03AC734",
+          "keyPassword": "0000001BC5CA040A0216349EF7C595D181029502D25285940096DAC8032041E4A8625CB27A6DB31610C6E6",
           "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"

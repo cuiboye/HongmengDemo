@@ -12,6 +12,10 @@
     "pages/widget_page",
     "pages/wajiu/page/wajiu_main_page",
     "pages/swiper_demo_page",
-    "pages/wajiu/page/home_page"
+    "pages/wajiu/page/home_page",
+    "pages/routerdemo/first_router",
+    "pages/routerdemo/second_router",
+    "pages/savedata/save_data_demo",
+    "pages/grid_demo"
   ]
 }
