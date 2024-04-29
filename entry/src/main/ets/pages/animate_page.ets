@@ -77,23 +77,6 @@ struct ShapePage {
             })
         }
 
-        //2）属性动画
-
-
-        //共享元素转场动画，分为两种：
-        //1）Exchange类型的共享元素转场
-        //2）Static类型的共享元素转场
-        Column(){
-          Image($r('app.media.app_icon'))
-            .width(50)
-            .height(50)
-            .sharedTransition('sharedImage1',{duration:2000,curve:Curve.Linear})
-            .onClick(()=>{
-              router.pushUrl({
-                url:'pages/shared_page'
-              })
-            })
-        }
       }
     }
     .height('100%')

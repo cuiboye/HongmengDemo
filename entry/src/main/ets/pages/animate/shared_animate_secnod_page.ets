@@ -1,7 +1,7 @@
 import router from '@ohos.router'
 @Entry
 @Component
-struct SharedPage {
+struct SharedAnimateSecondPage {
   @State message: string = 'Hello World'
 
   build() {

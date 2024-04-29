@@ -283,7 +283,7 @@ struct Index {
         Button('动画').onClick(() => {
           router.pushUrl(
             {
-              url: 'pages/animate_page',
+              url: 'pages/animate/animate_main_page',
             },
           )
         })
