@@ -5,23 +5,29 @@ import { StatusBarManager } from './StatusBarManager';
  */
 @Component
 export struct CommonHeader{
-  @State showImmersiveStatusBar: boolean = false;
-  @Prop titleBarPadding: number;//注意:prop修饰
+  @StorageProp('topStatusHeight') topStatusHeight: number = 0
+  showTitleBar:boolean = true;
+
   build() {
     Column() {
-      Column() {
+      //状态栏
+      Row()
+        .width('100%')
+        .height(px2vp(this.topStatusHeight))
+        .backgroundColor($r('app.color.f56e1d'))
+      if(this.showTitleBar){
         Column() {
-          Text('这是标题')
-            .fontSize(20)
-            .fontColor(Color.White)
+          Column() {
+            Text('这是标题')
+              .fontSize(20)
+              .fontColor(Color.White)
+          }
+          .height(50)
+          .justifyContent(FlexAlign.Center)
         }
-        .height(50)
-        .justifyContent(FlexAlign.Center)
+        .width('100%')
+        .backgroundColor($r('app.color.f56e1d'))
       }
-      .padding({ top: `${this.titleBarPadding}px` })
-      .width('100%')
-      // .backgroundColor('#ff007dfe')
-      .backgroundColor(Color.Red)
     }
     // .height('100%')
   }

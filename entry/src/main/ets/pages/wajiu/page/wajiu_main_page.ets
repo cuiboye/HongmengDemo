@@ -1,6 +1,7 @@
 import { CommonHeader } from '../../../common/common_header'
 import { StatusBarManager } from '../../../common/StatusBarManager';
-import { HomePage } from './home_page';
+import { HomePage } from './home/home_page';
+import HomeSearch from './home/home_search';
 
 /**
  * 挖酒主页
@@ -13,32 +14,34 @@ struct WajiuMainPage {
   private tabsController:TabsController = new TabsController()
   @State currentIndex:number = 0
 
+  @StorageProp('navigationHeight') navigationHeight: number = 0
+
   build() {
     Column() {
-      Row(){
-        Tabs({barPosition:BarPosition.End,controller:this.tabsController}){
-          TabContent(){
-            HomePage()
-          }.tabBar(this.TabBuilder('首页',0,$r('app.media.tabbar_home'),$r('app.media.tabbar_home_red')))
+      Tabs({barPosition:BarPosition.End,controller:this.tabsController}){
+        TabContent(){
+          HomePage()
+        }.tabBar(this.TabBuilder('首页',0,$r('app.media.tabbar_home'),$r('app.media.tabbar_home_red')))
 
-          TabContent(){
-            HomePage()
-          }.tabBar(this.TabBuilder('分类',1,$r('app.media.tabbar_category'),$r('app.media.tabbar_category_red')))
+        TabContent(){
+          Text('分类')
+        }.tabBar(this.TabBuilder('分类',1,$r('app.media.tabbar_category'),$r('app.media.tabbar_category_red')))
 
-          TabContent(){
-            HomePage()
-          }.tabBar(this.TabBuilder('信息台',2,$r('app.media.tabbar_information_desk'),$r('app.media.tabbar_information_desk_red')))
-          TabContent(){
-            HomePage()
-          }.tabBar(this.TabBuilder('采购车',3,$r('app.media.tabbar_shopping_car'),$r('app.media.tabbar_shopping_car_red')))
+        TabContent(){
+          Text('信息台')
+        }.tabBar(this.TabBuilder('信息台',2,$r('app.media.tabbar_information_desk'),$r('app.media.tabbar_information_desk_red')))
+        TabContent(){
+          Text('采购车')
+        }.tabBar(this.TabBuilder('采购车',3,$r('app.media.tabbar_shopping_car'),$r('app.media.tabbar_shopping_car_red')))
 
-          TabContent(){
-            HomePage()
-          }.tabBar(this.TabBuilder('我的',4,$r('app.media.tabbar_mine'),$r('app.media.tabbar_mine_red')))
-        }.layoutWeight(1)
-      }
-    }.height('100%').width('100%')
-    // .backgroundColor(Color.Red)
+        TabContent(){
+          Text('我的')
+        }.tabBar(this.TabBuilder('我的',4,$r('app.media.tabbar_mine'),$r('app.media.tabbar_mine_red')))
+      }.layoutWeight(1)
+    }
+    .height('100%')
+    .width('100%')
+    .padding({bottom:px2vp(this.navigationHeight)})//导航栏的高度为px，需要转为vp
   }
 
   //自定义导航栏
@@ -56,34 +59,5 @@ struct WajiuMainPage {
     .backgroundColor($r('app.color.f8f7f7'))
     .width('100%')
     .padding({top:5,bottom:5})
-  }
-
-  onPageShow(){
-    this.showStatusBar();
-  }
-
-  /**
-   * 显示系统栏，改变颜色
-   */
-  //修饰符默认是public
-  showStatusBar() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-      StatusBarManager.get().setImmersiveStatusBar(windowStage)
-        .then(() => {
-          this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
-          console.log(`titleBarPadding ${this.titleBarPadding}`)
-        });
-    }
-  }
-
-  private close() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-
-      StatusBarManager.get().hideImmersiveStatusBar(windowStage).then(() => {
-        this.titleBarPadding = 0;
-      })
-    }
   }
 }

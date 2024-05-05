@@ -8,6 +8,8 @@ import { PropPage } from './prop_page';
 import { FirstWidget } from './provider_page';
 import { StatePage } from './state_page';
 import prompt from '@ohos.promptAction';
+import common from '@ohos.app.ability.common';
+import window from '@ohos.window';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -56,6 +58,27 @@ struct Index {
 
   searchArr:Array<String> = ['dskf','1dskf','2dskf','3dskf','4dskf','5dskf','6dskf','7dskf']
 
+  @StorageProp('navigationHeight') navigationHeight: number = 0
+
+  private context = getContext(this) as common.UIAbilityContext
+
+  onPageShow(){
+    //   //这是个全局设置，其他页面如果想显示状态栏，在显示其他页面的时候需要设置显示
+    window.getLastWindow(this.context).then((windowClass) => {
+      //
+      windowClass.setWindowSystemBarProperties({
+        statusBarColor: '#ff00a0e9',
+        navigationBarColor: '#ff00a0e9',
+        statusBarContentColor: '#ff00a0e9',
+        navigationBarContentColor: '#ff00a0e9'
+      })
+
+      windowClass.setWindowSystemBarEnable(['status','navigation'], (err) => {
+
+      });
+    })
+  }
+
   myClickHandler(): void {
     console.log('HarmonyOS Hello!')
   }
@@ -99,245 +122,297 @@ struct Index {
 
   //在TypeScript中，空字符串，0，nul,undefined
   build() {
-    Scroll(){
-      Column() {
-        CommonHeader({ titleBarPadding: this.titleBarPadding })
-        // PropPage({totalNumber:this.totalNumber})
-
-        //@State的操作
-        StatePage()
-
-        //Flex 流式布局
-        Flex({ justifyContent: FlexAlign.Start, wrap: FlexWrap.Wrap }) {
-          if (this.searchArr.length > 0) {
-            ForEach(this.searchArr, (item: string) => {
-              Text(`${item}`)
-                .fontSize($r("app.float.flex_font_size"))
-                .borderStyle(BorderStyle.Solid)
-                .borderWidth($r('app.float.border_width'))
-                .borderColor('#00a0e9')
-                .borderRadius($r('app.float.border_radius'))
-                .backgroundColor(Color.Red)
-                .padding({
-                  top: 3,
-                  bottom: 3,
-                  left: 5,
-                  right: 5
-                })
-                .margin({
-                  top: $r("app.float.flex_layout_margin"),
-                  right: $r("app.float.flex_layout_margin")
-                })
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-                .maxLines(5)
-            }, (item: string) => JSON.stringify(item))
-          }
-        }
-        .margin({
-          left: $r('app.float.margin_left'),
-          right: $r('app.float.margin_left')
-        })
-        .padding({ bottom: $r('app.float.margin_left') })
-
-        //@Link 传递的变量的引用必须使用 $
-        PropPage({ totalNumber: $totalNumber })
-        Row() {
-          Text(`${this.totalNumber}`)
-          Button('测试@Prop状态管理').onClick(() => {
-            this.totalNumber++
-          })
-        }
-
-        //Provider和Consume
+    Column(){
+      //状态栏以及标题栏
+      CommonHeader()
+      Scroll(){
         Column() {
+
+          // PropPage({totalNumber:this.totalNumber})
+
+          //@State的操作
+          StatePage()
+
+          //Flex 流式布局
+          Flex({ justifyContent: FlexAlign.Start, wrap: FlexWrap.Wrap }) {
+            if (this.searchArr.length > 0) {
+              ForEach(this.searchArr, (item: string) => {
+                Text(`${item}`)
+                  .fontSize($r("app.float.flex_font_size"))
+                  .borderStyle(BorderStyle.Solid)
+                  .borderWidth($r('app.float.border_width'))
+                  .borderColor('#00a0e9')
+                  .borderRadius($r('app.float.border_radius'))
+                  .backgroundColor(Color.Red)
+                  .padding({
+                    top: 3,
+                    bottom: 3,
+                    left: 5,
+                    right: 5
+                  })
+                  .margin({
+                    top: $r("app.float.flex_layout_margin"),
+                    right: $r("app.float.flex_layout_margin")
+                  })
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                  .maxLines(5)
+              }, (item: string) => JSON.stringify(item))
+            }
+          }
+          .margin({
+            left: $r('app.float.margin_left'),
+            right: $r('app.float.margin_left')
+          })
+          .padding({ bottom: $r('app.float.margin_left') })
+
+          //@Link 传递的变量的引用必须使用 $
+          PropPage({ totalNumber: $totalNumber })
           Row() {
-            Text(`${this.aaa}`)
-            Button('测试Provider和Consume').onClick(() => {
-              this.aaa++
+            Text(`${this.totalNumber}`)
+            Button('测试@Prop状态管理').onClick(() => {
+              this.totalNumber++
             })
           }
 
-          FirstWidget()
+          //Provider和Consume
+          Column() {
+            Row() {
+              Text(`${this.aaa}`)
+              Button('测试Provider和Consume').onClick(() => {
+                this.aaa++
+              })
+            }
+
+            FirstWidget()
+          }
+          Button('媒体查询-多屏幕适配').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/media_page',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+          Button('@State @Prop @Link的Demo').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/prop_link_demo',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+            )
+          })
+
+          Button('@Observed和@ObjectLink的Demo').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/boseved_page',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+              err => {
+                if (err) {
+                  console.log('路由失败')
+                  console.log(err.code + '')
+                  console.log(err.message)
+                  console.log(err.name)
+                }
+              },
+            )
+          })
+
+          Button('布局学习').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/layout_demo',
+              },
+              router.RouterMode.Standard, //跳转模式 Single/Stantard
+              err => {
+                if (err) {
+                  console.log('路由失败')
+                  console.log(err.code + '')
+                  console.log(err.message)
+                  console.log(err.name)
+                }
+              },
+            )
+          })
+
+          //List
+          Button('List列表').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/list_page',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
+          //Grid
+          Button('Grid列表').onClick(() => {
+            router.pushUrl(
+              {
+                url:'pages/grid_demo'
+              },
+            )
+          })
+
+          //List的分组列表
+          Button('List的分组列表').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/list_page2',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
+          //滚动列表
+          Button('滚动列表').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/scroll_page',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
+          //Swiper轮播图
+          Button('Swiper轮播图').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/swiper_demo_page',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
+          //各种组件
+          Button('各种组件').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/widget_page',
+              },
+              router.RouterMode.Standard,
+            )
+          })
+
+          //路由操作
+          Button('路由操作').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/routerdemo/first_router',
+              },
+            )
+          })
+
+          //持久化数据
+          Button('持久化数据').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/savedata/save_data_demo',
+              },
+            )
+          })
+
+          Button('动画').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/animate/animate_main_page',
+              },
+            )
+          })
+
+          Button('挖酒项目').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/wajiu/page/wajiu_main_page',
+              },
+            )
+          })
+          Button('二级联动+MVVM模式').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/SecondLevelLinkagePage',
+              },
+            )
+          })
+          Button('Webview Demo').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/WebviewPage',
+              },
+            )
+          })
+          //组件吸顶效果，可以使用Tabs的属性来实现，需要api10+
+          //   Scroll() {
+          //    Column() {
+          //       Text("头部滚动区域")
+          //          .width("100%")
+          //          .height("30%")
+          //          .fontSize(20)
+          //          .fontColor(Color.White)
+          //          .backgroundColor('#0080DC')
+          //          .textAlign(TextAlign.Center)
+          //
+          //       Tabs() {
+          //          TabContent() {
+          //             List({ space: 10 }) {
+          //                ForEach(this.list, (item: number) => {
+          //                   ListItem() {
+          //                      Text("item" + item).fontSize(16)
+          //                   }.listStyle()
+          //                }, (item: string) => item)
+          //             }.width("100%")
+          //             .height('100%')
+          //             .edgeEffect(EdgeEffect.None)
+          //             .nestedScroll({
+          //                scrollForward: NestedScrollMode.PARENT_FIRST,
+          //                scrollBackward: NestedScrollMode.SELF_FIRST
+          //             })
+          //          }.tabBar(this.TabBuilder("我是吸顶布局"))
+          //       }
+          //       .vertical(false)
+          //       .height("100%")
+          //    }.width("100%")
+          // }
+          // .edgeEffect(EdgeEffect.None)
+          // .backgroundColor('#DCDCDC')
+          // .scrollBar(BarState.Off)
+          // .width('100%')
+          // .height('100%')
+          // .backgroundColor('#F08080')
+          // Tabs({barPosition:BarPosition.End}) {
+          //   TabContent() {
+          //     Column() {
+          //       //自定义组件
+          //       ComponentWidget({title:'自定义组件'})
+          //       Text('Top Row').fontSize(40).textAlign(TextAlign.Center).width('100%')
+          //     }
+          //   }
+          //   .tabBar('首页')
+          //   TabContent() {
+          //     Text('推荐的内容').fontSize(30)
+          //   }
+          //   .tabBar('推荐')
+          //
+          //   TabContent() {
+          //     Text('发现的内容').fontSize(30)
+          //   }
+          //   .tabBar('发现')
+          //   TabContent() {
+          //     Text('我的内容').fontSize(30)
+          //   }
+          //   .tabBar("我的")
+          // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
         }
-
-        Button('@State @Prop @Link的Demo').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/prop_link_demo',
-            },
-            router.RouterMode.Standard, //跳转模式 Single/Stantard
-          )
-        })
-
-        Button('@Observed和@ObjectLink的Demo').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/boseved_page',
-            },
-            router.RouterMode.Standard, //跳转模式 Single/Stantard
-            err => {
-              if (err) {
-                console.log('路由失败')
-                console.log(err.code + '')
-                console.log(err.message)
-                console.log(err.name)
-              }
-            },
-          )
-        })
-
-        Button('布局学习').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/layout_demo',
-            },
-            router.RouterMode.Standard, //跳转模式 Single/Stantard
-            err => {
-              if (err) {
-                console.log('路由失败')
-                console.log(err.code + '')
-                console.log(err.message)
-                console.log(err.name)
-              }
-            },
-          )
-        })
-
-        //List
-        Button('List列表').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/list_page',
-            },
-            router.RouterMode.Standard,
-          )
-        })
-
-        //Grid
-        Button('Grid列表').onClick(() => {
-          router.pushUrl(
-            {
-              url:'pages/grid_demo'
-            },
-          )
-        })
-
-        //List的分组列表
-        Button('List的分组列表').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/list_page2',
-            },
-            router.RouterMode.Standard,
-          )
-        })
-
-        //滚动列表
-        Button('滚动列表').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/scroll_page',
-            },
-            router.RouterMode.Standard,
-          )
-        })
-
-        //Swiper轮播图
-        Button('Swiper轮播图').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/swiper_demo_page',
-            },
-            router.RouterMode.Standard,
-          )
-        })
-
-        //各种组件
-        Button('各种组件').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/widget_page',
-            },
-            router.RouterMode.Standard,
-          )
-        })
-
-        //路由操作
-        Button('路由操作').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/routerdemo/first_router',
-            },
-          )
-        })
-
-        //持久化数据
-        Button('持久化数据').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/savedata/save_data_demo',
-            },
-          )
-        })
-
-        Button('动画').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/animate/animate_main_page',
-            },
-          )
-        })
-
-        Button('挖酒项目').onClick(() => {
-          router.pushUrl(
-            {
-              url: 'pages/wajiu/page/wajiu_main_page',
-            },
-          )
-        })
-
-        // .backgroundColor('#F08080')
-        // Tabs({barPosition:BarPosition.End}) {
-        //   TabContent() {
-        //     Column() {
-        //       //自定义组件
-        //       ComponentWidget({title:'自定义组件'})
-        //       Text('Top Row').fontSize(40).textAlign(TextAlign.Center).width('100%')
-        //     }
-        //   }
-        //   .tabBar('首页')
-        //   TabContent() {
-        //     Text('推荐的内容').fontSize(30)
-        //   }
-        //   .tabBar('推荐')
-        //
-        //   TabContent() {
-        //     Text('发现的内容').fontSize(30)
-        //   }
-        //   .tabBar('发现')
-        //   TabContent() {
-        //     Text('我的内容').fontSize(30)
-        //   }
-        //   .tabBar("我的")
-        // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
-      }
+      }.layoutWeight(1)
+      //底部安全区域的高度
+      Row()
+        .height(px2vp(this.navigationHeight))
+        .width('100%')
+        .backgroundColor(Color.White)
     }
   }
 
-  onPageShow() {
-    this.open()
-    console.log('onPageShow')
-  }
-
-  //sdk10的时候就不用这种沉浸式屏幕设置了，可以使用Widget的expandSafeArea属性
-  private open() {
-    let windowStage = StatusBarManager.get().getWindowStage();
-    if (windowStage) {
-      StatusBarManager.get().setImmersiveStatusBar(windowStage)
-        .then(() => {
-          this.titleBarPadding = StatusBarManager.get().getSystemBarOffset();
-          console.log(`titleBarPadding ${this.titleBarPadding}`)
-        });
-    }
-  }
+  //如果预览模式中没有“tablet”平板的样式，可以在module.json5的deviceTypes字段下
+  //添加"tablet"的属性，然后关闭Multi-profile preview再打开就可以了
 }
