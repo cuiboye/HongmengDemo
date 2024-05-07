@@ -32,24 +32,6 @@ import HomeSearch from './home_search';
 /**
  * 挖酒首页
  */
-// 在鸿蒙的Row布局中，如果你设置了子控件的宽度为100%，它确实会尝试占据其父容器的全部宽度。当存在多层嵌套的布局时，这个问题可能会变得更加复杂，因为每个父容器都可能尝试将其子控件扩展到其最大可用空间。
-//
-// 要解决这个问题，你可以尝试以下几种方法：
-//
-// 使用match_parent代替100%：
-// 在某些情况下，使用match_parent而不是100%可能会有所不同。match_parent会使子控件的宽度与其父控件的宽度相匹配，而不是直接设置为100%的屏幕尺寸。
-// 设置layout_weight：
-// 如果你想要子控件在Row布局中平均分配空间，你可以使用layout_weight属性。例如，给所有子控件设置相同的layout_weight值可以使它们平均分配空间。
-// 使用ConstraintLayout：
-// 如果你的布局比较复杂，可能需要更复杂的布局逻辑，那么可以考虑使用ConstraintLayout。ConstraintLayout提供了更多的布局选项和约束，可以更好地控制子控件的位置和大小。
-// 限制子控件的最大宽度：
-// 你可以尝试给子控件设置一个max_width属性，以限制其最大宽度。这样，即使子控件被设置为100%，它的宽度也不会超过这个最大值。
-// 检查嵌套层级：
-// 如果问题是由嵌套层级过多引起的，那么尝试减少布局的嵌套层级。每个额外的嵌套层级都可能引入额外的布局问题。
-// 查看父控件的大小：
-// 确保父控件的大小是正确设置的。如果父控件的大小没有被正确约束，那么子控件可能会尝试填满整个屏幕。
-// 更新鸿蒙系统版本和工具：
-// 确保你正在使用的鸿蒙系统版本和开发工具是最新的。有时，这类问题可能是由系统或工具的bug引起的，而这些bug可能在新版本中已经得到修复。
 
 @Component
 @Entry
@@ -110,7 +92,7 @@ export struct HomePage {
     //    //打印日志使用hilog，使用console日志有的打印不出来
     //
     //    //JSON.stringify：将字符串转为json
-    //    // JSON.parse 将json转为对象
+    //    //JSON.parse 将json转为对象
     //   hilog.info(100,'host_config打印1: ' , JSON.stringify(retStr));
     //    let dataBean = JSON.parse(retStr) as ShopInfo
     //    hilog.info(100,'host_config打印3: ' , dataBean.states.toString());
@@ -164,8 +146,6 @@ export struct HomePage {
         //   // //参考链接：https://developer.huawei.com/consumer/cn/forum/topic/0204137264128132694
         //   // WaterfallFlowPage()
         // }
-        // .backgroundColor($r('app.color.eeeeee'))
-        // .justifyContent(FlexAlign.Start)
       }
       .scrollBar(BarState.Off) //隐藏滚动条
       .edgeEffect(EdgeEffect.Spring) //滚动到边缘回弹

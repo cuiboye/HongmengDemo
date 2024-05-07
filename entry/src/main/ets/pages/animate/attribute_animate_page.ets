@@ -21,7 +21,6 @@ struct AttributeAnimatePage {
         .animation({duration:2000,curve:Curve.Ease})
         // animation对下面的backgroundColor属性不生效
         // backgroundColor会直接跳变，不会产生动画
-
         .backgroundColor(this.mColor)
         .margin({top:50})
       Button('click me')

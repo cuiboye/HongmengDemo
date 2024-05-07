@@ -1,5 +1,4 @@
 import { CommonHeader } from '../../../common/common_header'
-import { StatusBarManager } from '../../../common/StatusBarManager';
 import { HomePage } from './home/home_page';
 import HomeSearch from './home/home_search';
 

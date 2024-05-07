@@ -1,7 +1,6 @@
 import router from '@ohos.router';
 import { CommonHeader } from '../common/common_header';
 import { APP_EXIT_INTERVAL, TIME } from '../common/constants/Constants';
-import { StatusBarManager } from '../common/StatusBarManager';
 import { ComponentWidget } from '../widget/component_widget';
 import { ProgressTask } from './prop_link_demo';
 import { PropPage } from './prop_page';
@@ -342,67 +341,6 @@ struct Index {
               },
             )
           })
-          //组件吸顶效果，可以使用Tabs的属性来实现，需要api10+
-          //   Scroll() {
-          //    Column() {
-          //       Text("头部滚动区域")
-          //          .width("100%")
-          //          .height("30%")
-          //          .fontSize(20)
-          //          .fontColor(Color.White)
-          //          .backgroundColor('#0080DC')
-          //          .textAlign(TextAlign.Center)
-          //
-          //       Tabs() {
-          //          TabContent() {
-          //             List({ space: 10 }) {
-          //                ForEach(this.list, (item: number) => {
-          //                   ListItem() {
-          //                      Text("item" + item).fontSize(16)
-          //                   }.listStyle()
-          //                }, (item: string) => item)
-          //             }.width("100%")
-          //             .height('100%')
-          //             .edgeEffect(EdgeEffect.None)
-          //             .nestedScroll({
-          //                scrollForward: NestedScrollMode.PARENT_FIRST,
-          //                scrollBackward: NestedScrollMode.SELF_FIRST
-          //             })
-          //          }.tabBar(this.TabBuilder("我是吸顶布局"))
-          //       }
-          //       .vertical(false)
-          //       .height("100%")
-          //    }.width("100%")
-          // }
-          // .edgeEffect(EdgeEffect.None)
-          // .backgroundColor('#DCDCDC')
-          // .scrollBar(BarState.Off)
-          // .width('100%')
-          // .height('100%')
-          // .backgroundColor('#F08080')
-          // Tabs({barPosition:BarPosition.End}) {
-          //   TabContent() {
-          //     Column() {
-          //       //自定义组件
-          //       ComponentWidget({title:'自定义组件'})
-          //       Text('Top Row').fontSize(40).textAlign(TextAlign.Center).width('100%')
-          //     }
-          //   }
-          //   .tabBar('首页')
-          //   TabContent() {
-          //     Text('推荐的内容').fontSize(30)
-          //   }
-          //   .tabBar('推荐')
-          //
-          //   TabContent() {
-          //     Text('发现的内容').fontSize(30)
-          //   }
-          //   .tabBar('发现')
-          //   TabContent() {
-          //     Text('我的内容').fontSize(30)
-          //   }
-          //   .tabBar("我的")
-          // }.layoutWeight(1)//如果底部的tab被遮挡或者消息，需要设置Tabs的权重为1
         }
       }.layoutWeight(1)
       //底部安全区域的高度
@@ -412,7 +350,4 @@ struct Index {
         .backgroundColor(Color.White)
     }
   }
-
-  //如果预览模式中没有“tablet”平板的样式，可以在module.json5的deviceTypes字段下
-  //添加"tablet"的属性，然后关闭Multi-profile preview再打开就可以了
 }

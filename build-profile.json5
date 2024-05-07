@@ -5,13 +5,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001BFD081CF090DA7ADE3AB2F854469A27E186EDFCFC6A4D4D598F2307A2FAD2F057B08A933D959A39",
+          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+          "storePassword": "0000001B47549BDB117120C7DD5762CFDCCFA9136A152E1AEABB3C1BC9C4217D393CC676E7B27504A27270",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001B5E41B1DF2079B2BA87111BB3B295F0E5A38008E37A430F96DC59B05F44F1F1E2B3F4AB07EFD3FB",
-          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+          "keyPassword": "0000001B56755538AD316B284BCAD9CB6CEDAA6787E49453B3C9DCB52AA5D5F8009B45680DC4234AD3F217",
+          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
         }
       }
     ],

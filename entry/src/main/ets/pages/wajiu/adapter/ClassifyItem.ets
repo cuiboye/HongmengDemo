@@ -4,11 +4,11 @@ export default struct ClassifyItem{
   onClickItem = ()=>{}
   @Prop isSelected:boolean
   build(){
-  // f56e1d 343434
     if(this.classifyName){
       Text(`${this.classifyName}`)
         .fontColor(this.isSelected?$r('app.color.f56e1d'):$r('app.color.343434'))
         .fontSize(14)
+        //点击item的时候执行onClickItem函数
         .onClick(this.onClickItem)
     }
   }

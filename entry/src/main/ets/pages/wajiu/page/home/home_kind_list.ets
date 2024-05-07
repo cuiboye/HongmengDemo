@@ -47,7 +47,8 @@ export default struct HomeKindList{
           this.listController.scrollToIndex(index)
           console.log(`onChange ${index}`)
         })
-        .index(this.selectedTabIndex)
+        // .index(this.selectedTabIndex)
+        .index(2)
         .padding({top:15})
         .loop(false)
         .padding({ left: 10, right: 2 }) //距离右边距离为2，因为item之间设置的距离为8

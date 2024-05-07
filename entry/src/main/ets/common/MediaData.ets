@@ -2,7 +2,6 @@ import mediaQuery from '@ohos.mediaquery';
 /**
  * 多屏幕适配工具类
  */
-
 interface MediaQueryResult {
   matches: boolean
 }

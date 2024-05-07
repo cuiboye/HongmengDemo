@@ -1,7 +1,6 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
-import { StatusBarManager } from '../common/StatusBarManager';
 import PreferencesUtil from '../common/utils/PreferencesUtil';
 
 export default class EntryAbility extends UIAbility {
@@ -28,19 +27,13 @@ export default class EntryAbility extends UIAbility {
       }
       hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
     });
-    StatusBarManager.get().storeWindowStage(windowStage);
-
-    // StatusBarManager.get().setImmersiveStatusBar(windowStage);
-
-
     let windowClass: window.Window = null;
     windowStage.getMainWindow((err, data) => {
       // 1.获取应用主窗口
       windowClass = data;
 
       // 2.设置底部navigation导航栏显示、状态栏不显示。注意：需要显示哪个数组中就写哪个就行
-      //status：顶部状态栏
-      //navigation：底部导航栏
+      //status：顶部状态栏；navigation：底部导航栏
       //下面的数组中要设置“navigation”，如果不设置在有虚拟按键的情况下会不显示底部的导航
       windowClass.setWindowSystemBarEnable(['status','navigation'], (err) => {
 
@@ -63,17 +56,6 @@ export default class EntryAbility extends UIAbility {
       let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height
       AppStorage.SetOrCreate<number>('topStatusHeight', topStatusHeight)
       AppStorage.SetOrCreate<number>('navigationHeight', navigationHeight)
-
-      // // TYPE_CUTOUT表示刘海屏区域。
-      // let cutOutInfo=windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_CUTOUT);
-      // console.log(JSON.stringify(cutOutInfo));
-      // // TYPE_SYSTEM 表示系统默认区域。一般包括状态栏、导航栏，各设备系统定义可能不同。
-      // let navigationHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).bottomRect.height;
-      // AppStorage.SetOrCreate<number>('navigationHeight', navigationHeight)
-      // let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height;
-      // AppStorage.SetOrCreate<number>('topStatusHeight', topStatusHeight)
-
-
     })
   }
 

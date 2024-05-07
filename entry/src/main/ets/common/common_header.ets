@@ -1,5 +1,3 @@
-
-import { StatusBarManager } from './StatusBarManager';
 /**
  * 自定义header
  */
