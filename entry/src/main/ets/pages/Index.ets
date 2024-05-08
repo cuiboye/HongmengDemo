@@ -9,6 +9,7 @@ import { StatePage } from './state_page';
 import prompt from '@ohos.promptAction';
 import common from '@ohos.app.ability.common';
 import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -18,6 +19,12 @@ import window from '@ohos.window';
 //     Text(`元素为 ${item}`).fontSize(16)
 //   }.backgroundColor(Color.Red).height(30).width(100)
 // }
+
+
+// 还未归纳的：
+//1）Web
+//2）stateStyles多态样式
+
 
 /**
  * 全局的自定义样式
@@ -201,6 +208,31 @@ struct Index {
             )
           })
 
+          Button('singletonability').onClick(() => {
+            // singletonability跳转
+            let want: Want = {
+              deviceId: '',//空字符串代表当前设备
+              bundleName: 'com.example.myapplication',
+              moduleName: 'entry',
+              abilityName: 'MultitonabilityEntryAbility'
+            }
+            // 跳转
+            this.context.startAbility(want)
+          })
+
+          Button('multitonability').onClick(() => {
+                // multitonability跳转
+            //跳转多次，会打开多个MultitonabilityEntryAbility，它的launchType为multiton
+                let want: Want = {
+                  deviceId: '',
+                  bundleName: 'com.example.myapplication',
+                  moduleName: 'entry',
+                  abilityName: 'MultitonabilityEntryAbility'
+                }
+                // 跳转
+                this.context.startAbility(want)
+              })
+
           Button('@Observed和@ObjectLink的Demo').onClick(() => {
             router.pushUrl(
               {
@@ -308,6 +340,15 @@ struct Index {
             router.pushUrl(
               {
                 url: 'pages/savedata/save_data_demo',
+              },
+            )
+          })
+
+          //持久化数据
+          Button('stateStyles-多态样式').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/wajiu/MutilStylePage',
               },
             )
           })

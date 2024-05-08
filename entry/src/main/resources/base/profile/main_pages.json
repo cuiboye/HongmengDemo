@@ -17,7 +17,6 @@
     "pages/routerdemo/second_router",
     "pages/savedata/save_data_demo",
     "pages/grid_demo",
-    "pages/animate_page",
     "pages/animate/shared_animate_page",
     "pages/animate/shared_animate_secnod_page",
     "pages/animate/animate_main_page",
@@ -26,6 +25,8 @@
     "pages/media_page",
     "pages/SecondLevelLinkagePage",
     "pages/WebviewPage",
-    "pages/Splash"
+    "pages/Splash",
+    "pages/wajiu/MutilStylePage",
+    "pages/MultitonAbilityPage"
   ]
 }

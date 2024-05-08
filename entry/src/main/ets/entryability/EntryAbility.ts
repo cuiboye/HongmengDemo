@@ -1,7 +1,9 @@
 import UIAbility from '@ohos.app.ability.UIAbility';
 import hilog from '@ohos.hilog';
 import window from '@ohos.window';
+import Want from '@ohos.app.ability.Want';
 import PreferencesUtil from '../common/utils/PreferencesUtil';
+import AbilityConstant from '@ohos.app.ability.AbilityConstant';
 
 export default class EntryAbility extends UIAbility {
   async onCreate(want, launchParam) {
@@ -72,5 +74,9 @@ export default class EntryAbility extends UIAbility {
   onBackground() {
     // Ability has back to background
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onBackground');
+  }
+
+  onNewWant(want: Want, launchParams: AbilityConstant.LaunchParam){
+
   }
 }

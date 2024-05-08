@@ -124,14 +124,14 @@ export struct HomePage {
       Scroll() {
 
         Column() {
-          HomeBanner()
-          HomeButton()
-          HomeOrder()
-          HomeNews()
+          // HomeBanner()
+          // HomeButton()
+          // HomeOrder()
+          // HomeNews()
           NationalPavilion()
-          BrandPavilion()
-          HomeExcellentProducts()
-          HomeKindList()
+          // BrandPavilion()
+          // HomeExcellentProducts()
+          // HomeKindList()
         }
         //
         //   //比较使用 ===

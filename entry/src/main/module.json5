@@ -23,8 +23,9 @@
         "description": "$string:EntryAbility_desc",
         "icon": "$media:icon",
         "label": "$string:EntryAbility_label",
+        "launchType": "singleton",
         "startWindowIcon": "$media:icon",
-        "startWindowBackground": "$color:start_window_background",
+        "startWindowBackground": "$color:00a0e9",//启动背景颜色，没有生效
         "exported": true,
         "skills": [
           {
@@ -36,6 +37,17 @@
             ]
           }
         ]
+      },
+
+      {
+        "name": "MultitonabilityEntryAbility",
+        "srcEntry": "./ets/multitonability/MultitonabilityEntryAbility.ts",
+        "description": "dfsfdsf",
+        "icon": "$media:icon",
+        "label": "$string:EntryAbility_label",
+        "startWindowIcon": "$media:icon",
+        "startWindowBackground": "$color:start_window_background",
+        "launchType": "standard"
       }
     ]
   }
