@@ -34,6 +34,8 @@ struct SwiperDeemoPage {
         Button('showPrevious').onClick(()=>{
           //显示上一个
           this.swiperController.showPrevious()
+          AppStorage.Set()
+          AppStorage.SetOrCreate()
         })
         Button('showNext').onClick(()=>{
           //显示下一个
