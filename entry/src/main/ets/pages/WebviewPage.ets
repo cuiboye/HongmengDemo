@@ -39,29 +39,29 @@ struct WebviewPage {
       //   })
 
       //原生调用JS的方法
-      // Web({ src: $rawfile("index.html"), controller: this.controller })
-      //   .mixedMode(this.mode)
-      //   .javaScriptAccess(true)
-      //   .onPageEnd(event=>{
-      //     //网页加载完成时回调
-      //     try {
-      //       this.controller.runJavaScript(
-      //         'test()',
-      //         (error, result) => {
-      //           if (error) {
-      //             console.info(`run JavaScript error: ` + JSON.stringify(error))
-      //             return;
-      //           }
-      //           if (result) {
-      //             this.webResult = result
-      //             console.info(`The test() return value is: ${result}`)
-      //           }
-      //         });
-      //       console.info('url: ', event.url);
-      //     } catch (error) {
-      //       console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
-      //     }
-      //   })
+      Web({ src: $rawfile("index.html"), controller: this.controller })
+        .mixedMode(this.mode)
+        .javaScriptAccess(true)
+        .onPageEnd(event=>{
+          //网页加载完成时回调
+          try {
+            this.controller.runJavaScript(
+              'test()',
+              (error, result) => {
+                if (error) {
+                  console.info(`run JavaScript error: ` + JSON.stringify(error))
+                  return;
+                }
+                if (result) {
+                  this.webResult = result
+                  console.info(`The test() return value is: ${result}`)
+                }
+              });
+            console.info('url: ', event.url);
+          } catch (error) {
+            console.error(`ErrorCode: ${error.code},  Message: ${error.message}`);
+          }
+        })
 
       //JS调用原生的方法
       Web({ src: $rawfile("index2.html"), controller: this.controller })
@@ -73,7 +73,6 @@ struct WebviewPage {
           name: "objName",
           methodList: ["test", "toString"],
           controller: this.controller
-
         })
 
         // .onPageEnd(event=>{
