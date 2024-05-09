@@ -27,6 +27,9 @@
     "pages/WebviewPage",
     "pages/Splash",
     "pages/wajiu/MutilStylePage",
-    "pages/MultitonAbilityPage"
+    "pages/MultitonAbilityPage",
+    "pages/LocalStoragePage",
+    "pages/LocalStorageSharePage",
+    "pages/LocalStorageSharePage2"
   ]
 }

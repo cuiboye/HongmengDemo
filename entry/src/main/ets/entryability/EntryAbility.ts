@@ -11,6 +11,20 @@ export default class EntryAbility extends UIAbility {
 
     // 初始化Preferences
     await PreferencesUtil.loadPreference(this.context, 'MyPreferences')
+
+    //使用 EventHub 来订阅事件
+    let eventHub = this.context.eventHub;
+    //订阅事件 eventHub.on
+    eventHub.on('eventTest',this.eventTest)
+  }
+
+  eventTest(){
+    console.info('eventHub','eventTest');
+
+    // context为UIAbility实例的AbilityContext
+    //发送完消息可以使用 eventHub.off 取消 事件订阅
+    this.context.eventHub.off('eventTest',this.eventTest);
+    // this.context.eventHub.off('eventTest');//如果不传callback，则取消订阅该事件下所有callback。
   }
 
   onDestroy() {
@@ -21,8 +35,11 @@ export default class EntryAbility extends UIAbility {
     // Main window is created, set main page for this ability
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
 
-
-    windowStage.loadContent('pages/Splash', (err, data) => {
+    //多页面共享LocalStorage
+    let record:Record<string,number> = {'localStorageShare':99}
+    let storage: LocalStorage = new LocalStorage(record);
+    //通过 windowStage.loadContent 加载LocalStorage
+    windowStage.loadContent('pages/Splash', storage,(err, data) => {
       if (err.code) {
         hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
         return;

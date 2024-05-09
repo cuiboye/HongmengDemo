@@ -9,8 +9,8 @@ export default class MultitonabilityEntryAbility extends UIAbility {
   async onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag-1', '%{public}s', 'Ability onCreate');
 
-    // 初始化Preferences
-    await PreferencesUtil.loadPreference(this.context, 'MyPreferences')
+    //这里接收跳转MultitonabilityEntryAbility传递过来的参数
+    globalThis.entryAbilityWant = want;
   }
 
   onDestroy() {

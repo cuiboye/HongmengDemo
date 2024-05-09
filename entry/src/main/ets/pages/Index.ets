@@ -208,6 +208,8 @@ struct Index {
             )
           })
 
+          //=========== singleton模式 start ===========
+          //需要将MultitonabilityEntryAbility的launchType设置为 singleton
           Button('singletonability').onClick(() => {
             // singletonability跳转
             let want: Want = {
@@ -216,22 +218,80 @@ struct Index {
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility'
             }
-            // 跳转
             this.context.startAbility(want)
           })
+          //=========== singleton模式 end ===========
 
+          //=========== multiton模式 start ===========
+          //需要将MultitonabilityEntryAbility的launchType设置为 multiton
           Button('multitonability').onClick(() => {
                 // multitonability跳转
-            //跳转多次，会打开多个MultitonabilityEntryAbility，它的launchType为multiton
                 let want: Want = {
                   deviceId: '',
                   bundleName: 'com.example.myapplication',
                   moduleName: 'entry',
                   abilityName: 'MultitonabilityEntryAbility'
                 }
-                // 跳转
                 this.context.startAbility(want)
               })
+          //=========== multiton模式 end ===========
+
+          //=========== standard模式 start ===========
+          //需要将MultitonabilityEntryAbility的launchType设置为 standard
+          Button('standardability').onClick(() => {
+            // standardability跳转
+            let want: Want = {
+              deviceId: '',
+              bundleName: 'com.example.myapplication',
+              moduleName: 'entry',
+              abilityName: 'MultitonabilityEntryAbility'
+            }
+            this.context.startAbility(want)
+          })
+          //=========== standard模式 end ===========
+
+          //=========== specified模式 start ===========
+          //测试这个功能：
+          //1）需要在 module.json5 中将MultitonabilityEntryAbility的launchType设置为 specified
+          //2）需要在 module.json5 的 module 这个标签下添加  "srcEntry": './ets/multitonability/MyAbilityStage.ts',
+          Button(`创建指定实例模式-打开文档1`).onClick(() => {
+            // 跳转的目的地want
+            let want: Want = {
+              deviceId: '',
+              bundleName: 'com.example.myapplication',
+              moduleName: 'entry',
+              abilityName: 'MultitonabilityEntryAbility',
+              parameters: {//参数
+                instanceKey: '文档1'
+              }
+            }
+            this.context.startAbility(want)
+         })
+
+          Button(`创建指定实例模式-打开文档2`).onClick(() => {
+            // 跳转的目的地want
+            let want: Want = {
+              deviceId: '',
+              bundleName: 'com.example.myapplication',
+              moduleName: 'entry',
+              abilityName: 'MultitonabilityEntryAbility',
+              //这个参数需要和MyAbilityStage中的instanceKey参数一致
+              parameters: {
+                instanceKey: '文档2'
+              }
+            }
+            this.context.startAbility(want)
+          })
+          //=========== specified模式 end ===========
+
+
+          //=========== EventHub start ===========
+          Button('EventHub').onClick(() => {
+            //使用 eventHub.emit 来发送消息
+            this.context.eventHub.emit('eventTest')
+          })
+          //=========== EventHub end ===========
+
 
           Button('@Observed和@ObjectLink的Demo').onClick(() => {
             router.pushUrl(
@@ -360,6 +420,13 @@ struct Index {
               },
             )
           })
+          Button('通过LocalStorage.GetShared()在页面之间更新值').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/LocalStorageSharePage',
+              },
+            )
+          })
 
           Button('挖酒项目').onClick(() => {
             router.pushUrl(
@@ -392,3 +459,8 @@ struct Index {
     }
   }
 }
+
+//需要记录的：
+//1.EventHub
+//2.UIAbility组件相关
+//3.LocalStorage

@@ -2,6 +2,7 @@
   "module": {
     "name": "entry",
     "type": "entry",
+    "srcEntry": './ets/multitonability/MyAbilityStage.ts',
     "description": "$string:module_desc",
     "mainElement": "EntryAbility",
     "deviceTypes": [
@@ -47,7 +48,7 @@
         "label": "$string:EntryAbility_label",
         "startWindowIcon": "$media:icon",
         "startWindowBackground": "$color:start_window_background",
-        "launchType": "standard"
+        "launchType": "specified"
       }
     ]
   }
