@@ -2,10 +2,11 @@
  * multiton启动模式,多实例模式
  */
 import Want from '@ohos.app.ability.Want'
+import common from '@ohos.app.ability.common'
 @Entry
 @Component
 struct MultitonAbilityPage {
-  @State message: string = 'Hello World'
+  private context = getContext(this) as common.UIAbilityContext
 
   aboutToAppear(){
     //这里接收的是在MultitonabilityEntryAbility中接收的want
@@ -14,13 +15,24 @@ struct MultitonAbilityPage {
   }
 
   build() {
-    Row() {
-      Column() {
-        Text(this.message)
-          .fontSize(50)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
+    Column() {
+      Button(`启动新的Ability并接收返回的参数`).onClick(() => {
+        let abilityResult = {
+          resultCode: 1001,
+          want: {
+            bundleName: 'com.example.myapplication',
+            abilityName: 'EntryAbility',
+            moduleName: 'entry',
+            parameters: {
+              backParams: '来自MultitonabilityEntryAbility',
+            },
+          },
+        }
+        // context为被调用方UIAbility的AbilityContext
+        this.context.terminateSelfWithResult(abilityResult, (err) => {
+
+        });
+      })
     }
     .height('100%')
   }

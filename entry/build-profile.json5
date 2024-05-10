@@ -1,6 +1,7 @@
 {
   "apiType": 'stageMode',
   "buildOption": {
+    "sourceOption": {"workers": ["./src/main/ets/workers/worker.ts"]}
   },
   "targets": [
     {

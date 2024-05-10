@@ -30,6 +30,7 @@
     "pages/MultitonAbilityPage",
     "pages/LocalStoragePage",
     "pages/LocalStorageSharePage",
-    "pages/LocalStorageSharePage2"
+    "pages/LocalStorageSharePage2",
+    "pages/AppStoragePage"
   ]
 }
