@@ -23,7 +23,7 @@ export default struct LocalStorageSharePage {
       }
       Button('跳转到下一个页面')
         .onClick(() => {
-          router.pushUrl({url:'pages/LocalStorageSharePage'})
+          router.pushUrl({url:'pages/LocalStorageSharePage2'})
         })
     }
     .height('100%')

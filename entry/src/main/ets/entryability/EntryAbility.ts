@@ -15,7 +15,24 @@ export default class EntryAbility extends UIAbility {
     //使用 EventHub 来订阅事件
     let eventHub = this.context.eventHub;
     //订阅事件 eventHub.on
-    eventHub.on('eventTest',this.eventTest)
+    // eventHub.on('eventTest',this.eventTest)
+    //事件回调还可以使用匿名方法的形式：
+    eventHub.on('eventTest',()=>{
+      console.info('eventHub','eventTest');
+    })
+    //带参数的事件
+    // eventHub.on('eventTestWithParams',(...data)=>{
+    //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data)}`);
+    //   console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data[0])}`);
+    // })
+    //带参数的事件，这样写也可以
+    eventHub.on('eventTestWithParams',this.eventTestWithParams);
+  }
+
+  eventTestWithParams(...data){
+    console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data)}`);
+    console.info('eventTestWithParams',`eventTestWithParams事件传递过来的参数为：${JSON.stringify(data[0])}`);
+    this.context.eventHub.off('eventTest',this.eventTestWithParams);
   }
 
   eventTest(){

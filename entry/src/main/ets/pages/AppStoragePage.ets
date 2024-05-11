@@ -56,7 +56,7 @@ struct AppStoragePage {
           console.info(`AppStorage.Has ${has}`)
         })
 
-      Button('AppStorage-Has')
+      Button('AppStorage-Get')
         .onClick(()=>{
           //获取propName在AppStorage中对应的属性。如果不存在返回undefined。
           let value = AppStorage.Get('AppStorageDemo2');
