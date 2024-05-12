@@ -36,6 +36,34 @@
           ]
         }
       ]
+    },
+    {
+      "name": "module1",
+      "srcPath": "./module1",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "library",
+      "srcPath": "./library"
+    },
+    {
+      "name": "sharelibrary",
+      "srcPath": "./sharelibrary",
+      "targets": [
+        {
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
     }
   ]
 }
