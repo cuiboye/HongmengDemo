@@ -12,6 +12,7 @@ import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import data from '@ohos.telephony.data';
 import worker from '@ohos.worker';
+import {ResManager} from 'sharelibrary'
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -560,8 +561,37 @@ struct Index {
               },
             )
           })
+
+          //引入HSP动态共享包
+          //ResManager返回的Resource对象，可以传给组件直接使用，也可以从中取出资源来使用
+
+          //传给组件直接使用
+          Text(ResManager.getSharedDesc())//获取sharelibrary的值
+
+          //从Resource对象中取出资源来使用
+          //先通过当前上下文获取hsp模块的上下文，再获取hsp模块的resourceManager，然后再调用resourceManager的接口获取资源
+          Text('ResManager返回的Resource对象可以从中去除资源来使用')
+            .onClick(()=>{
+              getContext()
+                .createModuleContext('sharelibrary')
+                .resourceManager
+                .getStringValue(ResManager.getSharedDesc())
+                .then(value=>{
+                  prompt.showToast({message:value})
+                })
+                .catch(err=>{
+
+                })
+            })
+
+          Button('跳转HSP的页面')
+            .onClick(() => {
+              router.pushUrl({
+                url: '@bundle:com.example.myapplication/sharelibrary/ets/pages/ShareLibraryPage'
+              })
+            })
         }
-      }.layoutWeight(1)
+      }.layoutWeight(1).padding({bottom:50})
       //底部安全区域的高度
       Row()
         .height(px2vp(this.navigationHeight))
