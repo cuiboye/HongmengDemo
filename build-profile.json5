@@ -20,7 +20,18 @@
     "products": [
       {
         "name": "default",
-        "signingConfig": "default",
+        "bundleName": 'com.example.myapplication',
+                "signingConfig": "default",
+      },
+      {
+        "name": "productA",
+        "bundleName": 'com.example.myapplication2',
+                "signingConfig": "default",
+      },
+      {
+        "name": "productB",
+        "bundleName": 'com.example.myapplication3',
+                "signingConfig": "default",
       }
     ]
   },
@@ -34,24 +45,20 @@
           "applyToProducts": [
             "default"
           ]
-        }
-      ]
-    },
-    {
-      "name": "module1",
-      "srcPath": "./module1",
-      "targets": [
+        },
         {
-          "name": "default",
+          "name": "free",
           "applyToProducts": [
-            "default"
+            "productA"
+          ]
+        },
+        {
+          "name": "pay",
+          "applyToProducts": [
+            "productB"
           ]
         }
       ]
-    },
-    {
-      "name": "library",
-      "srcPath": "./library"
     },
     {
       "name": "sharelibrary",
@@ -61,6 +68,18 @@
           "name": "default",
           "applyToProducts": [
             "default"
+          ]
+        },
+        {
+          "name": "free1",
+          "applyToProducts": [
+            "productA"
+          ]
+        },
+        {
+          "name": "pay2",
+          "applyToProducts": [
+            "productB"
           ]
         }
       ]

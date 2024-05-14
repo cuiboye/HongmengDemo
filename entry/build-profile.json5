@@ -5,11 +5,18 @@
   },
   "targets": [
     {
-      "name": "default",
-      "runtimeOS": "HarmonyOS"
+      "name": "default",//默认target名称default
+      "runtimeOS": "HarmonyOS",
     },
     {
-      "name": "ohosTest",
+      "name": "free",
+      "runtimeOS": "HarmonyOS",
+      "config": {"deviceType": ['phone']}
+    },
+    {
+      "name": "pay",
+      "runtimeOS": "HarmonyOS",
+      "config": {"deviceType": ['phone']}
     }
   ]
 }
