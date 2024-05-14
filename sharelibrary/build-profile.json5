@@ -5,7 +5,8 @@
   "targets": [
     {
       "name": "default",
-      "runtimeOS": "HarmonyOS"
+      "runtimeOS": "HarmonyOS",
+      "config": {"deviceType": ['phone']}
     },
     {
       "name": "free1",

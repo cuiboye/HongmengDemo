@@ -5,16 +5,16 @@
   },
   "targets": [
     {
-      "name": "default",//默认target名称default
-      "runtimeOS": "HarmonyOS",
+      "name": "default",
+      "runtimeOS": "HarmonyOS"
     },
     {
-      "name": "free",
+      "name": "free1",
       "runtimeOS": "HarmonyOS",
       "config": {"deviceType": ['phone']}
     },
     {
-      "name": "pay",
+      "name": "pay2",
       "runtimeOS": "HarmonyOS",
       "config": {"deviceType": ['phone']}
     }

@@ -43,17 +43,19 @@
         {
           "name": "default",
           "applyToProducts": [
-            "default"
-          ]
-        },
-        {
-          "name": "free",
-          "applyToProducts": [
+            "default",
             "productA"
           ]
         },
         {
-          "name": "pay",
+          "name": "free1",
+          "applyToProducts": [
+            "default",
+            "productA"
+          ]
+        },
+        {
+          "name": "pay2",
           "applyToProducts": [
             "productB"
           ]
@@ -67,7 +69,8 @@
         {
           "name": "default",
           "applyToProducts": [
-            "default"
+            "default",
+            "productA"
           ]
         },
         {
