@@ -1,19 +1,6 @@
 {
   "app": {
     "signingConfigs": [
-      {
-        "name": "default",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001A92EE7FD6F03EEA2DACB058B71C3503E1F38B5CB24300D5CB9681650F29A0BA06C89A357CA0B3",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001A4C29CE164888CF7A12E07C6525DA95D7DF32FABD4DAC82B87B9820DF3376AD553389BD2A86A9",
-          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
-        }
-      }
     ],
     "compileSdkVersion": 9,
     "compatibleSdkVersion": 9,
