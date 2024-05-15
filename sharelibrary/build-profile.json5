@@ -9,12 +9,12 @@
       "config": {"deviceType": ['phone']}
     },
     {
-      "name": "free1",
+      "name": "free",
       "runtimeOS": "HarmonyOS",
       "config": {"deviceType": ['phone']}
     },
     {
-      "name": "pay2",
+      "name": "pay",
       "runtimeOS": "HarmonyOS",
       "config": {"deviceType": ['phone']}
     }
