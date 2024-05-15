@@ -584,12 +584,12 @@ struct Index {
                 })
             })
 
-          Button('跳转HSP的页面')
-            .onClick(() => {
-              router.pushUrl({
-                url: '@bundle:com.example.myapplication/sharelibrary/ets/pages/ShareLibraryPage'
-              })
-            })
+          // Button('跳转HSP的页面')
+          //   .onClick(() => {
+          //     router.pushUrl({
+          //       url: '@bundle:com.example.myapplication/sharelibrary/ets/pages/ShareLibraryPage'
+          //     })
+          //   })
         }
       }.layoutWeight(1).padding({bottom:50})
       //底部安全区域的高度

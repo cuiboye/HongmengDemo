@@ -19,9 +19,9 @@ struct ShareLibraryPage {
       Button('HSP页面跳转到HSP页面')
         .onClick(()=>{
           //HSP跳转HSP的页面
-          router.pushUrl({
-            url:'@bundle:com.example.myapplication/sharelibrary/ets/pages/ShareLibrarySecondPage'
-          })
+          // router.pushUrl({
+          //   url:'@bundle:com.example.myapplication/sharelibrary/ets/pages/ShareLibrarySecondPage'
+          // })
         })
     }
     .height('100%')

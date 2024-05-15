@@ -8,15 +8,15 @@
       "name": "default",
       "runtimeOS": "HarmonyOS"
     },
-    {
-      "name": "free1",
-      "runtimeOS": "HarmonyOS",
-      "config": {"deviceType": ['phone']}
-    },
-    {
-      "name": "pay2",
-      "runtimeOS": "HarmonyOS",
-      "config": {"deviceType": ['phone']}
-    }
+//    {
+//      "name": "free",
+//      "runtimeOS": "HarmonyOS",
+//      "config": {"deviceType": ['phone']}
+//    },
+//    {
+//      "name": "pay",
+//      "runtimeOS": "HarmonyOS",
+//      "config": {"deviceType": ['phone']}
+//    }
   ]
 }
