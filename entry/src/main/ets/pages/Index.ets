@@ -225,9 +225,11 @@ struct Index {
           //需要将MultitonabilityEntryAbility的launchType设置为 singleton
           Button('singletonability').onClick(() => {
             // singletonability跳转
+
             let want: Want = {
               deviceId: '', //空字符串代表当前设备
-              bundleName: 'com.example.myapplication',
+              // bundleName: 'com.example.myapplication',
+              bundleName: this.context.abilityInfo.bundleName,
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility'
             }
@@ -243,7 +245,8 @@ struct Index {
                 // multitonability跳转
                 let want: Want = {
                   deviceId: '',
-                  bundleName: 'com.example.myapplication',
+                  // bundleName: 'com.example.myapplication',
+                  bundleName: this.context.abilityInfo.bundleName,
                   moduleName: 'entry',
                   abilityName: 'MultitonabilityEntryAbility'
                 }
@@ -257,7 +260,8 @@ struct Index {
             // standardability跳转
             let want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
+              // bundleName: 'com.example.myapplication',
+              bundleName: this.context.abilityInfo.bundleName,
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility'
             }
@@ -273,7 +277,8 @@ struct Index {
             // 跳转的目的地want
             let want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
+              // bundleName: 'com.example.myapplication',
+              bundleName: this.context.abilityInfo.bundleName,
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility',
               parameters: {//参数
@@ -287,7 +292,8 @@ struct Index {
             // 跳转的目的地want
             let want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
+              // bundleName: 'com.example.myapplication',
+              bundleName: this.context.abilityInfo.bundleName,
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility',
               //这个参数需要和MyAbilityStage中的instanceKey参数一致
@@ -304,7 +310,8 @@ struct Index {
             // 跳转的目的地want
             let want: Want = {
               deviceId: '',
-              bundleName: 'com.example.myapplication',
+              // bundleName: 'com.example.myapplication',
+              bundleName: this.context.abilityInfo.bundleName,
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility',
             }
@@ -448,6 +455,16 @@ struct Index {
               router.RouterMode.Standard,
             )
           })
+
+
+          Button('自定义弹框')
+            .onClick(()=>{
+              router.pushUrl(
+                {
+                  url: 'pages/CustomDialogPage',
+                },
+              )
+            })
 
           //Grid
           Button('Grid列表').onClick(() => {

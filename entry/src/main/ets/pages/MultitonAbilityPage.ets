@@ -20,7 +20,8 @@ struct MultitonAbilityPage {
         let abilityResult = {
           resultCode: 1001,
           want: {
-            bundleName: 'com.example.myapplication',
+            // bundleName: 'com.example.myapplication',
+            bundleName: this.context.abilityInfo.bundleName,
             abilityName: 'EntryAbility',
             moduleName: 'entry',
             parameters: {
