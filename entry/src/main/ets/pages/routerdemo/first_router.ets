@@ -1,5 +1,6 @@
 
 import router from '@ohos.router'
+import { CommonHeader } from '../../common/common_header'
 /**
  * 第一个页面
  */
@@ -9,7 +10,9 @@ struct FirstRouter {
   @State message: string = 'Hello World'
 
   build() {
-    Row() {
+    Column() {
+      CommonHeader({title:'第一个页面'})
+
       Button('跳转到下一个页面并携带参数').onClick(() => {
         router.pushUrl(
           {

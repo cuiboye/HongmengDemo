@@ -1,5 +1,6 @@
 
 import router from '@ohos.router'
+import { CommonHeader } from '../../common/common_header';
 /**
  * 第二个页面
  */
@@ -9,6 +10,7 @@ struct SecondRouter {
   @State message: string = 'Hello World'
 
   aboutToAppear(){
+    //在aboutToAppear接收参数
     const params = router.getParams();
     const id:number = params['id'];
     const name:string = params['name'];
@@ -16,16 +18,21 @@ struct SecondRouter {
   }
 
   build() {
-    Row() {
-      Column() {
-        Button('跳转到下一个页面并携带参数').onClick(() => {
+    Column() {
+        CommonHeader({title:'第二个页面'})
+
+        Button('返回到上一个页面并携带参数').onClick(() => {
           router.back({
             url:'pages/routerdemo/first_router',
             params:{'backParams':'secondRouter'}
           })
         })
-      }
-      .width('100%')
+
+        Button('跳转到第三个页面').onClick(() => {
+          router.pushUrl({
+            url:'pages/routerdemo/ThreeRouterPage',
+          })
+        })
     }
     .height('100%')
   }

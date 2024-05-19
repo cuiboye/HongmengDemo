@@ -5,6 +5,7 @@
 export struct CommonHeader{
   @StorageProp('topStatusHeight') topStatusHeight: number = 0
   showTitleBar:boolean = true;
+  title:string;
 
   build() {
     Column() {
@@ -16,7 +17,7 @@ export struct CommonHeader{
       if(this.showTitleBar){
         Column() {
           Column() {
-            Text('这是标题')
+            Text(this.title)
               .fontSize(20)
               .fontColor(Color.White)
           }
