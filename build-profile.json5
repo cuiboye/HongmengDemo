@@ -1,83 +1,17 @@
 {
   "app": {
     "signingConfigs": [
-      //      {
-      //        "name": "default",
-      //        "type": "HarmonyOS",
-      //        "material": {
-      //          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-      //          "storePassword": "0000001A9261CB3104969616B6379B69B92A4541930B4D1E62C91D562D5C1F9B62DF7D0FBC6731098EBA",
-      //          "keyAlias": "debugKey",
-      //          "keyPassword": "0000001AB30CE5FF2FB6518C2DC49591A3B14221E188F03337CA53597E1355AB272D418726E16FFC218D",
-      //          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
-      //          "signAlg": "SHA256withECDSA",
-      //          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
-      //        }
-      //      },
-      //      {
-      //        "name": "productASigning",
-      //        "type": "HarmonyOS",
-      //        "material": {
-      //          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication2_890086000102043708.cer",
-      //          "storePassword": "0000001B808CED8494C87F216C387BCFC9B9136CB561FA54C105D131BDC33B706401989192CD1DF0A7069A",
-      //          "keyAlias": "debugKey",
-      //          "keyPassword": "0000001B36F44D8923C18AFDB08B1619DCF40B7CE8B11C3C2884CB3F775266998D1E6B6DD206AB23CB1742",
-      //          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication2_890086000102043708.p7b",
-      //          "signAlg": "SHA256withECDSA",
-      //          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication2_890086000102043708.p12"
-      //        }
-      //      },
-      //      {
-      //        "name": "productBSigning",
-      //        "type": "HarmonyOS",
-      //        "material": {
-      //          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.cer",
-      //          "storePassword": "0000001B867F38B4ED99197A2B5ED512597238D3007B4AC9C7CBD325319C1553BA520C2E7A541D4C9EB2AC",
-      //          "keyAlias": "debugKey",
-      //          "keyPassword": "0000001B03F4BCF1F5555C7D5B05449F2577C3A131F3012955F9F56AE92942897319E8BBD9563BD40C9D8B",
-      //          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.p7b",
-      //          "signAlg": "SHA256withECDSA",
-      //          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.p12"
-      //        }
-      //      }
-
       {
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001B470E116DB5DB604A14758C62D0348E779A5765A5DADA8CCAF1E66607E36A7AA255D46E1F0B7462",
+          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+          "storePassword": "0000001A41A619A70700CC4BA83A4667513B95561051BEA14508E8356CB8C11DB4F2DB58010A5C855A1E",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001B7690D84E1A1A4A246545BDF037101760C8C5B7A6258CD98EECFFE1E5BC5E736263CEE6B99C08F1",
-          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+          "keyPassword": "0000001A6D8D51AEF5AE49E0D59BDEDFB5CB981EB3C9BA755D8955C908388BDC7B2D97F7E85B5175C5E5",
+          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
-        }
-      },
-      {
-        "name": "productBSigning",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.cer",
-          "storePassword": "0000001B961D94DDB917C16487F616AC470F43C0048D1E3C7CD372A340A4554229D6EE4A6C850289C7C238",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001B0A54F51B16BB8F9AE6E486B82C849CA1A0840DE997E4E2B4950F519EEA43BBC386DE41E9B04025",
-          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication3_890086000102043708.p12"
-        }
-      },
-      {
-        "name": "productASigning",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication.debug_890086000102043708.cer",
-          "storePassword": "0000001B96D59DEF0C45D84614BD5128AF408811B15FC6C597693A58B13733ECB50AAD3A72046A67BD5CFE",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001B26EE0063C0D3D84A1AB3E91EB9EDF4B201AF0CDB5A5CEEB4A338B0E467CBCDF889A2705B74E3A6",
-          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication.debug_890086000102043708.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication.debug_890086000102043708.p12"
+          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
         }
       }
     ],
@@ -89,7 +23,6 @@
         "name": "default",
         "bundleName": 'com.example.myapplication',
         "signingConfig": "default",
-
       },
       {
         "name": "productA",
@@ -109,7 +42,6 @@
       "srcPath": "./entry",
       "targets": [
         {
-
           "name": "default",
           "applyToProducts": [
             "default",
@@ -145,7 +77,6 @@
           "applyToProducts": [
             "default",
             "productA",
-
             "productB",
           ]
         },
@@ -166,6 +97,10 @@
         //          ]
         //        }
       ]
+    },
+    {
+      "name": "harlibrary",
+      "srcPath": "./harlibrary"
     }
   ]
 }

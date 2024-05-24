@@ -3,6 +3,7 @@ import router from '@ohos.router'
 @Component
 struct AnimateMainPage {
   @State message: string = 'Hello World'
+  @State message2: string = 'Hello World'
 
   build() {
     Column() {
@@ -24,6 +25,19 @@ struct AnimateMainPage {
             url:'pages/animate/shared_animate_page'
           })
       })
+      Button('test')
+        .onClick(()=>{
+          // this.message2 = undefined
+          // this.message2 = null
+          // console.log(`this.message2: ${this.message2}`)
+          // console.log(`this.message2.length: ${this.message2.length}`)
+
+          // let result = this.message2 ?? '999'
+          // console.log(`this.result: ${result}`)
+
+          this.message2 ??= 'hello'
+          console.log(`this.result1: ${this.message2}`)
+        })
     }
     .height('100%')
   }

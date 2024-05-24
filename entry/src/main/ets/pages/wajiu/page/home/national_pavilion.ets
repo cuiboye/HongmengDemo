@@ -27,7 +27,7 @@ export default struct NationalPavilion {
         List({ space: 15 }) { //设置List的item之间的间隔
           ForEach(this.bannerInternationalList, (item: BannerInternationalEntity) => {
             ListItem() {
-              Image(item.picture)
+              Image(item?.picture)
                 .height(60)
                 .backgroundColor(Color.Blue)
                 .objectFit(ImageFit.Fill)
