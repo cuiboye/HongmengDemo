@@ -1,17 +1,34 @@
 {
   "app": {
     "signingConfigs": [
+      //自己电脑的签名
+
+
+      //公司电脑的签名
+      //      {
+      //        "name": "default",
+      //        "type": "HarmonyOS",
+      //        "material": {
+      //          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+      //          "storePassword": "0000001A41A619A70700CC4BA83A4667513B95561051BEA14508E8356CB8C11DB4F2DB58010A5C855A1E",
+      //          "keyAlias": "debugKey",
+      //          "keyPassword": "0000001A6D8D51AEF5AE49E0D59BDEDFB5CB981EB3C9BA755D8955C908388BDC7B2D97F7E85B5175C5E5",
+      //          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+      //          "signAlg": "SHA256withECDSA",
+      //          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+      //        }
+      //      }
       {
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001A41A619A70700CC4BA83A4667513B95561051BEA14508E8356CB8C11DB4F2DB58010A5C855A1E",
+          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+          "storePassword": "00000019DCBAD0C1C4402FF469D725E760FFE7E566D7B7C72B6F9D3C5E0E0A8A401B68C2CE398FECBD",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A6D8D51AEF5AE49E0D59BDEDFB5CB981EB3C9BA755D8955C908388BDC7B2D97F7E85B5175C5E5",
-          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+          "keyPassword": "00000019AA3773211FE8A3B728A9C536813863320F09371F93265232CA7F976581256A1E1EF8CEDE13",
+          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
         }
       }
     ],

@@ -1,4 +1,5 @@
 import router from '@ohos.router'
+import { CommonHeader } from '../../common/common_header'
 @Entry
 @Component
 struct AnimateMainPage {
@@ -7,6 +8,7 @@ struct AnimateMainPage {
 
   build() {
     Column() {
+      CommonHeader({title:'动画'})
       Button('显示动画')
         .onClick(()=>{
           router.pushUrl({
@@ -25,6 +27,19 @@ struct AnimateMainPage {
             url:'pages/animate/shared_animate_page'
           })
       })
+      Button('页面之间的转场动画')
+        .onClick(()=>{
+          router.pushUrl({
+            url:'pages/animate/PageTransition'
+          })
+        })
+      Button('列表中的共享元素转场动画')
+        .onClick(() => {
+          router.pushUrl({
+            url: 'pages/animate/ShareListPage'
+          })
+        })
+
       Button('test')
         .onClick(()=>{
           // this.message2 = undefined
