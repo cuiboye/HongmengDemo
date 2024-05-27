@@ -3,24 +3,19 @@ import { ProductItem } from '../adapter/ProductItem'
 import { ShopCarModel } from './model/ShopcarModel'
 /**
  * 购物车
+ * 1)全选和取消全选
+ * 2）如果要观察的对象是个数组并且需要操作数组中的对象，那么可以将List中的item单独的抽取为一个Widget，
+ * 使用@State @Prop @Link 这几个状态来管理状态
  */
 @Entry
 @Component
 export struct ShopCarPage {
-  // @State @Watch('selectProductChange') productArray :ShopCarModel[] = []
   @State productArray :ShopCarModel[] = []
 
   @State totalPrice:number = 0
   //当前是否是全选
   @State selectedAll:boolean = false
 
-
-  // selectProductChange(index: number): boolean {
-  //   if (this.productArray[index] !== undefined) {
-  //     return this.productArray[index].selected;
-  //   }
-  //   return false;
-  // }
   aboutToAppear(){
     //添加两条商品模拟数据
     let shopCarModel1 = new ShopCarModel()
@@ -71,13 +66,22 @@ export struct ShopCarPage {
             .height(24)
             .width(24)
             .onClick(()=>{
+              this.selectedAll = !this.selectedAll
               if(this.selectedAll){
-
+                //List.forEach：对List进行遍历
+                this.productArray.forEach((item:ShopCarModel)=>{
+                  this.totalPrice += item.productPrice
+                })
+                this.productArray.map((item:ShopCarModel)=>{
+                  item.selected = true
+                })
+              }else {
+                //List.map的作用是返回一个新的数组
+                this.productArray.map((item:ShopCarModel)=>{
+                  item.selected = false
+                })
+                this.totalPrice = 0
               }
-              this.productArray.forEach((item:ShopCarModel)=>{
-                this.totalPrice += item.productPrice
-                // this.productArray[0].selected = true
-              })
             })
           Text('全选')
         }.layoutWeight(1)
@@ -87,6 +91,4 @@ export struct ShopCarPage {
     }
     .height('100%')
   }
-
-
 }

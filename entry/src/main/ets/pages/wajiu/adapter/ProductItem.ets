@@ -23,6 +23,7 @@ export struct ProductItem{
           }else {
             this.totalPrice-=this.item.productPrice
           }
+          //List.every：表示List中每一个都符合条件
           this.selectedAll = this.productArray.every((item:ShopCarModel)=>item.selected)
         })
       Text(`${this.item.productName}`).layoutWeight(1)
