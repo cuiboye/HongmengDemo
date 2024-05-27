@@ -1,4 +1,5 @@
 
+import { ProductItem } from '../adapter/ProductItem'
 import { ShopCarModel } from './model/ShopcarModel'
 /**
  * 购物车
@@ -6,12 +7,20 @@ import { ShopCarModel } from './model/ShopcarModel'
 @Entry
 @Component
 export struct ShopCarPage {
+  // @State @Watch('selectProductChange') productArray :ShopCarModel[] = []
   @State productArray :ShopCarModel[] = []
 
   @State totalPrice:number = 0
   //当前是否是全选
   @State selectedAll:boolean = false
 
+
+  // selectProductChange(index: number): boolean {
+  //   if (this.productArray[index] !== undefined) {
+  //     return this.productArray[index].selected;
+  //   }
+  //   return false;
+  // }
   aboutToAppear(){
     //添加两条商品模拟数据
     let shopCarModel1 = new ShopCarModel()
@@ -34,27 +43,12 @@ export struct ShopCarPage {
           List(){
             ForEach(this.productArray,(item:ShopCarModel,index:number)=>{
               ListItem(){
-                Row(){
-                  Checkbox({
-                    name:`checkout${index}`,
-                    group:'checkboxgroup'
-                  })
-                    .height(24)
-                    .width(24)
-                    .onClick(()=>{
-                      this.productArray[index].selected = !this.productArray[index].selected
-                      console.log(`${JSON.stringify(this.productArray)}`)
-
-                      if(this.productArray[index].selected){
-                        this.totalPrice +=this.productArray[index].productPrice
-                      }else {
-                        this.totalPrice-=this.productArray[index].productPrice
-                      }
-                      this.selectedAll = this.productArray.every((item:ShopCarModel)=>item.selected)
-                    })
-                  Text(`${this.productArray[index].productName}`).layoutWeight(1)
-                  Text(`${this.productArray[index].productPrice}`)
-                }
+                ProductItem({
+                  item:this.productArray[index],
+                  totalPrice:$totalPrice,
+                  productArray:this.productArray,
+                  selectedAll:$selectedAll
+                })
               }
             })
           }
@@ -73,24 +67,17 @@ export struct ShopCarPage {
       }.layoutWeight(1)
       Row(){
         Row(){
-          Checkbox({
-            name:`checkoutAll`,
-            group:'checkboxgroupAll'
-          })
+          Image(this.selectedAll ? $r('app.media.selected_product') : $r('app.media.unselected_product'))
             .height(24)
             .width(24)
-            .select(this.selectedAll)
             .onClick(()=>{
-              this.selectedAll = !this.selectedAll
               if(this.selectedAll){
-                // this.productArray.map((item:ShopCarModel)=>{
-                //   this.totalPrice+=item.productPrice
-                //   item.selected = true
-                // })
-                this.productArray.forEach((item:ShopCarModel)=>{
-                  this.totalPrice += item.productPrice
-                })
+
               }
+              this.productArray.forEach((item:ShopCarModel)=>{
+                this.totalPrice += item.productPrice
+                // this.productArray[0].selected = true
+              })
             })
           Text('全选')
         }.layoutWeight(1)
