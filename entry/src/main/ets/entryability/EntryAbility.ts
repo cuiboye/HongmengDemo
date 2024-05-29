@@ -4,7 +4,11 @@ import window from '@ohos.window';
 import Want from '@ohos.app.ability.Want';
 import PreferencesUtil from '../common/utils/PreferencesUtil';
 import AbilityConstant from '@ohos.app.ability.AbilityConstant';
+import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
+
 export default class EntryAbility extends UIAbility {
+  //读取日历的权限
+  permissions: Array<Permissions> = ['ohos.permission.READ_CALENDAR'];
 
   async onCreate(want, launchParam) {
     hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onCreate');
@@ -92,7 +96,19 @@ export default class EntryAbility extends UIAbility {
       let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height
       AppStorage.SetOrCreate<number>('topStatusHeight', topStatusHeight)
       AppStorage.SetOrCreate<number>('navigationHeight', navigationHeight)
+
+      this.requestPermission();
     })
+  }
+
+
+  /**
+   * 在UIAbility中获取权限
+   */
+  requestPermission(){
+    //判断是否已经申请过权限
+    //注意：UIAbility中不能使用后缀为ets的文件，获取权限的话可以把获取权限的逻辑放在UIAbility中的onWindowStageCreate方法中。
+    // PermissionUtils.checkPermissions(this.context,this.permissions)
   }
 
   onWindowStageDestroy() {

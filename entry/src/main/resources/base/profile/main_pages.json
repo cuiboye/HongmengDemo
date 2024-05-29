@@ -38,6 +38,7 @@
     "pages/animate/ComponentTransitionPage",
     "pages/animate/ShareListPage",
     "pages/animate/ShareListSecondPage",
-    "pages/wajiu/page/ShopCarPage"
+    "pages/wajiu/page/ShopCarPage",
+    "pages/PermissionsPage"
   ]
 }

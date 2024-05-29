@@ -398,6 +398,14 @@ struct Index {
             )
           })
 
+          Button(`访问控制申请`).onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/PermissionsPage',
+              },
+            )
+          })
+
           //=========== EventHub start ===========
           Button('EventHub').onClick(() => {
             //使用 eventHub.emit 来发送消息
