@@ -532,6 +532,15 @@ struct Index {
             )
           })
 
+          //路由操作
+          Button('文件相关').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/FilePage',
+              },
+            )
+          })
+
           //持久化数据
           Button('持久化数据').onClick(() => {
             router.pushUrl(

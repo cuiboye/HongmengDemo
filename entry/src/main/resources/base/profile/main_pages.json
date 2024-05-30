@@ -39,6 +39,7 @@
     "pages/animate/ShareListPage",
     "pages/animate/ShareListSecondPage",
     "pages/wajiu/page/ShopCarPage",
-    "pages/PermissionsPage"
+    "pages/PermissionsPage",
+    "pages/FilePage"
   ]
 }
