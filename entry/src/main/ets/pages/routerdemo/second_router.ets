@@ -15,6 +15,19 @@ struct SecondRouter {
     const id:number = params['id'];
     const name:string = params['name'];
     console.log(`接受到的参数： id=${id},name=${name}`)
+    console.log(`生命周期： aboutToAppear`)
+  }
+
+  onPageShow(){
+    console.log(`生命周期： onPageShow`)
+  }
+
+  onPageHide(){
+    console.log(`生命周期： onPageHide`)
+  }
+
+  aboutToDisappear(){
+    console.log(`生命周期： aboutToDisappear`)
   }
 
   build() {

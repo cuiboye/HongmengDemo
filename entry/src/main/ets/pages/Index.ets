@@ -23,12 +23,6 @@ import {ResManager} from 'sharelibrary'
 //   }.backgroundColor(Color.Red).height(30).width(100)
 // }
 
-
-// 还未归纳的：
-//1）Web
-//2）stateStyles多态样式
-
-
 /**
  * 全局的自定义样式
  * 全局的自定义样式的属性只能设置所有组件都有的属性才可以，如果是某个组件特有的属性则不支持，比如

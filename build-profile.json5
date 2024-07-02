@@ -32,25 +32,25 @@
       //        }
       //      }
     ],
-    "compileSdkVersion": 9,
-    "compatibleSdkVersion": 9,
     //参考：https://zhuanlan.zhihu.com/p/637132642
     "products": [
       {
         "name": "default",
         "bundleName": 'com.example.myapplication',
         "signingConfig": "default",
+        "compatibleSdkVersion": "4.0.0(10)",
+        "runtimeOS": "HarmonyOS"
       },
-      {
-        "name": "productA",
-        "bundleName": 'com.example.myapplication.debug',
-        "signingConfig": "productASigning"
-      },
-      {
-        "name": "productB",
-        "bundleName": 'com.example.myapplication3',
-        "signingConfig": "productBSigning"
-      }
+//      {
+//        "name": "productA",
+//        "bundleName": 'com.example.myapplication.debug',
+//        "signingConfig": "productASigning"
+//      },
+//      {
+//        "name": "productB",
+//        "bundleName": 'com.example.myapplication3',
+//        "signingConfig": "productBSigning"
+//      }
     ]
   },
   "modules": [
@@ -62,8 +62,8 @@
           "name": "default",
           "applyToProducts": [
             "default",
-            "productA",
-            "productB"
+//            "productA",
+//            "productB"
           ]
         },
         //确认都配置没有问题后，安装报MSG_ERR_INSTALL_FAILED_INCONSISTENT_SIGNATURE的错误，可以把签名删掉再重新签名试试，或者改下签名然后在项目配置中删除签名再重新添加签名试试
@@ -93,8 +93,8 @@
           "name": "default",
           "applyToProducts": [
             "default",
-            "productA",
-            "productB",
+//            "productA",
+//            "productB",
           ]
         },
         //        {
