@@ -21,6 +21,12 @@
         "usedScene": {
           "when": "always"
         }
+      },
+      {
+        "name": "ohos.permission.CAMERA",
+        "usedScene": {
+          "when": "always"
+        }
       }
     ],
     "deliveryWithInstall": true,

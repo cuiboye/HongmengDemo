@@ -3,6 +3,7 @@
  */
 import common from '@ohos.app.ability.common'
 import { CommonHeader } from '../common/common_header'
+import FileUtils from '../common/FileUtils'
 @Entry
 @Component
 struct FilePage {
@@ -45,12 +46,41 @@ struct FilePage {
           // distributeFileDir的路径为 /data/storage/el2/distributedfiles
         })
 
-      Button('获取其它应用或Module的context')
+      Button('获取其它应用或Module的文件路径')
         .onClick(()=>{
           let context = getContext().createModuleContext('sharelibrary')
           let cacheDir = context.cacheDir;
           console.log(`sharelibrary中的cacheDir路径为：${cacheDir}`)
           //输出结果：/data/storage/el2/base/cache
+        })
+      Button('新建并读写文件')
+        .onClick(()=>{
+          FileUtils.createFile(getContext(this) as common.UIAbilityContext)
+        })
+      Button('复制文件')
+        .onClick(()=>{
+          FileUtils.createFile(getContext(this) as common.UIAbilityContext)
+        })
+      Button('查询文件列表')
+        .onClick(()=>{
+          FileUtils.queryFileList(getContext(this) as common.UIAbilityContext)
+        })
+      Button('获取指定文件系统的剩余空间大小')
+        .onClick(()=>{
+          FileUtils.getFreeSize()
+        })
+      Button('获取指定文件系统的总空间大小')
+        .onClick(()=>{
+          FileUtils.getTotalSize()
+        })
+      Button('获取当前应用的存储空间大小')
+        .onClick(()=>{
+          FileUtils.getTotalAppSize()
+        })
+      Button('分享文件')
+        .onClick(()=>{
+          //没有分享成功，还需要再研究下
+          FileUtils.shareFile(getContext(this) as common.UIAbilityContext)
         })
     }
     .height('100%')

@@ -206,6 +206,20 @@ struct Index {
               router.RouterMode.Standard, //跳转模式 Single/Stantard
             )
           })
+          Button('异步操作').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/AsynchronyPage',
+              },
+            )
+          })
+          Button('拍照').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/CameraPage',
+              },
+            )
+          })
           Button('@State @Prop @Link的Demo').onClick(() => {
             router.pushUrl(
               {

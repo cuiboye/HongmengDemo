@@ -1,13 +1,35 @@
-import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
-import bundleManager from '@ohos.bundle.bundleManager';
-import prompt from '@ohos.prompt';
-import common from '@ohos.app.ability.common';
 
+import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
+import prompt from '@ohos.prompt';
+import bundleManager from '@ohos.bundle.bundleManager';
+import common from '@ohos.app.ability.common';
 /**
- * 申请权限工具类
+ * 拍照工具类
  */
-export default class PermissionUtils {
-  permissions: Array<Permissions> = ['ohos.permission.READ_CALENDAR'];
+export default class CarameUtils{
+
+  /**
+   * 是否申请了拍照权限
+   */
+  static async checkPermissions(permissions: Array<Permissions>): Promise<void> {
+    let grantStatus: abilityAccessCtrl.GrantStatus = await this.checkAccessToken(permissions);
+
+    if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
+      // 已经授权，可以继续访问目标操作
+      console.log("已经授权")
+      prompt.showToast({
+        message: '已经授权'
+      })
+    } else {
+      // 申请日历权限
+      console.log("未申请授权")
+      prompt.showToast({
+        message: '未申请授权'
+      })
+
+      CarameUtils.reqPermissionsFromUser(permissions)
+    }
+  }
 
   /**
    * 检查是否申请了权限
@@ -35,26 +57,6 @@ export default class PermissionUtils {
       console.error(`checkAccessToken failed, code is ${err.code}, message is ${err.message}`);
     }
     return grantStatus;
-  }
-
-  static async checkPermissions(permissions: Array<Permissions>): Promise<void> {
-    let grantStatus: abilityAccessCtrl.GrantStatus = await this.checkAccessToken(permissions);
-
-    if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
-      // 已经授权，可以继续访问目标操作
-      console.log("已经授权")
-      prompt.showToast({
-        message: '已经授权'
-      })
-    } else {
-      // 申请日历权限
-      console.log("未申请授权")
-      prompt.showToast({
-        message: '未申请授权'
-      })
-
-      PermissionUtils.reqPermissionsFromUser(permissions)
-    }
   }
 
   static reqPermissionsFromUser(permissions: Array<Permissions>): void {
@@ -87,20 +89,14 @@ export default class PermissionUtils {
   }
 
   /**
-   * 打开设置页面，手动开启权限
+   * 拍照
    */
-  static openPermissionsInSystemSettings(): void {
-    let context = getContext(this) as common.UIAbilityContext
-    let wantInfo = {
-      action: 'action.settings.app.info',
-      parameters: {
-        settingsParamBundleName: 'com.example.myapplication' // 打开指定应用的权限详情页面
-      }
-    }
-    context.startAbility(wantInfo).then(() => {
-     //从设置页面返回的逻辑处理：检查下是否开启了对应的权限
-    }).catch((err) => {
-
-    })
+  static takePhoto(){
+    //todo 涉及到相机的一些api在版本9上面无法使用
   }
+
+  static getReceived(){
+
+  }
+
 }

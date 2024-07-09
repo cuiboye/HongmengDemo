@@ -40,6 +40,8 @@
     "pages/animate/ShareListSecondPage",
     "pages/wajiu/page/ShopCarPage",
     "pages/PermissionsPage",
-    "pages/FilePage"
+    "pages/FilePage",
+    "pages/AsynchronyPage",
+    "pages/CameraPage"
   ]
 }

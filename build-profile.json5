@@ -9,13 +9,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001A41A619A70700CC4BA83A4667513B95561051BEA14508E8356CB8C11DB4F2DB58010A5C855A1E",
+          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
+          "storePassword": "0000001B0DD9F8A2A8C481880EB5AC5214389E4198AC99C7D3741F984C7F13F2FD2DE71CB09FB253DE0869",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001A6D8D51AEF5AE49E0D59BDEDFB5CB981EB3C9BA755D8955C908388BDC7B2D97F7E85B5175C5E5",
-          "profile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+          "keyPassword": "0000001B5FEA2FBA433F5AD76E43C86D10365C24CC662C5862A14A6A6A13D3B35A2AEB8C0E2399E86A1217",
+          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "/Users/tom/.ohos/config/auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
         }
       }
       //      {
@@ -32,25 +32,25 @@
       //        }
       //      }
     ],
+    "compileSdkVersion": 9,
+    "compatibleSdkVersion": 9,
     //参考：https://zhuanlan.zhihu.com/p/637132642
     "products": [
       {
         "name": "default",
         "bundleName": 'com.example.myapplication',
         "signingConfig": "default",
-        "compatibleSdkVersion": "4.0.0(10)",
-        "runtimeOS": "HarmonyOS"
       },
-//      {
-//        "name": "productA",
-//        "bundleName": 'com.example.myapplication.debug',
-//        "signingConfig": "productASigning"
-//      },
-//      {
-//        "name": "productB",
-//        "bundleName": 'com.example.myapplication3',
-//        "signingConfig": "productBSigning"
-//      }
+      {
+        "name": "productA",
+        "bundleName": 'com.example.myapplication.debug',
+        "signingConfig": "productASigning"
+      },
+      {
+        "name": "productB",
+        "bundleName": 'com.example.myapplication3',
+        "signingConfig": "productBSigning"
+      }
     ]
   },
   "modules": [
@@ -62,8 +62,8 @@
           "name": "default",
           "applyToProducts": [
             "default",
-//            "productA",
-//            "productB"
+            "productA",
+            "productB"
           ]
         },
         //确认都配置没有问题后，安装报MSG_ERR_INSTALL_FAILED_INCONSISTENT_SIGNATURE的错误，可以把签名删掉再重新签名试试，或者改下签名然后在项目配置中删除签名再重新添加签名试试
@@ -93,8 +93,8 @@
           "name": "default",
           "applyToProducts": [
             "default",
-//            "productA",
-//            "productB",
+            "productA",
+            "productB",
           ]
         },
         //        {

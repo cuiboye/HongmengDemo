@@ -1,5 +1,8 @@
 import preferences from '@ohos.data.preferences';
 
+/**
+ * Preferences工具类
+ */
 class PreferencesUtil{
 
   prefMap: Map<string, preferences.Preferences> = new Map()
