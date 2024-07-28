@@ -28,9 +28,9 @@ struct FirstRouter {
   }
 
   onPageShow(){
-    const params = router.getParams();
+    const params:Record<string,string> = router.getParams() as Record<string,string>;
     if(params){
-      const backParams:string = params['backParams']
+      const backParams:string= params['backParams']
       console.log(`接受不返回的参数为：${backParams}`)
     }
   }

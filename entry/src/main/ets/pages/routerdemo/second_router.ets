@@ -1,9 +1,16 @@
 
-import router from '@ohos.router'
 import { CommonHeader } from '../../common/common_header';
+import { router } from '@kit.ArkUI';
+
 /**
  * 第二个页面
  */
+
+class SecondRouterParams{
+  id:number = 0
+  name:string = ''
+}
+
 @Entry
 @Component
 struct SecondRouter {
@@ -11,9 +18,9 @@ struct SecondRouter {
 
   aboutToAppear(){
     //在aboutToAppear接收参数
-    const params = router.getParams();
-    const id:number = params['id'];
-    const name:string = params['name'];
+    const params:SecondRouterParams = router.getParams() as SecondRouterParams;
+    const id:number = params.id;
+    const name:string = params.name;
     console.log(`接受到的参数： id=${id},name=${name}`)
     console.log(`生命周期： aboutToAppear`)
   }

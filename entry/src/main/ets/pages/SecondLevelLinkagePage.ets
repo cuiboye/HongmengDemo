@@ -23,7 +23,7 @@ struct SecondLevelLinkagePage {
     //     }
     //   }
     // })
-   this.rankList = classifyData.result.rankList
+   this.rankList = classifyData?.result?.rankList
   }
   build() {
     Column() {

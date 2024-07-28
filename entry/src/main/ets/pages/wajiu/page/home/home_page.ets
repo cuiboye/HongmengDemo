@@ -56,13 +56,13 @@ export struct HomePage {
   aboutToAppear() {
     //1)
     //===start用于预览测试，使用的时本地数据===
-    this.bannerList = indexInfo.result.indexList.focus_picture.appNewIndexCategories
-    this.homeButtonList = indexInfo.result.indexList.home_button.appNewIndexCategories
-    this.bannerInternationalList = indexInfo.result.banner_international
-    this.brandHallList = indexInfo.result.brandHall
-    this.famousProductList = indexInfo.result.famousProducts.famousProductList
-    this.newsList = indexInfo.result.indexList.announcement.appNewIndexCategories
-    this.kindSetList = indexInfo.result.kindSet
+    this.bannerList = indexInfo?.result?.indexList?.focus_picture?.appNewIndexCategories ?? []
+    this.homeButtonList = indexInfo?.result?.indexList?.home_button?.appNewIndexCategories ?? []
+    this.bannerInternationalList = indexInfo?.result?.banner_international ?? []
+    this.brandHallList = indexInfo?.result?.brandHall ?? []
+    this.famousProductList = indexInfo?.result?.famousProducts?.famousProductList ?? []
+    this.newsList = indexInfo?.result?.indexList?.announcement?.appNewIndexCategories ?? []
+    this.kindSetList = indexInfo?.result?.kindSet  ?? []
     //===end用于预览测试，使用的时本地数据===
 
 

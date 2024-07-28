@@ -4,6 +4,7 @@ import statvfs from '@ohos.file.statvfs';
 import storageStatistics from "@ohos.file.storageStatistics";
 import wantConstant from '@ohos.ability.wantConstant';
 import fileuri from '@ohos.file.fileuri';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 
 export default class FileUtils{
@@ -85,7 +86,7 @@ export default class FileUtils{
     let filesDir = context.filesDir;
 
     // 查看文件列表
-    let options = {
+    let options:OptionsData = {
       recursion: false,
       listNum: 0,
       filter: {
@@ -181,8 +182,20 @@ export default class FileUtils{
       .then(() => {
         console.info('Invoke getCurrentBundleStats succeeded.');
       })
-      .catch((err) => {
+      .catch((err:BusinessError) => {
         console.error(`Invoke startAbility failed, code is ${err.code}, message is ${err.message}`);
       });
   }
+}
+
+class OptionsData{
+  recursion?: boolean
+  listNum?: number
+  filter?:Filter
+}
+class  Filter{
+  suffix?: string[]          // 匹配文件后缀名为'.png','.jpg','.txt'
+  // displayName: ['test*'],                    // 匹配文件全名以'test'开头
+  fileSizeOver?: number                           // 匹配文件大小大于等于0
+  lastModifiedAfter?: number,
 }

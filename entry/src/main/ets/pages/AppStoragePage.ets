@@ -13,8 +13,8 @@ struct AppStoragePage {
          AppStorage.SetOrCreate('AppStorageDemo1',47)
          //Link 返回双向绑定的数据，如果AppStorage不存在对应的propName，则返回undefined。
          //双向绑定数据的修改会同步回AppStorage中，AppStorage会将变化同步到所有绑定该propName的数据和自定义组件中。
-         let linkToPropA1 = AppStorage.Link('AppStorageDemo1')
-         let linkToPropA2  = AppStorage.Link('AppStorageDemo1')
+         let linkToPropA1:AbstractProperty<number> = AppStorage.Link('AppStorageDemo1')
+         let linkToPropA2:AbstractProperty<number>  = AppStorage.Link('AppStorageDemo1')
          linkToPropA1.set(48)
          console.info(`linkToPropA1 is ${linkToPropA1.get()},linkToPropA2 is  ${linkToPropA2.get()}`)
         //输出结果：linkToPropA1 is 48,linkToPropA2 is  48
@@ -34,8 +34,8 @@ struct AppStoragePage {
       Button('AppStorage-Prop')
         .onClick(()=>{
           AppStorage.SetOrCreate('PropA', 47);
-          let prop1 = AppStorage.Prop('PropA');
-          let prop2 = AppStorage.Prop('PropA');
+          let prop1:AbstractProperty<number> = AppStorage.Prop('PropA');
+          let prop2:AbstractProperty<number> = AppStorage.Prop('PropA');
           prop1.set(1);
           //prop1.get()=1; but prop2.get() == 47
         })
@@ -59,7 +59,7 @@ struct AppStoragePage {
       Button('AppStorage-Get')
         .onClick(()=>{
           //获取propName在AppStorage中对应的属性。如果不存在返回undefined。
-          let value = AppStorage.Get('AppStorageDemo2');
+          let value:number = AppStorage.Get('AppStorageDemo2') as number;
           console.info(`value is ${value}`)
         })
       Button('AppStorage-Set')

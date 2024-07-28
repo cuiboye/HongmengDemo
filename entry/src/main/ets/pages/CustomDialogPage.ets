@@ -2,13 +2,13 @@
 //  */
 import prompt from '@ohos.prompt'
 import { CommonHeader } from '../common/common_header'
-import { PositionUtils } from '../common/utils/PositionUtils'
 @Entry
 @Component
 export  struct CustomDialogPage {
   @State buttonPosition:number = 0
 
-  dialogController:CustomDialogController = new CustomDialogController({
+  //dialogController定义的时候需要包含null,否则销毁的时候无法置为null
+  dialogController:CustomDialogController | null = new CustomDialogController({
     builder:DialogView({
       cancel:this.onCancel,
       confirm:this.onConfirm
@@ -43,11 +43,7 @@ export  struct CustomDialogPage {
      Button('自定义弹框')
        .id('button')
        .onClick(()=>{
-         //获取组件的位置
-         this.buttonPosition = PositionUtils.getComponentRect("button").bottom;
-         console.log(`buttonPosition：${this.buttonPosition}`)
-         console.log(`buttonPosition-px2vp：${px2vp(this.buttonPosition)}`)
-        this.dialogController.open()//打开弹框
+        this.dialogController?.open()//打开弹框
        })
       Text('CenterText').layoutWeight(1)
     }
@@ -70,8 +66,8 @@ struct DialogView{
   })
   // 若尝试在CustomDialog中传入多个其他的Controller，以实现在CustomDialog中打开另一个或另一些CustomDialog，那么此处需要将指向自己的controller放在所有controller的后面
   controller:CustomDialogController
-  cancel:()=>void
-  confirm:()=>void
+  cancel?:()=>void
+  confirm?:()=>void
   onSecondCancel(){
     prompt.showToast({message:'第二个取消'})
   }
@@ -79,7 +75,7 @@ struct DialogView{
   onSecondConfirm(){
     // prompt.showToast({message:'第二个确定'})
     this.controller.close()
-    this.confirm()
+    this.confirm?.()
   }
 
   build(){
@@ -93,14 +89,14 @@ struct DialogView{
           .onClick(()=>{
             if(this.controller!=undefined){
               this.controller.close()//关闭弹框
-              this.cancel()
+              this.cancel?.()
             }
           })
         Button('确认')
           .onClick(()=>{
             if(this.controller!=undefined){
               this.controller.close()
-              this.confirm()
+              this.confirm?.()
             }
           })
       }
@@ -113,8 +109,8 @@ struct DialogView{
 @CustomDialog
 struct SecondDialogView{
   controller:CustomDialogController
-  onSecondCancel:()=>void
-  onSecondConfirm:()=>void
+  onSecondCancel?:()=>void
+  onSecondConfirm?:()=>void
 
   build(){
     Column(){
@@ -122,7 +118,7 @@ struct SecondDialogView{
         .onClick(()=>{
           if(this.controller != undefined){
             this.controller.close()
-            this.onSecondConfirm()
+            this.onSecondConfirm?.()
           }
         })
     }

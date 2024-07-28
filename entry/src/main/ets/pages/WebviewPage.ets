@@ -4,6 +4,11 @@ import hilog from '@ohos.hilog'
 /**
  * Webview demo
  */
+class TestObj{
+  test?: (data:string)=>string
+  toString?: ()=>void
+}
+
 @Entry
 @Component
 struct WebviewPage {
@@ -13,8 +18,8 @@ struct WebviewPage {
 
   @State webResult: string = ''
 
-  testObj = {
-    test: (data) => {
+  testObj:TestObj = {
+    test: (data:string) => {
       console.log(`接收到的JS参数为 ${data}`);
       return "ArkUI Web Component";
     },

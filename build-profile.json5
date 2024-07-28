@@ -1,21 +1,17 @@
 {
   "app": {
     "signingConfigs": [
-      //自己电脑的签名
-
-
-      //公司电脑的签名
       {
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.cer",
-          "storePassword": "0000001B0DD9F8A2A8C481880EB5AC5214389E4198AC99C7D3741F984C7F13F2FD2DE71CB09FB253DE0869",
+          "certpath": "C:\\Users\\cuiboye\\.ohos\\config\\default_HongmengDemo_UX6zwFZTTQ1xCd4Pu7WAnLUKRqDcnoANbqY2vxiUL-o=.cer",
+          "storePassword": "0000001AE6C124437E60F5F7169CB6CC98DD081C0D809ED8DFAD632EBFE5CC6110BB367A234B0DFBB91A",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001B5FEA2FBA433F5AD76E43C86D10365C24CC662C5862A14A6A6A13D3B35A2AEB8C0E2399E86A1217",
-          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p7b",
+          "keyPassword": "0000001A85E2253D775CB8AD0A108BA4E417C36D4F5FA48A994F0F02ED819B5B1BE97312B244C8AEB8FA",
+          "profile": "C:\\Users\\cuiboye\\.ohos\\config\\default_HongmengDemo_UX6zwFZTTQ1xCd4Pu7WAnLUKRqDcnoANbqY2vxiUL-o=.p7b",
           "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\auto_debug_HongmengDemo_com.example.myapplication_890086000102043708.p12"
+          "storeFile": "C:\\Users\\cuiboye\\.ohos\\config\\default_HongmengDemo_UX6zwFZTTQ1xCd4Pu7WAnLUKRqDcnoANbqY2vxiUL-o=.p12"
         }
       }
       //      {
@@ -32,22 +28,24 @@
       //        }
       //      }
     ],
-    "compileSdkVersion": 9,
-    "compatibleSdkVersion": 9,
     //参考：https://zhuanlan.zhihu.com/p/637132642
     "products": [
       {
         "name": "default",
         "bundleName": 'com.example.myapplication',
         "signingConfig": "default",
+        "compatibleSdkVersion": "5.0.0(12)",
+        "runtimeOS": "HarmonyOS"
       },
       {
         "name": "productA",
+        "compatibleSdkVersion": "5.0.0(12)",
         "bundleName": 'com.example.myapplication.debug',
         "signingConfig": "productASigning"
       },
       {
         "name": "productB",
+        "compatibleSdkVersion": "5.0.0(12)",
         "bundleName": 'com.example.myapplication3',
         "signingConfig": "productBSigning"
       }

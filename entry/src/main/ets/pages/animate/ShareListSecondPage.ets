@@ -19,7 +19,7 @@ struct ShareListSecondPage {
   $r('app.media.share6'),
   ]
 
-  private index: number
+  private index: number = 0
   aboutToAppear(){
      //将 router.getParams 中的值转为对象，更加方便的操作
    this.index = (router.getParams() as Params)?.index//?.取index的值

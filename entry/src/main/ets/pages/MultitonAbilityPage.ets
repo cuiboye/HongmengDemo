@@ -17,7 +17,7 @@ struct MultitonAbilityPage {
   build() {
     Column() {
       Button(`启动新的Ability并接收返回的参数`).onClick(() => {
-        let abilityResult = {
+        let abilityResult:Want = {
           resultCode: 1001,
           want: {
             // bundleName: 'com.example.myapplication',

@@ -1,18 +1,18 @@
-
 import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import prompt from '@ohos.prompt';
 import bundleManager from '@ohos.bundle.bundleManager';
 import common from '@ohos.app.ability.common';
+import { BusinessError } from '@kit.BasicServicesKit';
+
 /**
  * 拍照工具类
  */
 export default class CarameUtils{
-
   /**
    * 是否申请了拍照权限
    */
-  static async checkPermissions(permissions: Array<Permissions>): Promise<void> {
-    let grantStatus: abilityAccessCtrl.GrantStatus = await this.checkAccessToken(permissions);
+  static async checkPermissions(context:common.UIAbilityContext,permissions: Array<Permissions>): Promise<void> {
+    let grantStatus: abilityAccessCtrl.GrantStatus = await CarameUtils.checkAccessToken(permissions);
 
     if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
       // 已经授权，可以继续访问目标操作
@@ -27,7 +27,7 @@ export default class CarameUtils{
         message: '未申请授权'
       })
 
-      CarameUtils.reqPermissionsFromUser(permissions)
+      CarameUtils.reqPermissionsFromUser(context,permissions)
     }
   }
 
@@ -38,10 +38,10 @@ export default class CarameUtils{
    */
   static async checkAccessToken(permissions: Array<Permissions>): Promise<abilityAccessCtrl.GrantStatus> {
     let atManager = abilityAccessCtrl.createAtManager();
-    let grantStatus: abilityAccessCtrl.GrantStatus;
+    let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
 
     // 获取应用程序的accessTokenID
-    let tokenId: number;
+    let tokenId: number = 0;
     try {
       let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
       let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
@@ -59,9 +59,8 @@ export default class CarameUtils{
     return grantStatus;
   }
 
-  static reqPermissionsFromUser(permissions: Array<Permissions>): void {
+  static reqPermissionsFromUser(context:common.UIAbilityContext,permissions: Array<Permissions>): void {
     let atManager = abilityAccessCtrl.createAtManager();
-    let context = getContext(this) as common.UIAbilityContext
     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
       let grantStatus: Array<number> = data.authResults;
@@ -83,7 +82,7 @@ export default class CarameUtils{
         }
       }
       // 授权成功
-    }).catch((err) => {
+    }).catch((err:BusinessError) => {
       console.error(`requestPermissionsFromUser failed, code is ${err.code}, message is ${err.message}`);
     })
   }
@@ -98,5 +97,4 @@ export default class CarameUtils{
   static getReceived(){
 
   }
-
 }

@@ -1,6 +1,6 @@
 @Component
 export default struct ClassifyItem{
-  classifyName:string
+  classifyName:string = ''
   onClickItem = ()=>{}
   @Prop isSelected:boolean
   build(){

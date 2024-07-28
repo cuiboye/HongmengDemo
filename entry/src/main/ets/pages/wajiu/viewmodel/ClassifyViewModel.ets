@@ -1,5 +1,5 @@
 
-import axios from '@ohos/axios';
+import axios, { AxiosResponse } from '@ohos/axios';
 import { ClassifyBean } from '../entity/ClassifyBean';
 /**
  * viewmodel
@@ -7,22 +7,25 @@ import { ClassifyBean } from '../entity/ClassifyBean';
 class ClassifyViewModel{
   async getData(): Promise<ClassifyBean> {
       // 1.发送请求
-      let resp = await axios.get(
-        'https://mock.apifox.com/m1/3626399-3255008-default/secondListData',
-      )
-      // 2.处理响应
-      if (resp.status  === 200) {
-        // 成功
-        return resp.data;
-      }
-      // 失败
+    let response: AxiosResponse = await axios.get<ClassifyBean, AxiosResponse<ClassifyBean>>(
+      'https://mock.apifox.com/m1/3626399-3255008-default/secondListData',
+    )
+    let classifyBean: ClassifyBean = JSON.parse(JSON.stringify(response)) as ClassifyBean
+
+    // 2.处理响应
+    if (classifyBean.states === 200) {
+      // 成功
+      return classifyBean;
     }
+    return new ClassifyBean();
+    // 失败
+  }
 }
 
 let classifyViewModel = new ClassifyViewModel()
 export default classifyViewModel as ClassifyViewModel
 
-export const classifyData = {
+export const classifyData:ClassifyBean = {
   "states" : 200,
   "msg" : "请求成功",
   "result" : {

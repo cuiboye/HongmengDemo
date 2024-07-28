@@ -2,6 +2,8 @@ import abilityAccessCtrl, { Permissions } from '@ohos.abilityAccessCtrl';
 import bundleManager from '@ohos.bundle.bundleManager';
 import prompt from '@ohos.prompt';
 import common from '@ohos.app.ability.common';
+import { Want } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /**
  * 申请权限工具类
@@ -16,10 +18,10 @@ export default class PermissionUtils {
    */
   static async checkAccessToken(permissions: Array<Permissions>): Promise<abilityAccessCtrl.GrantStatus> {
     let atManager = abilityAccessCtrl.createAtManager();
-    let grantStatus: abilityAccessCtrl.GrantStatus;
+    let grantStatus: abilityAccessCtrl.GrantStatus = abilityAccessCtrl.GrantStatus.PERMISSION_DENIED;
 
     // 获取应用程序的accessTokenID
-    let tokenId: number;
+    let tokenId: number = 0;
     try {
       let bundleInfo: bundleManager.BundleInfo = await bundleManager.getBundleInfoForSelf(bundleManager.BundleFlag.GET_BUNDLE_INFO_WITH_APPLICATION);
       let appInfo: bundleManager.ApplicationInfo = bundleInfo.appInfo;
@@ -37,8 +39,8 @@ export default class PermissionUtils {
     return grantStatus;
   }
 
-  static async checkPermissions(permissions: Array<Permissions>): Promise<void> {
-    let grantStatus: abilityAccessCtrl.GrantStatus = await this.checkAccessToken(permissions);
+  static async checkPermissions(context:common.UIAbilityContext,permissions: Array<Permissions>): Promise<void> {
+    let grantStatus: abilityAccessCtrl.GrantStatus = await PermissionUtils.checkAccessToken(permissions);
 
     if (grantStatus === abilityAccessCtrl.GrantStatus.PERMISSION_GRANTED) {
       // 已经授权，可以继续访问目标操作
@@ -53,13 +55,12 @@ export default class PermissionUtils {
         message: '未申请授权'
       })
 
-      PermissionUtils.reqPermissionsFromUser(permissions)
+      PermissionUtils.reqPermissionsFromUser(context,permissions)
     }
   }
 
-  static reqPermissionsFromUser(permissions: Array<Permissions>): void {
+  static reqPermissionsFromUser(context:common.UIAbilityContext,permissions: Array<Permissions>): void {
     let atManager = abilityAccessCtrl.createAtManager();
-    let context = getContext(this) as common.UIAbilityContext
     // requestPermissionsFromUser会判断权限的授权状态来决定是否唤起弹窗
     atManager.requestPermissionsFromUser(context, permissions).then((data) => {
       let grantStatus: Array<number> = data.authResults;
@@ -81,7 +82,7 @@ export default class PermissionUtils {
         }
       }
       // 授权成功
-    }).catch((err) => {
+    }).catch((err:BusinessError) => {//BusinessError相当于Android中的Exception
       console.error(`requestPermissionsFromUser failed, code is ${err.code}, message is ${err.message}`);
     })
   }
@@ -89,9 +90,8 @@ export default class PermissionUtils {
   /**
    * 打开设置页面，手动开启权限
    */
-  static openPermissionsInSystemSettings(): void {
-    let context = getContext(this) as common.UIAbilityContext
-    let wantInfo = {
+  static openPermissionsInSystemSettings(context:common.UIAbilityContext): void {
+    let wantInfo:Want = {
       action: 'action.settings.app.info',
       parameters: {
         settingsParamBundleName: 'com.example.myapplication' // 打开指定应用的权限详情页面
@@ -99,7 +99,7 @@ export default class PermissionUtils {
     }
     context.startAbility(wantInfo).then(() => {
      //从设置页面返回的逻辑处理：检查下是否开启了对应的权限
-    }).catch((err) => {
+    }).catch((err:BusinessError) => {
 
     })
   }

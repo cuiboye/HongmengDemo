@@ -22,7 +22,11 @@ export class FocusPictureEntity{
 
 // @Observed
 export class AppNewIndexCategoriesEntity{
+  indexName?:string
   picture?:string
+  parameter?:string
+  urlType?:number
+  appIndex?:AppIndex
 }
 
 
@@ -33,14 +37,30 @@ export class HomeButtonEntity{
 export class HomeButtonAppNewIndexCategoriesEntity{
   indexName?:string
   picture?:string
+  parameter?:string
+  urlType?:number
+  appIndex?:AppIndex
 }
 
 export class BannerInternationalEntity{
   picture?:string
+  indexName?:string
+  parameter?:string
+  urlType?:number
+  appIndex?:AppIndex
+  originPlace?:string
 }
 
+export class AppIndex{
+  cName?:string
+}
 export class BrandHallEntity{
   appPictrueAddress?:string
+  parameter?:string
+  productCategoryId?:number
+  pcPictrueAddress?:string
+  name?:string
+  id?:number
 }
 
 export class FamousProductsEntity{
@@ -58,14 +78,23 @@ export class AnnouncementEntity{
 
 export class AnnouncementAppNewIndexCategoriesEntity{
   indexName?:string
+  picture?:string
+  parameter?:string
+  urlType?:number
+  appIndex?:AppIndex
 }
 
 export class KindSetEntity{
   kindName?:string
+  reqName?:string
+  reqValue?:string
   productInfoList?:ProductInfoListEntity[]
 }
 
 export class ProductInfoListEntity{
+  productId?:number
+  jnPrice?:string
+  parameter?:string
   cname?:string
   picture?:string
 }

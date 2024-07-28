@@ -1,6 +1,8 @@
 /**
  * 异步操作
  */
+import { BusinessError } from '@kit.BasicServicesKit'
+
 @Entry
 @Component
 struct AsynchronyPage {
@@ -10,7 +12,7 @@ struct AsynchronyPage {
     Column() {
       Button('Promise最基本的用法')
         .onClick(()=>{
-          const promise = new Promise((resolve,reject)=>{
+          const promise:Promise<number> = new Promise((resolve:Function,reject:Function)=>{
             setTimeout(() => {
               const randomNumber = Math.random();
               if (randomNumber > 0.5) {
@@ -28,9 +30,9 @@ struct AsynchronyPage {
           //   console.error(error.message);
           // })
 
-          promise.then((result)=>{//then回调方法只传一个参数代表成功的结果
+          promise.then((result:number)=>{//then回调方法只传一个参数代表成功的结果
             console.info(`Random number is ${result}`);
-          }).catch(error=>{
+          }).catch((error:BusinessError)=>{
             //还可以使用catch获取失败的结果
             console.error(error.message);
           })
@@ -48,7 +50,7 @@ struct AsynchronyPage {
     //使用await关键字等待Promise的解析（完成或拒绝），以同步的方式编写异步操作的代码。
     //使用了await关键字来等待Promise对象的解析，并将其解析值存储在result变量中。
     try {//使用try...catch来捕捉异步中的异常
-      const result = await new Promise((resolve) => {
+      const result:string = await new Promise((resolve:Function) => {
         setTimeout(() => {
           resolve('Hello, world!');
         }, 3000);

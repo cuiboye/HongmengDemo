@@ -1,7 +1,7 @@
 
 @Observed
 export class ShopCarModel{
-  selected:boolean
-  productName:string
-  productPrice:number
+  selected:boolean = false
+  productName:string = ''
+  productPrice:number = 0
 }

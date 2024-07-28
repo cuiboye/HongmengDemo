@@ -18,12 +18,14 @@
       },
       {
         "name": "ohos.permission.READ_CALENDAR",
+        "reason": "$string:app_name",
         "usedScene": {
           "when": "always"
         }
       },
       {
         "name": "ohos.permission.CAMERA",
+        "reason": "$string:app_name",
         "usedScene": {
           "when": "always"
         }

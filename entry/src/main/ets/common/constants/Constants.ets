@@ -1,88 +1,14 @@
-import ShopInfo from '../../pages/wajiu/TaskEntity';
+import ShopInfo, { Data, ProductInfoListEntity } from '../../pages/wajiu/TaskEntity';
 
 export const APP_EXIT_INTERVAL: number = 4500;
 
 export const TIME = 1000;
 
 ///可以用这样结构的数据模拟请求接口的数据，只要indexInfo和ShopInfo类中的数据结构一致就可以
-export   const indexInfo ={
-
+export const indexInfo: ShopInfo = {
   "states": 200,
   "msg": "请求成功",
   "result": {
-    "bubbleProducts_spotMore": "{\"gotoUrl\":\"/api/shop/list/productList\",\"type\":\"2\",\"gotoApp\":\"bigCategory:2,category:21\"}",
-    "bubbleProducts_spot": [
-      {
-        "productId": 489,
-        "cname": "银色活力半干白起泡葡萄酒",
-        "ename": "Valibella Espumoso Blanc Semi-dry",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20170902/o_1504345096356.jpg",
-        "jnPrice": -1,
-        "countryName": "西班牙",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"489\"}"
-      },
-      {
-        "productId": 488,
-        "cname": "路易斯半干白起泡葡萄酒",
-        "ename": "Luisa De La Mariposa Espumoso Blanc Semi-dry",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20170915/o_1505468820337.jpg",
-        "jnPrice": -1,
-        "countryName": "西班牙",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"488\"}"
-      },
-      {
-        "productId": 494,
-        "cname": "斯泰勒莫斯卡托低醇甜白起泡葡萄酒",
-        "ename": "CELEST MOSCATO",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20170929/o_1506666403708.jpg",
-        "jnPrice": -1,
-        "countryName": "西班牙",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"494\"}"
-      },
-      {
-        "productId": 911,
-        "cname": "安娜-桃红卡瓦起泡葡萄酒",
-        "ename": "Anna Brut Rose Sleever",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20210816/o_1629109150645.png",
-        "jnPrice": -1,
-        "countryName": "西班牙",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"911\"}"
-      },
-      {
-        "productId": 3257,
-        "cname": "多乐姿甜白起泡配制酒",
-        "ename": "SPARKLING WHITE WINE DULZÓN",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20201113/o_1605252509448.jpg",
-        "jnPrice": -1,
-        "countryName": "西班牙",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3257\"}"
-      },
-      {
-        "productId": 3842,
-        "cname": "曙光莫斯卡托甜粉红葡萄酒_起泡",
-        "ename": "Nuwehoop Moscato Pink",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20230328/o_1679971863261.png",
-        "jnPrice": -1,
-        "countryName": "南非",
-        "hotShow": "noShow",
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3842\"}"
-      }
-    ],
-    "isGrade": "1",
-    "part1": "国家馆",
-    "part2": "新品优先抢",
-    "part4": "流行通货",
-    "part5": "起泡甜白",
-    "collectCouponActivity": {
-      "activityPage": "",
-      "picture": "",
-      "isShow": "0"
-    },
     "indexList": {
       "focus_picture": {
         "appNewIndexCategories": [
@@ -266,23 +192,6 @@ export   const indexInfo ={
         ]
       }
     },
-    "advertising": {
-      "advertising_1": {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20230112/o_1673514332846.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"5\",\"login\":\"0\",\"gotoApp\":\"jpj\"}"
-      },
-      "advertising_0": {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20230313/o_1678679039491.png",
-        "parameter": "{\"type\":\"3\",\"login\":\"1\",\"gotoUrl\":\"/api/shop/list/appProductList\",\"gotoApp\":\"https://m.wajiu.com/activity-new-product.html?clear=1\"}"
-      },
-      "hotSellingDetailsImg": "https://image.59cdn.com/app/release/index/HotNewProduct/HotNewProduct.png",
-      "ranking": {
-        "parameter": "{\"gotoUrl\":\"\",\"type\":\"28\",\"gotoApp\":\"\"}",
-        "picture": "https://image.59cdn.com/app/release/index/HotNewProduct/TopSellerList.png"
-      },
-      "hotSellingRecommendation": "https://image.59cdn.com/app/release/index/HotNewProduct/rexiaotuijian_1678676926.png"
-    },
-    "newProduct_prioritiesPic": "http://image.59cdn.com/images/activity2017/h5/newproduct/index-tip1.png",
     "brandHall": [
       {
         "id": 5,
@@ -501,198 +410,6 @@ export   const indexInfo ={
         "appPictrueAddress": "http://image.59cdn.com/static/upload/image/claim/20181214/o_1544752241304.jpg"
       }
     ],
-    "newProduct_prioritiesMore": "{\"gotoUrl\":\"/api/shop/list/productList\",\"type\":\"3\",\"gotoApp\":\"https://m.wajiu.com/activity-new-product.html?clear=1\"}",
-    "worldHotProducts": [
-      {
-        "productId": 23027,
-        "cname": "贝洛城堡单一园精酿干红葡萄酒_2022",
-        "ename": "CHATEAU LES MILLAUX  PARCELLE 55 MERLOT",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20240315/o_171048619963532.png",
-        "jnPrice": 41.9,
-        "countryName": "法国",
-        "grade": "波尔多大区Chateau AOC/AOP",
-        "parameter": "gotoApp:23027"
-      },
-      {
-        "productId": 9233,
-        "cname": "贝洛城堡干红葡萄酒_2021",
-        "ename": "CHATEAU LES MILLAUX",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20221108/o_1667903647441.png",
-        "jnPrice": 36,
-        "countryName": "法国",
-        "grade": "波尔多Chateau AOC/AOP",
-        "parameter": "gotoApp:9233"
-      },
-      {
-        "productId": 8375,
-        "cname": "艾斯经典珍藏干红葡萄酒_2020",
-        "ename": "AES GRAN RESERVA CAEMENERE",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20221009/o_1665282841211.png",
-        "jnPrice": 55.9,
-        "countryName": "智利",
-        "grade": "空加瓜谷Gran Reserva",
-        "parameter": "gotoApp:8375"
-      },
-      {
-        "productId": 9680,
-        "cname": "单宁人醒酒器",
-        "ename": "单宁人醒酒器",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20221223/o_1671790809356.jpg",
-        "jnPrice": 9.9,
-        "countryName": "中国",
-        "parameter": "gotoApp:9680"
-      }
-    ],
-    "fashionable_currencyMore": "{\"gotoUrl\":\"/api/shop/list/productList\",\"type\":\"2\",\"gotoApp\":\"meunId:4\"}",
-    "fashionable_currency": [
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20180824/o_1535093155688.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/appGoods\",\"type\":\"1\",\"login\":\"1\",\"gotoApp\":\"8182\"}"
-      },
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20200611/o_1591862376678.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/appGoods\",\"type\":\"1\",\"login\":\"1\",\"gotoApp\":\"5909\"}"
-      },
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20211122/o_1637573883430.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/appGoods\",\"type\":\"1\",\"login\":\"1\",\"gotoApp\":\"6892\"}"
-      }
-    ],
-    "banner_picture": {
-      "between_pictureLeft": {
-        "id": 152,
-        "indexName": "毕克拉系列",
-        "indexEname": "ai8xilie",
-        "sort": 1,
-        "picture": "https://image.59cdn.com/static/upload/image/app/20221031/o_1667198967278.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"3\",\"login\":\"0\",\"gotoApp\":\"https://app.wajiu.com/search-result.html?search_cname=%E6%AF%95%E5%85%8B%E6%8B%89\"}",
-        "urlType": 1,
-        "indexId": 24,
-        "time": 1471596270000,
-        "countTime": 1914328800000,
-        "startTime": 1504191600000,
-        "endTime": 1914328800000,
-        "enter": "Y",
-        "discover": "24",
-        "appIndex": {
-          "cName": "每周推荐"
-        },
-        "lowerNumber": 1,
-        "productPrice": -1,
-        "showHot": "0",
-        "timeStart": 1713175631839,
-        "timeEnd": 1914328800000,
-        "upAddDownStatus": 1,
-        "isabled": 0
-      },
-      "between_pictureRight": {
-        "id": 132,
-        "indexName": "欧百乐系列",
-        "indexEname": "lafite",
-        "sort": 1,
-        "picture": "https://image.59cdn.com/static/upload/image/app/20221031/o_1667198941867.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"3\",\"login\":\"1\",\"gotoApp\":\"https://app.wajiu.com/search-result.html?search_cname=%E6%AC%A7%E7%99%BE%E4%B9%90\"}",
-        "urlType": 1,
-        "indexId": 25,
-        "time": 1468481875000,
-        "enter": "Y",
-        "discover": "25",
-        "appIndex": {
-          "cName": "每周推荐右边"
-        },
-        "lowerNumber": 1,
-        "showHot": "0",
-        "upAddDownStatus": 0,
-        "isabled": 0
-      }
-    },
-    "freeze": 0,
-    "gradeupInfo": {
-      "isShowLoginActive": 0,
-      "isShowActiveLevel": 0,
-      "activeLevel": 0
-    },
-    "activeInfo": {
-      "isShowLoginActive": 0,
-      "loginActiveValue": "0",
-      "isShowActiveLevel": 0,
-      "activeLevel": 0
-    },
-    "homeCacheRefresh": 1,
-    "failureFgUser": 0,
-    "newProduct_spot": [
-      {
-        "cname": "图蒂亚克波尔多干白_2021",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20231129/o_170125334910791.png",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"9411\"}"
-      },
-      {
-        "cname": "贝洛城堡单一园精酿干红葡萄酒_2022",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20240315/o_171048619963532.png",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"23027\"}"
-      },
-      {
-        "cname": "贝洛城堡干红葡萄酒_2021",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20221108/o_1667903647441.png",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"9233\"}"
-      },
-      {
-        "cname": "星座 双鱼座半甜白葡萄酒_250ML",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20211122/o_1637575635719.png",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3001\"}"
-      },
-      {
-        "cname": "星座 巨蟹座半甜白葡萄酒_250ML",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20211122/o_1637575338438.png",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3008\"}"
-      },
-      {
-        "cname": "探险家经典干红葡萄酒_2015",
-        "picture": "https://image.59cdn.com/static/upload/image/product/20190104/o_1546585347691.jpg",
-        "jnPrice": -1,
-        "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3202\"}"
-      }
-    ],
-    "springActivity": {
-      "activityPage": "",
-      "picture": "",
-      "isShow": "0"
-    },
-    "fashionable_currencyAfter": [
-      {
-        "indexName": "logo4",
-        "indexEname": "logo4",
-        "picture": "https://image.59cdn.com/static/upload/image/app/20170106/o_1483675742076.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"1\",\"gotoApp\":\"name:DTF\"}",
-        "productPrice": -1
-      },
-      {
-        "indexName": "logo3",
-        "indexEname": "logo3",
-        "picture": "https://image.59cdn.com/static/upload/image/app/20180824/o_1535091857738.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"1\",\"gotoApp\":\"name:pv\"}",
-        "productPrice": -1
-      },
-      {
-        "indexName": "logo5",
-        "indexEname": "logo5",
-        "picture": "https://image.59cdn.com/static/upload/image/app/20161122/o_1479790390901.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"1\",\"gotoApp\":\"name:宝悦世家\"}",
-        "productPrice": -1
-      },
-      {
-        "indexName": "毕克拉",
-        "indexEname": "BPS",
-        "picture": "https://image.59cdn.com/static/upload/image/app/20190718/o_1563414247800.jpg",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"name:毕克拉\"}",
-        "productPrice": -1
-      }
-    ],
     "banner_international": [
       {
         "indexName": "法国",
@@ -805,7 +522,6 @@ export   const indexInfo ={
         "originPlace": "225"
       },
       {
-        "indexName": "新西兰",
         "picture": "https://image.59cdn.com/static/upload/image/app/20230112/o_1673514243015.png",
         "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"originPlace:345\"}",
         "urlType": 1,
@@ -815,91 +531,27 @@ export   const indexInfo ={
         "originPlace": "345"
       }
     ],
-    "banner_internationalAfter": [
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20161227/o_1482817870315.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"gotoApp\":\"tagId:8\"}"
-      },
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20161227/o_1482817893610.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"gotoApp\":\"tagId:9\"}"
-      },
-      {
-        "picture": "https://image.59cdn.com/static/upload/image/app/20161227/o_1482817920874.png",
-        "parameter": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"bigCategory:2,meunId:2\"}"
-      }
-    ],
-    "newProduct_spotMore": "{\"gotoUrl\":\"/api/shop/list/productList\",\"login\":\"1\",\"type\":\"3\",\"gotoApp\":\"https://apptest.wajiu.com/activity-new-product.html?wz=1\"}",
-    "ranking": {
-      "parameter": "{\"gotoUrl\":\"\",\"type\":\"28\",\"gotoApp\":\"\"}",
-      "picture": "https://image.59cdn.com/rank/entrance/app_1635415148671.jpg?v=20221207"
-    },
     "famousProducts": {
-      "jumpPar": {
-        "login": "1",
-        "type": "5",
-        "gotoApp": "jpj"
-      },
       "famousProductList": [
         {
-          "loginFlag": 2,
           "cname": "达玛雅克酒庄干红葡萄酒 2019",
           "picture": "https://image.59cdn.com/static/upload/image/product/20240312/o_171022267348731.jpg",
-          "productId": 20365,
-          "priceStr": "登录后查看价格",
-          "priceDecription": "登录后查看价格",
-          "isShouqing": 1,
-          "isQyBx": 1,
-          "countryName": "法国",
-          "countryEname": "France",
-          "productCountryPic": "https://image.59cdn.com/images/pc_new/nationalFlag/France.jpg",
-          "isSale": 1
         },
         {
-          "loginFlag": 2,
           "cname": "伏尔泰酒庄干红葡萄酒2017",
           "picture": "https://image.59cdn.com/static/upload/image/product/20240312/o_17102246991345.png",
-          "productId": 9771,
-          "priceStr": "登录后查看价格",
-          "priceDecription": "登录后查看价格",
-          "isShouqing": 1,
-          "isQyBx": 1,
-          "countryName": "法国",
-          "countryEname": "France",
-          "productCountryPic": "https://image.59cdn.com/images/pc_new/nationalFlag/France.jpg",
-          "isSale": 1
         },
         {
-          "loginFlag": 2,
-          "cname": "十字木桐酒庄干红葡萄酒  2017",
-          "picture": "https://image.59cdn.com/static/upload/image/product/20220118/o_1642498188189.jpeg",
-          "productId": 5092,
-          "priceStr": "登录后查看价格",
-          "priceDecription": "登录后查看价格",
-          "isShouqing": 1,
-          "isQyBx": 1,
-          "countryName": "法国",
-          "countryEname": "France",
-          "productCountryPic": "https://image.59cdn.com/images/pc_new/nationalFlag/France.jpg",
-          "isSale": 1
+          "cname": "伏尔泰酒庄干红葡萄酒2024",
+          "picture": "https://image.59cdn.com/static/upload/image/product/20240312/o_17102246991345.png",
         },
         {
-          "loginFlag": 2,
           "cname": "深林单一园赤霞珠马尔贝克混酿干红葡萄酒_2017",
           "picture": "https://image.59cdn.com/static/upload/image/product/20210624/o_1624530250603.jpg",
-          "productId": 5874,
-          "priceStr": "登录后查看价格",
-          "priceDecription": "登录后查看价格",
-          "isShouqing": 1,
-          "isQyBx": 1,
-          "countryName": "澳大利亚",
-          "countryEname": "Australia",
-          "productCountryPic": "https://image.59cdn.com/images/pc_new/nationalFlag/Australia.jpg",
-          "isSale": 1
         }
       ]
     },
-    "isLogin": 0,
+    // "isLogin": 0,
     "kindSet": [
       {
         "kindName": "起泡甜白",
@@ -947,7 +599,6 @@ export   const indexInfo ={
             "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"5846\"}"
           }
         ],
-        "spotMore": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"bigCategory:2,category:21\"}",
         "reqName": "category",
         "reqValue": "21"
       },
@@ -990,7 +641,6 @@ export   const indexInfo ={
             "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"21941\"}"
           }
         ],
-        "spotMore": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"meunId:4\"}",
         "reqName": "meunId",
         "reqValue": "4"
       },
@@ -1040,7 +690,6 @@ export   const indexInfo ={
             "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"3842\"}"
           }
         ],
-        "spotMore": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"bigCategory:2,meunId:2\"}",
         "reqName": "meunId",
         "reqValue": "2"
       },
@@ -1090,7 +739,6 @@ export   const indexInfo ={
             "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"4604\"}"
           }
         ],
-        "spotMore": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"tagId:9\"}",
         "reqName": "tagId",
         "reqValue": "9"
       },
@@ -1140,16 +788,10 @@ export   const indexInfo ={
             "parameter": "{\"gotoUrl\":\"/api/shop/goods\",\"type\":\"1\",\"gotoApp\":\"6634\"}"
           }
         ],
-        "spotMore": "{\"gotoUrl\":\"/api/shop/list/appProductList\",\"type\":\"2\",\"login\":\"0\",\"gotoApp\":\"tagId:8\"}",
         "reqName": "tagId",
         "reqValue": "8"
       }
     ],
-    "wsetIcon": "https://image.59cdn.com/app/release/index/wset.png",
-    "wsetUrl": "https://m.wajiu.com/course?type=1&clear=1",
-    "isChangeTheme": "0",
-    "themeHexColor": "d3d3d3",
-    "product_prioritiesMore": "{\"gotoUrl\":\"/api/shop/list/productList\",\"login\":\"1\",\"type\":\"3\",\"gotoApp\":\"https://apptest.wajiu.com/activity-new-product.html?wz=1\"}"
   }
 }
 

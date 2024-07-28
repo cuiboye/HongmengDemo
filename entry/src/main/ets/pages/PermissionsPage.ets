@@ -15,9 +15,7 @@ struct PermissionsPage {
   @State message: string = 'Hello World'
   permissions: Array<Permissions> = ['ohos.permission.READ_CALENDAR'];
 
-   auth;
    authType = userIAM_userAuth.UserAuthType.FACE;
-
 
   build() {
     Column() {
@@ -25,12 +23,12 @@ struct PermissionsPage {
       Button('申请权限')
         .onClick(() => {
           //判断是否已经申请过权限
-          PermissionUtils.checkPermissions(this.permissions)
+          PermissionUtils.checkPermissions(getContext(this) as common.UIAbilityContext,this.permissions)
         })
       Button('跳转到设置打开权限-如果权限拒绝了')
         .onClick(() => {
           //判断是否已经申请过权限
-          PermissionUtils.openPermissionsInSystemSettings()
+          PermissionUtils.openPermissionsInSystemSettings(getContext(this) as common.UIAbilityContext)
         })
     }
     .height('100%')

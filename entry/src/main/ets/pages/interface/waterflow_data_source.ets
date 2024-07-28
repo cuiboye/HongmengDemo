@@ -13,8 +13,8 @@ export class WaterFlowDataSource implements IDataSource {
   }
 
   // 获取索引对应的数据
-  public getData(index: number): any {
-    return this.dataArray[index]
+  public getData<T>(index: number): T {
+    return this.dataArray[index] as T
   }
 
   // 通知控制器数据重新加载

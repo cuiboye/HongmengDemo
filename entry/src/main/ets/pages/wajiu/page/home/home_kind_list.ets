@@ -19,7 +19,7 @@ export default struct HomeKindList{
         List({scroller:this.listController}){
           ForEach(this.kindSetList,(item:KindSetEntity,index:number)=>{
             ListItem(){
-              this.tabItem(item.kindName,index)
+              this.tabItem(item?.kindName??'',index)
             }
           })
         }
