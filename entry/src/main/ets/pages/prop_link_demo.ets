@@ -2,12 +2,12 @@ class Task {
   static id: number = 1
   name: string = '任务名称' + Task.id++
   finished: boolean = false
-  taskChild: TaskChild
+  taskChild?: TaskChild
 }
 
 @Observed
 class TaskChild{
-  childName:string
+  childName:string = ''
 }
 
 @Entry
@@ -139,16 +139,16 @@ struct TaskListWidget {
 
 @Component
 struct TaskListItemWidget {
-  task: Task
-  handleTaskNumber: () => void
+  task: Task = new Task()
+  handleTaskNumber?: () => void
   build() {
     Row() {
-      Text(this.task.name).taskSuccessed(this.task.finished)
+      Text(this.task?.name).taskSuccessed(this.task?.finished??false)
       Checkbox()
-        .select(this.task.finished)
-        .onChange(selected => {
+        .select(this.task?.finished)
+        .onChange((selected:boolean) => {
           this.task.finished = selected
-          this.handleTaskNumber()
+          this.handleTaskNumber?.()
         })
     }.listCardStyles().justifyContent(FlexAlign.SpaceBetween)
   }

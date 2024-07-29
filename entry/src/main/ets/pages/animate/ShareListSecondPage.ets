@@ -22,7 +22,7 @@ struct ShareListSecondPage {
   private index: number = 0
   aboutToAppear(){
      //将 router.getParams 中的值转为对象，更加方便的操作
-   this.index = (router.getParams() as Params)?.index//?.取index的值
+   this.index = (router.getParams() as Params)?.index??0//?.取index的值
     console.log(`this index is ${this.index}`)
   }
 

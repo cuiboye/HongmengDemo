@@ -5,7 +5,7 @@
 export struct CommonHeader{
   @StorageProp('topStatusHeight') topStatusHeight: number = 0
   showTitleBar:boolean = true;
-  title:string;
+  title:string = '';
 
   build() {
     Column() {

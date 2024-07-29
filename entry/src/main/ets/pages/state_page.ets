@@ -2,9 +2,9 @@
  * 状态管理 @State
  */
 class Person{
-  name:string
-  age:number
-  girl:GirlPerson
+  name?:string
+  age:number = 0
+  girl?:GirlPerson
 
   constructor(name:string,age:number,girl?:GirlPerson) {
     this.name = name
@@ -30,17 +30,19 @@ export struct StatePage {
 
   build() {
     Column() {
-      Text(`${this.p.name} : ${this.p.age}`)
+      Text(`${this.p?.name} : ${this.p?.age}`)
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.p.age++
+          //todo 暂时注释
+          // this.p?.age++
         })
-      Text(`${this.p.girl.name} : ${this.p.girl.age}`)
+      Text(`${this.p?.girl?.name??''} : ${this.p?.girl?.age}`)
         .fontSize(50)
         .fontWeight(FontWeight.Bold)
         .onClick(() => {
-          this.p.girl.age++
+          //todo 暂时注释
+          // this.p?.girl?.age++
         })
     }
     //@State也不能触发数组中对象属性的修改，只能触发数组的更新

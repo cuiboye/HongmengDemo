@@ -11,13 +11,13 @@ struct MultitonAbilityPage {
   aboutToAppear(){
     //这里接收的是在MultitonabilityEntryAbility中接收的want
     let want:Want =  globalThis.entryAbilityWant
-    console.info("entryAbilityWant",want.parameters.instanceKey)
+    console.info("entryAbilityWant",want?.parameters?.instanceKey)
   }
 
   build() {
     Column() {
       Button(`启动新的Ability并接收返回的参数`).onClick(() => {
-        let abilityResult:Want = {
+        let abilityResult:common.AbilityResult = {
           resultCode: 1001,
           want: {
             // bundleName: 'com.example.myapplication',

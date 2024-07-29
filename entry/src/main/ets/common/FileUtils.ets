@@ -5,6 +5,7 @@ import storageStatistics from "@ohos.file.storageStatistics";
 import wantConstant from '@ohos.ability.wantConstant';
 import fileuri from '@ohos.file.fileuri';
 import { BusinessError } from '@kit.BasicServicesKit';
+import Want from '@ohos.app.ability.Want';
 
 
 export default class FileUtils{
@@ -22,7 +23,7 @@ export default class FileUtils{
     //从文件读取一段内容
     let buf = new ArrayBuffer(1024);
     let readLen = fs.readSync(file.fd,buf,{offset:0})
-    console.info("the content of file: " + String.fromCharCode.apply(null, new Uint8Array(buf.slice(0, readLen))));
+    console.info("the content of file: " + buf.toString());
     //关闭文件
     fs.closeSync(file);
   }
@@ -170,7 +171,7 @@ export default class FileUtils{
     let uri = fileuri.getUriFromPath(pathInSandbox);
     // 获取的uri为"file://com.example.demo/data/storage/el2/base/files/test.txt"
 
-    let want = {
+    let want :Want= {
       // 配置被分享文件的读写权限，例如对被分享应用进行读写授权
       flags: wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION | wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION,
       // 配置分享应用的隐式拉起规则
@@ -197,5 +198,5 @@ class  Filter{
   suffix?: string[]          // 匹配文件后缀名为'.png','.jpg','.txt'
   // displayName: ['test*'],                    // 匹配文件全名以'test'开头
   fileSizeOver?: number                           // 匹配文件大小大于等于0
-  lastModifiedAfter?: number,
+  lastModifiedAfter?: number
 }

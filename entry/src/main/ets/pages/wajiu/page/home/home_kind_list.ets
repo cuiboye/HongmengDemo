@@ -39,7 +39,7 @@ export default struct HomeKindList{
 
         Swiper(this.swiperController) {
           ForEach(this.kindSetList,(item:KindSetEntity)=>{
-            this.tabPageItemView(item.productInfoList)
+            this.tabPageItemView(item.productInfoList??[])
           })
         }
         .onChange( (index: number) => {

@@ -23,7 +23,7 @@ struct ListPage {
         this.scroller.scrollToIndex(2)
       })
       List({space:10,scroller:this.scroller}){//space：设置每个item之间的间隔
-        ForEach(this.arr, (item) => {
+        ForEach(this.arr, (item:number) => {
           ListItem(){
             Column(){
               Text(item.toString())
@@ -37,7 +37,7 @@ struct ListPage {
               Text('底部')
             }
           }.swipeAction({ end: this.deleteTask() }) //swipeAction:ListView的侧滑效果
-        }, item => item)
+        }, (item:number) => JSON.stringify(item))
       }
       .lanes(2)//设置List为两列
       .alignListItem(ListItemAlign.Center)//设置List在交叉轴上的对齐方式

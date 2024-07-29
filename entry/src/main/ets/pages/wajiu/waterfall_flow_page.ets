@@ -55,7 +55,7 @@ export struct WaterfallFlowPage {
           .width(this.itemWidthArray[item])
           .height(this.itemHeightArray[item])
           .backgroundColor(this.colors[item % 5])
-        }, item => item)
+        }, (item:number) => JSON.stringify(item))
       }
       .columnsTemplate("1fr 1fr 1fr 1fr")
       .itemConstraintSize({

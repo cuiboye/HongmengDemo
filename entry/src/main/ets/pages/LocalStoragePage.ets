@@ -66,7 +66,8 @@
 /**
  * 兄弟节点之间的同步更新
  */
-let storage = new LocalStorage({ countStorage: 1 });
+let ls: Record<string, number> = { 'countStorage': 1 }
+let storage:LocalStorage = new LocalStorage(ls);
 
 @Component
 struct Child {
@@ -110,7 +111,7 @@ struct Parent {
           .width(50).height(60).fontSize(12)
         Text(`countStorage ${this.playCount} incr by 1`)
           .onClick(() => {
-            storage.set<number>('countStorage', 1 + storage.get<number>('countStorage'));
+            storage.set<number>('countStorage', 1 + Number(storage.get<number>('countStorage')));
           })
           .width(250).height(60).fontSize(12)
       }.width(300).height(60)

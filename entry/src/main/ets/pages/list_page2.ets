@@ -1,18 +1,10 @@
 /**
  * List的分组列表
  */
-class Contact{
-  name:string
-
-  constructor(name:string) {
-    this.name = name
-  }
-}
-
 @Entry
 @Component
 struct ListPage2 {
-  contactsGroups: object[] = [
+  contactsGroups: ContactsGroups[] = [
     {
       title: 'A',
       contacts: [
@@ -50,7 +42,7 @@ struct ListPage2 {
     // 循环渲染ListItemGroup，contactsGroups为多个分组联系人contacts和标题title的数据集合
     Column() {
       List() {
-        ForEach(this.contactsGroups, item => {
+        ForEach(this.contactsGroups, (item:ContactsGroups) => {
           //ListItemGroup:分组title，头部部件
           ListItemGroup({ header: this.itemHeader(item.title) }) {
             ForEach(item.contacts, (contact: Contact) => {
@@ -74,5 +66,18 @@ struct ListPage2 {
       .backgroundColor('#fff1f3f5')
       .width('100%')
       .padding(5)
+  }
+}
+
+class ContactsGroups{
+  title?:string
+  contacts?:Contact[]
+}
+
+class Contact{
+  name:string
+
+  constructor(name:string) {
+    this.name = name
   }
 }

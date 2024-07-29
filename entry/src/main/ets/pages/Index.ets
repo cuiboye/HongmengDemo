@@ -13,6 +13,7 @@ import Want from '@ohos.app.ability.Want';
 import data from '@ohos.telephony.data';
 import worker from '@ohos.worker';
 import {ResManager} from 'sharelibrary'
+import { BusinessError } from '@kit.BasicServicesKit';
 
 /**
  * 全局的自定义构建函数，页面内使用Component修饰的组件都可以用
@@ -242,7 +243,7 @@ struct Index {
               abilityName: 'MultitonabilityEntryAbility'
             }
             this.context.startAbility(want)
-              .catch(err => {
+              .catch((err:BusinessError) => {
               })
           })
           //=========== singleton模式 end ===========
@@ -323,10 +324,10 @@ struct Index {
               moduleName: 'entry',
               abilityName: 'MultitonabilityEntryAbility',
             }
-            this.context.startAbilityForResult(want).then(data=>{
+            this.context.startAbilityForResult(want).then((data)=>{
               if(data.resultCode == 1001){
                 //取出Ability返回的信息
-                let result = data.want.parameters.backParams;
+                let result = data?.want?.parameters?.backParams;
                 console.info(`Ability返回的result为：${result}`)
               }
             })
@@ -334,7 +335,7 @@ struct Index {
 
           //启动其它的应用，启动的页面为默认的页面
           Button(`启动其它应用的UIAbility`).onClick(() => {//MyApplication22项目
-            let wantInfo = {
+            let wantInfo:Want = {
               deviceId: '', // deviceId为空表示本设备
               // 如果希望隐式仅在特定的捆绑包中进行查询，请取消下面的注释。
               bundleName: 'com.example.myapplication2',
@@ -345,7 +346,7 @@ struct Index {
             // context为调用方UIAbility的AbilityContext
             this.context.startAbility(wantInfo).then(() => {
 
-            }).catch((err) => {
+            }).catch((err:BusinessError) => {
 
             })
           })
@@ -353,7 +354,7 @@ struct Index {
           //可以打开其它应用的具体的某个页面
           //需要在其它应用的EntryAbility的onCreate方法中接收want，并在windowStage.loadContent判断跳转哪个页面
           Button(`打开Ability中指定的页面`).onClick(() => {//MyApplication22项目
-            let wantInfo = {
+            let wantInfo:Want = {
               deviceId: '', // deviceId为空表示本设备
               bundleName: 'com.example.myapplication2',
               abilityName: 'EntryAbility',
@@ -365,14 +366,14 @@ struct Index {
             // context为调用方UIAbility的AbilityContext
             this.context.startAbility(wantInfo).then(() => {
               //then为回调，从其它Ability返回到当前Ability后的操作可以在这里处理
-            }).catch((err) => {
-              console.info(err)
+            }).catch((err:BusinessError) => {
+              console.info(`${err}}`)
             })
           })
 
           //使用Want打开链接
           Button(`使用Want打开链接`).onClick(() => {
-            let wantInfo = {
+            let wantInfo:Want = {
               // bundleName: 'com.example.myapplication',
               action: 'ohos.want.action.viewData',
               entities: [ 'entity.system.browsable' ],
@@ -380,8 +381,8 @@ struct Index {
               type: 'text/plain',
             };
             this.context.startAbility(wantInfo).then(() => {
-            }).catch((err) => {
-              console.info(err)
+            }).catch((err:BusinessError) => {
+              console.info(`${err}`)
             })
           })
 
@@ -621,7 +622,7 @@ struct Index {
                 .then(value=>{
                   prompt.showToast({message:value})
                 })
-                .catch(err=>{
+                .catch((err:BusinessError)=>{
 
                 })
             })
