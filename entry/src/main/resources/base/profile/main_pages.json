@@ -41,6 +41,7 @@
     "pages/PermissionsPage",
     "pages/FilePage",
     "pages/AsynchronyPage",
-    "pages/CameraPage"
+    "pages/CameraPage",
+    "pages/CeilingPage"
   ]
 }

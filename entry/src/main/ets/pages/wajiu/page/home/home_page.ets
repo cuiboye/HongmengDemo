@@ -28,6 +28,8 @@ import HomeExcellentProducts from './home_excellent_products';
 import HomeKindList from './home_kind_list';
 import { CommonHeader } from '../../../../common/common_header';
 import HomeSearch from './home_search';
+import { AxiosResponse } from '@ohos/axios';
+import { AxiosError } from '@ohos/axios';
 
 /**
  * 挖酒首页
@@ -56,28 +58,28 @@ export struct HomePage {
   aboutToAppear() {
     //1)
     //===start用于预览测试，使用的时本地数据===
-    this.bannerList = indexInfo?.result?.indexList?.focus_picture?.appNewIndexCategories ?? []
-    this.homeButtonList = indexInfo?.result?.indexList?.home_button?.appNewIndexCategories ?? []
-    this.bannerInternationalList = indexInfo?.result?.banner_international ?? []
-    this.brandHallList = indexInfo?.result?.brandHall ?? []
-    this.famousProductList = indexInfo?.result?.famousProducts?.famousProductList ?? []
-    this.newsList = indexInfo?.result?.indexList?.announcement?.appNewIndexCategories ?? []
-    this.kindSetList = indexInfo?.result?.kindSet  ?? []
+    // this.bannerList = indexInfo?.result?.indexList?.focus_picture?.appNewIndexCategories ?? []
+    // this.homeButtonList = indexInfo?.result?.indexList?.home_button?.appNewIndexCategories ?? []
+    // this.bannerInternationalList = indexInfo?.result?.banner_international ?? []
+    // this.brandHallList = indexInfo?.result?.brandHall ?? []
+    // this.famousProductList = indexInfo?.result?.famousProducts?.famousProductList ?? []
+    // this.newsList = indexInfo?.result?.indexList?.announcement?.appNewIndexCategories ?? []
+    // this.kindSetList = indexInfo?.result?.kindSet  ?? []
     //===end用于预览测试，使用的时本地数据===
 
 
     //2)接口请求数据
-    // this.getShopListByAxiosAsync().then(indexInfo => {
-    //   if(indexInfo.states == 200){
-    //     this.bannerList = indexInfo.result.indexList.focus_picture.appNewIndexCategories
-    //     this.homeButtonList = indexInfo.result.indexList.home_button.appNewIndexCategories
-    //     this.bannerInternationalList = indexInfo.result.banner_international
-    //     this.brandHallList = indexInfo.result.brandHall
-    //     this.famousProductList = indexInfo.result.famousProducts.famousProductList
-    //     this.newsList = indexInfo.result.indexList.announcement.appNewIndexCategories
-    //     this.kindSetList = indexInfo.result.kindSet
-    //   }
-    // })
+    this.getShopListByAxiosAsync().then(indexInfo => {
+      if(indexInfo?.states == 200){
+        this.bannerList = indexInfo?.result?.indexList?.focus_picture?.appNewIndexCategories ?? []
+        this.homeButtonList = indexInfo?.result?.indexList?.home_button?.appNewIndexCategories ?? []
+        this.bannerInternationalList = indexInfo?.result?.banner_international ?? []
+        this.brandHallList = indexInfo?.result?.brandHall ?? []
+        this.famousProductList = indexInfo?.result?.famousProducts?.famousProductList ?? []
+        this.newsList = indexInfo?.result?.indexList?.announcement?.appNewIndexCategories ?? []
+        this.kindSetList = indexInfo?.result?.kindSet  ?? []
+      }
+    })
 
 
     //3)获取rawfile中的json数据，然后转为实体类
@@ -99,24 +101,39 @@ export struct HomePage {
     // })
   }
 
-  // async getShopListByAxiosAsync(): Promise<ShopInfo> {
-  //   // 1.发送请求
-  //   let resp = await axios.get(
-  //     // `${this.baseURL}/shops`,
-  //     'https://mock.apifox.com/m1/3626399-3255008-default/cby/index',
-  //     // {
-  //     //   params: { pageNo: this.pageNo, pageSize: 3 }
-  //     // }
-  //   )
-  //   // 2.处理响应
-  //   if (resp.status === 200) {
-  //     // 查询成功
-  //     console.log('testTag', '查询商铺成功！', JSON.stringify(resp.data))
-  //     return resp.data;
-  //   }
-  //   // 查询失败
-  //   console.log('testTag', '查询商铺信息失败！error:', JSON.stringify(resp))
-  // }
+  async getShopListByAxiosAsync(): Promise<ShopInfo | undefined>  {
+    //非同步写法
+    // axios.get<ShopInfo, AxiosResponse<ShopInfo>, null>(
+    //   'https://apifoxmock.com/m1/4179570-3819509-default/index',
+    //   // { params: { key: "value" } }
+    // ).then( (response:AxiosResponse<ShopInfo>)=> {
+    //   console.log("result data: " + response.data);
+    //   console.log("result status: " + response.status);
+    //   console.log("result statusText: " + response.statusText);
+    //   console.log("result headers: " + response.headers);
+    //   console.log("result config: " + response.config);
+    // }).catch((error: AxiosError) => {
+    //   console.error("result:" + error.message);
+    // });
+
+    //同步写法
+    // 1.发送请求
+    let  resp:AxiosResponse<ShopInfo> = await axios.get<ShopInfo, AxiosResponse<ShopInfo>, null>(
+      'https://apifoxmock.com/m1/4179570-3819509-default/index',
+      // { params: { key: "value" } }
+    )
+
+    // 2.处理响应
+    if (resp.status === 200) {
+      // 查询成功
+      console.log('testTag', '查询商铺成功！', JSON.stringify(resp.data))
+      return resp.data;
+    }
+    return undefined;
+    // 查询失败
+    // console.log('testTag', '查询商铺信息失败！error:', JSON.stringify(resp))
+  }
+
   build() {
     Column(){
       CommonHeader({showTitleBar:false})

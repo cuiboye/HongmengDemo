@@ -92,8 +92,8 @@ export default class EntryAbility extends UIAbility {
       })
 
       // 4.获取底部导航栏高度，此时的高度单位是px
-      let navigationHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).bottomRect.height
-      let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height
+      let navigationHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).bottomRect.height//底部
+      let topStatusHeight = windowClass.getWindowAvoidArea(window.AvoidAreaType.TYPE_SYSTEM).topRect.height//顶部
       AppStorage.SetOrCreate<number>('topStatusHeight', topStatusHeight)
       AppStorage.SetOrCreate<number>('navigationHeight', navigationHeight)
 

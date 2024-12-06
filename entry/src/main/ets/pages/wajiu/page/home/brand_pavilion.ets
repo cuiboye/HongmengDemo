@@ -39,6 +39,7 @@ export default struct BrandPavilion {
         .backgroundColor(Color.White)
         .borderRadius({bottomLeft:8,bottomRight:8})
         .listDirection(Axis.Horizontal)
+        .scrollBar(BarState.Off)//隐藏进度条
       }
     }
     .margin({top:8})

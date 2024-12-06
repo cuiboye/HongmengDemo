@@ -2,6 +2,7 @@
  * 二级联动+MVVM模式
  */
 import hilog from '@ohos.hilog';
+import { CommonHeader } from '../common/common_header';
 import ClassifyItem from './wajiu/adapter/ClassifyItem';
 import { ClassifyBean, RankingProduct, RankList } from './wajiu/entity/ClassifyBean';
 import classifyViewModel, { classifyData } from './wajiu/viewmodel/ClassifyViewModel'
@@ -27,6 +28,7 @@ struct SecondLevelLinkagePage {
   }
   build() {
     Column() {
+      CommonHeader({title:'二级联动+MVVM模式'})
       if(this.rankList && this.rankList.length>0){
         List({space:30,scroller:this.classifyScroll}){
           ForEach(this.rankList,(item:RankList,index:number)=>{

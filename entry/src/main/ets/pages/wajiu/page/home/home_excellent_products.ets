@@ -96,11 +96,11 @@ export default struct HomeExcellentProducts {
           bottomLeft: 8,
           bottomRight: 8
         })
-        .padding({ left: 11, right: 11, top: 20 })
+        .padding({ left: 11, right: 11, top: 20,bottom:10 })
         .lanes(2)
         .backgroundColor(Color.White)
       }
-      .margin({ left: 13, right: 13 })
+      .margin({ left: 13, right: 13,top:8 })
     }
   }
 }

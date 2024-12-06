@@ -36,6 +36,7 @@ export default struct HomeKindList{
         })
         .width('100%')
         .listDirection(Axis.Horizontal)
+        .scrollBar(BarState.Off)
 
         Swiper(this.swiperController) {
           ForEach(this.kindSetList,(item:KindSetEntity)=>{
@@ -44,15 +45,22 @@ export default struct HomeKindList{
         }
         .onChange( (index: number) => {
           this.selectedTabIndex = index;
-          this.listController.scrollToIndex(index)
-          console.log(`onChange ${index}`)
+          this.listController.scrollToIndex(index,false,ScrollAlign.CENTER)//scrollToIndex:选中List的某个index  ScrollAlign.CENTER:滑动到指定的索引后在中间展示
+          console.log(`onChange:index is ${index}, selectedTabIndex is ${this.selectedTabIndex}`)
         })
         // .index(this.selectedTabIndex)
-        .index(2)
+        .index(0)//index为默认选中哪个下标
         .padding({top:15})
         .loop(false)
         .padding({ left: 10, right: 2 }) //距离右边距离为2，因为item之间设置的距离为8
         .backgroundColor(Color.White)
+        .indicator(Indicator.dot()//indicator隐藏指示器
+          .itemWidth(15)
+          .itemHeight(15)
+          .selectedItemWidth(15)
+          .selectedItemHeight(15)
+          .color('#00000000')
+          .selectedColor('#00000000'))
 
         Row() {
           Text('更多')
@@ -84,6 +92,8 @@ export default struct HomeKindList{
       .margin({right:13})
       .onClick(()=>{
         this.selectedTabIndex = index;
+        this.swiperController.changeIndex(this.selectedTabIndex,true);//swiper滚动到指定的位置。true有动画，false没有动画
+        this.listController.scrollToIndex(this.selectedTabIndex,false,ScrollAlign.CENTER)//设置这句是为了点击tab后让选中的tab在中间展示
         console.log(`selectedTabIndex ${index}`)
       })
   }
@@ -104,11 +114,14 @@ export default struct HomeKindList{
               // ImageKnifeComponent({imageKnifeOption:{loadSrc:item.picture,
               //   placeholderSrc:$r('app.media.default_image')
               // }})
-              Text(item.cname).textAlign(TextAlign.Center)
+              Text(item.cname)
+                // .textAlign(TextAlign.Center)//文字居中
                 .fontColor(Color.Black)
                 .margin({top:6})
                 .fontColor('#343434')
                 .fontSize(14)
+                .maxLines(2) //最大2行
+                .textOverflow({ overflow: TextOverflow.Ellipsis }) //末尾省略
             }
             .margin({right:8})//设置水平item之间的间隔后，最右侧需要减去5像素
           }

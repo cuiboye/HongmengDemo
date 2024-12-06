@@ -9,7 +9,7 @@ export struct CommonHeader{
 
   build() {
     Column() {
-      //状态栏
+      //状态栏，这里加个状态栏高度是因为系统的状态栏会覆盖掉自己的组件
       Row()
         .width('100%')
         .height(px2vp(this.topStatusHeight))

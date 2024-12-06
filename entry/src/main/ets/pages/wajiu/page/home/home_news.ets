@@ -40,6 +40,13 @@ export default struct HomeNews {
           .layoutWeight(1)
           .vertical(true)
           .interval(4000)
+          .indicator(Indicator.dot()//indicator隐藏指示器
+            .itemWidth(15)
+            .itemHeight(15)
+            .selectedItemWidth(15)
+            .selectedItemHeight(15)
+            .color('#00000000')
+            .selectedColor('#00000000'))
         }
       }
       .margin({ top: 8, left: 13, right: 13 })

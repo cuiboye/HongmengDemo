@@ -74,10 +74,10 @@ struct Index {
     window.getLastWindow(this.context).then((windowClass) => {
       //
       windowClass.setWindowSystemBarProperties({
-        statusBarColor: '#ff00a0e9',
-        navigationBarColor: '#ff00a0e9',
-        statusBarContentColor: '#ff00a0e9',
-        navigationBarContentColor: '#ff00a0e9'
+        statusBarColor: '#ffef7134',
+        navigationBarColor: '#ffef7134',
+        statusBarContentColor: '#ffef7134',
+        navigationBarContentColor: '#ffef7134'
       })
 
       windowClass.setWindowSystemBarEnable(['status','navigation'], (err) => {
@@ -211,6 +211,13 @@ struct Index {
             router.pushUrl(
               {
                 url: 'pages/AsynchronyPage',
+              },
+            )
+          })
+          Button('吸顶效果').onClick(() => {
+            router.pushUrl(
+              {
+                url: 'pages/CeilingPage',
               },
             )
           })
@@ -594,6 +601,14 @@ struct Index {
             router.pushUrl(
               {
                 url: 'pages/SecondLevelLinkagePage',
+              },
+              err => {
+                if (err) {
+                  console.log('路由失败')
+                  console.log(err.code + '')
+                  console.log(err.message)
+                  console.log(err.name)
+                }
               },
             )
           })
